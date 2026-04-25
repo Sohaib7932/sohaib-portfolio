@@ -30,7 +30,7 @@ export function HeroContent() {
         variants={item}
         className="mb-7 text-[12px] font-medium uppercase tracking-[0.32em] text-accent/85"
       >
-        The Architect of Digital Experiences
+        BUILDING AI-POWERED DIGITAL SOLUTIONS
       </motion.p>
 
       <motion.h1
@@ -47,18 +47,17 @@ export function HeroContent() {
         variants={item}
         className="mt-7 max-w-md text-[15.5px] leading-[1.7] text-foreground/70"
       >
-        I bridge the gap between complex engineering and elegant human-centric
-        design. With a deep mastery of the full digital stack, I create
-        platforms that don&apos;t just function — they resonate.
+        I am a final-year Software Engineering student specializing in building
+        modern, scalable, and user-focused applications. From mobile apps using
+        React Native to full-stack web solutions, I turn ideas into real-world products.
       </motion.p>
 
       <motion.p
         variants={item}
         className="mt-4 max-w-md text-[15.5px] leading-[1.7] text-foreground/60"
       >
-        My approach is rooted in the belief that code should be as clean as the
-        interfaces it powers. Whether it&apos;s high-performance backends or
-        fluid, glassmorphic frontends, precision is the goal.
+        I bring 4+ years of experience in UI/UX design and 3+ years in web and mobile app development, building clean, user-focused, and high-performing digital experiences.
+        I focus on simplicity, usability, and delivering solutions that feel as good as they function.
       </motion.p>
 
       <motion.div variants={item} className="mt-10">

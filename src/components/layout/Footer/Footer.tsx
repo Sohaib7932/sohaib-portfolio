@@ -52,14 +52,19 @@ export function Footer() {
         >
           <div className="max-w-2xl">
             <p className="mb-4 text-[12px] font-medium uppercase tracking-[0.32em] text-accent/85">
-              Let&apos;s collaborate
+              Have an idea?
             </p>
             <h2 className="text-[40px] font-extrabold leading-[1.05] tracking-tight sm:text-[52px] lg:text-[60px]">
-              Got a project in mind?{" "}
+              Let&apos;s turn it into{" "}
               <span className="bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent">
-                Let&apos;s build it.
+                a real product.
               </span>
             </h2>
+            <p className="mt-5 max-w-lg text-[15px] leading-[1.7] text-foreground/60">
+              Whether it&apos;s an AI-powered web app, a polished mobile
+              experience, or a full UI/UX rework — I&apos;m open to freelance
+              projects, internships, and collaborations.
+            </p>
           </div>
 
           <motion.a
@@ -86,8 +91,7 @@ export function Footer() {
               M. SOHAIB
             </Link>
             <p className="mt-4 text-sm leading-7 text-foreground/60">
-              The architect of digital experiences — crafting systems and
-              interfaces that resonate.
+              Software Engineer building AI-powered web and mobile experiences.
             </p>
           </div>
 
@@ -133,9 +137,9 @@ export function Footer() {
         {/* Bottom bar */}
         <motion.div
           variants={fadeUp}
-          className="flex flex-col items-start justify-between gap-6 border-t border-border-subtle py-8 sm:flex-row sm:items-center"
+          className="flex items-center justify-center border-t border-border-subtle py-8"
         >
-          <p className="text-xs tracking-wide text-foreground/45">
+          <p className="text-center text-xs tracking-wide text-foreground/45">
             © {new Date().getFullYear()} Muhammad Sohaib. All rights reserved.
           </p>
         </motion.div>
