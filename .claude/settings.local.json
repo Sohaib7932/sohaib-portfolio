@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(npx next *)",
+      "Bash(echo \"started, pid=$!\")",
+      "Bash(curl -sf http://localhost:3457/ -o /tmp/hero.html)",
+      "Read(//tmp/**)"
+    ]
+  }
+}
