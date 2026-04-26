@@ -6,8 +6,8 @@ import { SocialLink } from "./SocialLink";
 import { BackToTop } from "./BackToTop";
 
 const sitemap = [
-  { href: "/#work", label: "Work" },
   { href: "/#about", label: "About" },
+  { href: "/#work", label: "Work" },
   { href: "/#services", label: "Services" },
   { href: "/#contact", label: "Contact" },
 ];

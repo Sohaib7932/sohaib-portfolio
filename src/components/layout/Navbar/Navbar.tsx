@@ -5,8 +5,8 @@ import { motion } from "motion/react";
 import { NavLink } from "./NavLink";
 
 const links = [
-  { href: "/#work", label: "Work" },
   { href: "/#about", label: "About" },
+  { href: "/#work", label: "Work" },
   { href: "/#services", label: "Services" },
   { href: "/#contact", label: "Contact" },
 ];
