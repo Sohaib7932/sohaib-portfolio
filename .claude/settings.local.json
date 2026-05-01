@@ -5,7 +5,9 @@
       "Bash(npx next *)",
       "Bash(echo \"started, pid=$!\")",
       "Bash(curl -sf http://localhost:3457/ -o /tmp/hero.html)",
-      "Read(//tmp/**)"
+      "Read(//tmp/**)",
+      "Bash(npx eslint *)",
+      "Bash(npx tsc *)"
     ]
   }
 }
