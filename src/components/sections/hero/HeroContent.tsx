@@ -28,14 +28,14 @@ export function HeroContent() {
     >
       <motion.p
         variants={item}
-        className="mb-7 text-[12px] font-medium uppercase tracking-[0.32em] text-accent/85"
+        className="mb-5 text-[11px] font-medium uppercase tracking-[0.28em] text-accent/85 sm:mb-7 sm:text-[12px] sm:tracking-[0.32em]"
       >
         BUILDING AI-POWERED DIGITAL SOLUTIONS
       </motion.p>
 
       <motion.h1
         variants={item}
-        className="text-[44px] font-extrabold leading-[1.05] tracking-tight sm:text-[58px] lg:text-[68px]"
+        className="text-[36px] font-extrabold leading-[1.05] tracking-tight sm:text-[52px] md:text-[58px] lg:text-[68px]"
       >
         Hi, I&apos;m{" "}
         <span className="block bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent">
@@ -45,7 +45,7 @@ export function HeroContent() {
 
       <motion.p
         variants={item}
-        className="mt-7 max-w-md text-[15.5px] leading-[1.7] text-foreground/70"
+        className="mt-6 max-w-md text-[14.5px] leading-[1.7] text-foreground/70 sm:mt-7 sm:text-[15.5px]"
       >
         I am a final-year Software Engineering student specializing in building
         modern, scalable, and user-focused applications. From mobile apps using
@@ -54,13 +54,13 @@ export function HeroContent() {
 
       <motion.p
         variants={item}
-        className="mt-4 max-w-md text-[15.5px] leading-[1.7] text-foreground/60"
+        className="mt-4 max-w-md text-[14.5px] leading-[1.7] text-foreground/60 sm:text-[15.5px]"
       >
         I bring 4+ years of experience in UI/UX design and 3+ years in web and mobile app development, building clean, user-focused, and high-performing digital experiences.
         I focus on simplicity, usability, and delivering solutions that feel as good as they function.
       </motion.p>
 
-      <motion.div variants={item} className="mt-10">
+      <motion.div variants={item} className="mt-8 sm:mt-10">
         <DownloadCvButton />
       </motion.div>
     </motion.div>
@@ -74,7 +74,7 @@ function DownloadCvButton() {
       download
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
-      className="group inline-flex items-center gap-3 rounded-full bg-accent px-7 py-4 text-[12.5px] font-semibold uppercase tracking-[0.18em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)]"
+      className="group inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] sm:gap-3 sm:px-7 sm:py-4 sm:text-[12.5px] sm:tracking-[0.18em]"
     >
       <DownloadIcon />
       Download CV

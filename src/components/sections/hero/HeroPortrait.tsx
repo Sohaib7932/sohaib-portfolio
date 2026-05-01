@@ -9,7 +9,7 @@ export function HeroPortrait() {
       initial={{ opacity: 0, scale: 0.94, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-      className="relative mx-auto w-full max-w-[440px]"
+      className="relative mx-auto w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[440px]"
     >
       <div
         aria-hidden

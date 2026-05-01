@@ -42,13 +42,13 @@ export function AboutNarrative() {
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-80px" }}
-      className="mt-20 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16"
+      className="mt-14 grid grid-cols-1 gap-10 sm:mt-20 sm:gap-12 lg:grid-cols-12 lg:gap-16"
     >
       <motion.div variants={fadeUp} className="lg:col-span-7">
-        <h3 className="text-[22px] font-bold tracking-tight text-foreground sm:text-[26px]">
+        <h3 className="text-[20px] font-bold tracking-tight text-foreground sm:text-[26px]">
           My journey, in three honest sentences.
         </h3>
-        <div className="mt-6 flex flex-col gap-5 text-[15.5px] leading-[1.75] text-foreground/70">
+        <div className="mt-5 flex flex-col gap-4 text-[14.5px] leading-[1.75] text-foreground/70 sm:mt-6 sm:gap-5 sm:text-[15.5px]">
           <p>
             I started with design — obsessing over typography, spacing, and the
             quiet moments between clicks. That obsession pulled me into code,

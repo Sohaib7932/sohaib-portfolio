@@ -29,7 +29,7 @@ export function ServiceCard({
       viewport={{ once: true, margin: "-80px" }}
       whileHover={{ y: -5 }}
       transition={{ type: "spring", stiffness: 280, damping: 24 }}
-      className="group relative isolate flex flex-col overflow-hidden rounded-3xl border border-border-subtle bg-white/[0.025] p-7 backdrop-blur-sm transition-colors hover:border-border-strong sm:p-8"
+      className="group relative isolate flex flex-col overflow-hidden rounded-3xl border border-border-subtle bg-white/[0.025] p-6 backdrop-blur-sm transition-colors hover:border-border-strong sm:p-7 md:p-8"
     >
       <div
         aria-hidden
@@ -49,7 +49,7 @@ export function ServiceCard({
         </span>
       </div>
 
-      <h3 className="mt-7 text-[22px] font-bold tracking-tight text-foreground sm:text-[24px]">
+      <h3 className="mt-6 text-[20px] font-bold tracking-tight text-foreground sm:mt-7 sm:text-[24px]">
         {service.title}
       </h3>
       <p className="mt-1.5 text-[13px] font-medium tracking-wide text-accent/85">

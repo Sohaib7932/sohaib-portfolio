@@ -10,7 +10,7 @@ export function Services() {
   return (
     <section
       id="services"
-      className="relative isolate px-6 py-28 sm:px-10 sm:py-32 lg:px-16"
+      className="relative isolate overflow-hidden px-5 py-20 sm:px-8 sm:py-28 md:py-32 lg:px-16"
     >
       <div
         aria-hidden

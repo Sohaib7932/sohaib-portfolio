@@ -51,7 +51,7 @@ const lineVariants: Variants = {
 
 export function ProcessTimeline() {
   return (
-    <div className="mt-28">
+    <div className="mt-20 sm:mt-28">
       <motion.div
         variants={fadeUp}
         initial="hidden"
@@ -62,7 +62,7 @@ export function ProcessTimeline() {
         <p className="mb-4 text-[12px] font-medium uppercase tracking-[0.32em] text-accent/85">
           How we work together
         </p>
-        <h3 className="text-[34px] font-extrabold tracking-tight sm:text-[40px]">
+        <h3 className="text-[26px] font-extrabold tracking-tight sm:text-[40px]">
           A simple,{" "}
           <span className="bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent">
             honest process.

@@ -14,9 +14,9 @@ export function ExperienceBadge() {
         stiffness: 220,
         damping: 22,
       }}
-      className="absolute -bottom-5 -left-5 z-20 flex items-center gap-3 rounded-2xl border border-border-strong bg-[#120a22]/85 px-5 py-3.5 backdrop-blur-md sm:-left-8"
+      className="absolute -bottom-4 -left-3 z-20 flex items-center gap-2.5 rounded-2xl border border-border-strong bg-[#120a22]/85 px-4 py-3 backdrop-blur-md sm:-bottom-5 sm:-left-8 sm:gap-3 sm:px-5 sm:py-3.5"
     >
-      <span className="text-[34px] font-extrabold leading-none tracking-tight text-foreground">
+      <span className="text-[28px] font-extrabold leading-none tracking-tight text-foreground sm:text-[34px]">
         3<span className="text-accent">+</span>
       </span>
       <span className="text-[10.5px] font-semibold uppercase leading-tight tracking-[0.18em] text-foreground/65">

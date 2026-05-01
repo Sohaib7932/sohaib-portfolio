@@ -32,7 +32,7 @@ export function WorkPage() {
   );
 
   return (
-    <section className="relative isolate px-6 pt-36 pb-28 sm:px-10 sm:pt-40 lg:px-16">
+    <section className="relative isolate overflow-hidden px-5 pt-32 pb-20 sm:px-8 sm:pt-40 sm:pb-28 lg:px-16">
       <div
         aria-hidden
         className="pointer-events-none absolute -top-32 right-0 h-[28rem] w-[42rem] rounded-full bg-[radial-gradient(circle_at_60%_50%,rgba(192,38,211,0.1),transparent_60%)] blur-3xl"
@@ -48,7 +48,7 @@ export function WorkPage() {
         >
           <motion.h1
             variants={fadeUp}
-            className="text-[44px] font-extrabold leading-[1.02] tracking-tight sm:text-[58px] lg:text-[68px]"
+            className="text-[36px] font-extrabold leading-[1.02] tracking-tight sm:text-[52px] md:text-[58px] lg:text-[68px]"
           >
             Featured{" "}
             <span className="bg-gradient-to-r from-fuchsia-300 via-fuchsia-400 to-pink-500 bg-clip-text text-transparent">

@@ -36,6 +36,12 @@ body {
     "Segoe UI", sans-serif;
 }
 
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
 body {
   background-image:
     radial-gradient(

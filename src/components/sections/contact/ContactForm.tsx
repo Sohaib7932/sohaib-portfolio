@@ -81,7 +81,7 @@ export function ContactForm() {
       whileInView="show"
       viewport={{ once: true, margin: "-80px" }}
       onSubmit={handleSubmit}
-      className="relative isolate overflow-hidden rounded-3xl border border-border-subtle bg-white/[0.025] p-6 backdrop-blur-sm sm:p-8"
+      className="relative isolate overflow-hidden rounded-3xl border border-border-subtle bg-white/[0.025] p-5 backdrop-blur-sm sm:p-7 md:p-8"
     >
       <div
         aria-hidden

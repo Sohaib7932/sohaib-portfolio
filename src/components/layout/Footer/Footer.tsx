@@ -43,18 +43,18 @@ export function Footer() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-80px" }}
-        className="mx-auto w-full max-w-6xl px-6 sm:px-10 lg:px-16"
+        className="mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-16"
       >
         {/* CTA band */}
         <motion.div
           variants={fadeUp}
-          className="flex flex-col items-start gap-8 py-20 lg:flex-row lg:items-end lg:justify-between"
+          className="flex flex-col items-start gap-8 py-14 sm:py-20 lg:flex-row lg:items-end lg:justify-between"
         >
           <div className="max-w-2xl">
             <p className="mb-4 text-[12px] font-medium uppercase tracking-[0.32em] text-accent/85">
               Have an idea?
             </p>
-            <h2 className="text-[40px] font-extrabold leading-[1.05] tracking-tight sm:text-[52px] lg:text-[60px]">
+            <h2 className="text-[32px] font-extrabold leading-[1.05] tracking-tight sm:text-[46px] md:text-[52px] lg:text-[60px]">
               Let&apos;s turn it into{" "}
               <span className="bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent">
                 a real product.
@@ -71,7 +71,7 @@ export function Footer() {
             href="mailto:muhammadsohaib7932@gmail.com"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            className="group inline-flex items-center gap-3 rounded-full bg-accent px-7 py-4 text-[12.5px] font-semibold uppercase tracking-[0.18em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)]"
+            className="group inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] sm:gap-3 sm:px-7 sm:py-4 sm:text-[12.5px] sm:tracking-[0.18em]"
           >
             Start a conversation
             <ArrowIcon />
@@ -81,7 +81,7 @@ export function Footer() {
         {/* Columns */}
         <motion.div
           variants={fadeUp}
-          className="grid grid-cols-2 gap-10 border-t border-border-subtle py-14 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid grid-cols-2 gap-8 border-t border-border-subtle py-12 sm:gap-10 sm:py-14 lg:grid-cols-4"
         >
           <div className="col-span-2 max-w-xs lg:col-span-1">
             <Link

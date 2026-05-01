@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
@@ -18,6 +18,13 @@ export const metadata: Metadata = {
   title: "Muhammad Sohaib — The Architect of Digital Experiences",
   description:
     "Portfolio of Muhammad Sohaib — full-stack engineer crafting precise, human-centric digital products.",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#08060f",
 };
 
 export default function RootLayout({

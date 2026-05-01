@@ -53,7 +53,7 @@ const categories: Omit<SkillCategoryProps, "index">[] = [
 
 export function TechnicalArsenal() {
   return (
-    <div className="mt-28">
+    <div className="mt-20 sm:mt-28">
       <motion.div
         variants={fadeUp}
         initial="hidden"
@@ -61,7 +61,7 @@ export function TechnicalArsenal() {
         viewport={{ once: true, margin: "-80px" }}
         className="mx-auto max-w-2xl text-center"
       >
-        <h3 className="text-[34px] font-extrabold tracking-tight sm:text-[40px]">
+        <h3 className="text-[28px] font-extrabold tracking-tight sm:text-[40px]">
           Technical{" "}
           <span className="bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent">
             Arsenal

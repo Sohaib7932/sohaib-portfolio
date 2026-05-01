@@ -8,7 +8,7 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="relative isolate px-6 py-28 sm:px-10 sm:py-32 lg:px-16"
+      className="relative isolate overflow-hidden px-5 py-20 sm:px-8 sm:py-28 md:py-32 lg:px-16"
     >
       <div
         aria-hidden
@@ -26,7 +26,7 @@ export function Contact() {
       <div className="mx-auto w-full max-w-6xl">
         <ContactHeader />
 
-        <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
+        <div className="mt-12 grid grid-cols-1 gap-8 sm:mt-16 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
             <ContactInfo />
           </div>

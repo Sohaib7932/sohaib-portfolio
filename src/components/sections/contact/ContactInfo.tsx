@@ -27,7 +27,7 @@ export function ContactInfo() {
       className="flex flex-col gap-6"
     >
       <motion.div variants={fadeUp}>
-        <h3 className="text-[22px] font-bold tracking-tight text-foreground sm:text-[24px]">
+        <h3 className="text-[20px] font-bold tracking-tight text-foreground sm:text-[24px]">
           Reach me directly.
         </h3>
         <p className="mt-3 text-[14.5px] leading-[1.7] text-foreground/65">
