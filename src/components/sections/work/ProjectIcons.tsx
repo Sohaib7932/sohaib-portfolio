@@ -39,6 +39,21 @@ export function GithubIcon({ className }: IconProps) {
   );
 }
 
+export function FigmaIcon({ className }: IconProps) {
+  return (
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className ?? ""}
+      aria-hidden
+    >
+      <path d="M9 3h3v6H9a3 3 0 1 1 0-6Zm0 8h3v6H9a3 3 0 1 1 0-6Zm0 8h3v-2h-1a3 3 0 1 1-2-1.85V19Zm5-16h1a3 3 0 1 1 0 6h-1V3Zm0 8h1a3 3 0 1 1 0 6h-1v-6Z" />
+    </svg>
+  );
+}
+
 export function LinkIcon({ className }: IconProps) {
   return (
     <svg
@@ -82,6 +97,7 @@ export function ArrowOutIcon({ className }: IconProps) {
 const iconMap = {
   "Live Demo": RocketIcon,
   GitHub: GithubIcon,
+  Figma: FigmaIcon,
   Link: LinkIcon,
   Open: ArrowOutIcon,
 } as const;

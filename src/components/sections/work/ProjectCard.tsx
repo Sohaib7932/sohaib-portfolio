@@ -3,6 +3,7 @@
 import { motion, type Variants } from "motion/react";
 import type { Project } from "./types";
 import { IconForLabel } from "./ProjectIcons";
+import { ProjectIllustration } from "./ProjectIllustration";
 
 const cardVariants: Variants = {
   hidden: { opacity: 0, y: 26 },
@@ -33,7 +34,7 @@ export function ProjectCard({
       transition={{ type: "spring", stiffness: 280, damping: 24 }}
       className={`group flex flex-col overflow-hidden rounded-3xl border border-border-subtle bg-white/[0.02] backdrop-blur-sm transition-colors hover:border-border-strong ${className}`}
     >
-      <ImageArea bgClass={project.placeholderBg} title={project.title} />
+      <ImageArea project={project} />
 
       <div className="flex flex-1 flex-col p-5">
         <div className="mb-4 flex flex-wrap gap-2">
@@ -50,27 +51,55 @@ export function ProjectCard({
         </p>
 
         <div className="mt-5 flex items-center gap-2.5">
-          <PrimaryAction label={project.primary.label} href={project.primary.href} />
-          <SecondaryAction label={project.secondary.label} href={project.secondary.href} />
+          <PrimaryAction
+            label={project.primary.label}
+            href={project.primary.href}
+          />
+          {project.secondary && (
+            <SecondaryAction
+              label={project.secondary.label}
+              href={project.secondary.href}
+            />
+          )}
         </div>
       </div>
     </motion.article>
   );
 }
 
-function ImageArea({ bgClass, title }: { bgClass: string; title: string }) {
+function ImageArea({ project }: { project: Project }) {
+  const { image, illustration, placeholderBg, title } = project;
+
   return (
     <div
-      className={`relative aspect-[16/10] w-full overflow-hidden ${bgClass}`}
+      className={`relative aspect-[16/10] w-full overflow-hidden ${
+        image ? "" : placeholderBg
+      }`}
     >
+      {image ? (
+        <>
+          <img
+            src={image}
+            alt={title}
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent"
+          />
+        </>
+      ) : illustration ? (
+        <ProjectIllustration illustration={illustration} />
+      ) : (
+        <span className="absolute inset-0 flex items-end p-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/30">
+          {title}
+        </span>
+      )}
+
       <div
         aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_120%,rgba(0,0,0,0.5),transparent_60%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_120%,rgba(0,0,0,0.45),transparent_60%)]"
       />
-      {/* Replace with <Image src=... /> later. Title sits as a soft watermark for now. */}
-      <span className="absolute inset-0 flex items-end p-4 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/30">
-        {title}
-      </span>
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 [background:radial-gradient(circle_at_50%_50%,rgba(167,139,250,0.18),transparent_60%)]"
@@ -88,9 +117,12 @@ function TechBadge({ label }: { label: string }) {
 }
 
 function PrimaryAction({ label, href }: { label: string; href: string }) {
+  const external = href.startsWith("http");
   return (
     <a
       href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
       className="group inline-flex items-center gap-1.5 rounded-lg bg-accent px-3.5 py-2 text-[12px] font-semibold tracking-wide text-[#1a0b2e] transition-shadow hover:shadow-[0_8px_24px_-10px_rgba(167,139,250,0.9)]"
     >
       <IconForLabel label={label} />
@@ -100,9 +132,12 @@ function PrimaryAction({ label, href }: { label: string; href: string }) {
 }
 
 function SecondaryAction({ label, href }: { label: string; href: string }) {
+  const external = href.startsWith("http");
   return (
     <a
       href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
       className="inline-flex items-center gap-1.5 rounded-lg border border-border-strong bg-white/[0.03] px-3.5 py-2 text-[12px] font-semibold tracking-wide text-foreground/85 transition-colors hover:bg-white/[0.06] hover:text-foreground"
     >
       <IconForLabel label={label} />
