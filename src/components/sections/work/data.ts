@@ -15,7 +15,7 @@ export const projects: Project[] = [
       "My final-year project: a full mobile banking app paired with custom-built palm-vein scanning hardware. Users authenticate and pay simply by scanning the unique vein pattern in their palm — no card, no PIN, no phone unlock required.",
     category: "Mobile Apps",
     tech: ["React Native", "Expo", "IoT Hardware"],
-    illustration: "palm",
+    image: "/paypalm.svg",
     placeholderBg:
       "bg-[radial-gradient(ellipse_at_60%_40%,#3b1f7a_0%,#1a0b3a_55%,#08060f_100%)]",
     primary: {
