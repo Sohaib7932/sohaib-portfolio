@@ -62,7 +62,7 @@ export function Footer() {
             </h2>
             <p className="mt-5 max-w-lg text-[15px] leading-[1.7] text-foreground/60">
               Whether it&apos;s an AI-powered web app, a polished mobile
-              experience, or a full UI/UX rework — I&apos;m open to freelance
+              experience, or a full UI/UX rework, I&apos;m open to freelance
               projects, internships, and collaborations.
             </p>
           </div>

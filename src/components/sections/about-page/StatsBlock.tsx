@@ -5,27 +5,27 @@ import { useEffect, useRef } from "react";
 
 const stats = [
   {
-    value: 4,
+    value: 3,
     suffix: "+",
-    label: "Years in design",
+    label: "Years in UI/UX",
     sublabel: "From sketch to ship",
   },
   {
-    value: 3,
+    value: 2.5,
     suffix: "+",
-    label: "Years in development",
-    sublabel: "Web, mobile, AI",
-  },
-  {
-    value: 25,
-    suffix: "+",
-    label: "Shipped products",
-    sublabel: "Real users, real feedback",
+    label: "Years in dev",
+    sublabel: "HTML/CSS to Next.js",
   },
   {
     value: 15,
     suffix: "+",
-    label: "Tools mastered",
+    label: "Projects shipped",
+    sublabel: "Real users, real feedback",
+  },
+  {
+    value: 10,
+    suffix: "+",
+    label: "Tools used daily",
     sublabel: "Right tool for the job",
   },
 ];
@@ -79,7 +79,10 @@ export function StatsBlock() {
 function CountUp({ to }: { to: number }) {
   const ref = useRef<HTMLSpanElement>(null);
   const motionValue = useMotionValue(0);
-  const rounded = useTransform(motionValue, (v) => Math.round(v));
+  const isInteger = Number.isInteger(to);
+  const display = useTransform(motionValue, (v) =>
+    isInteger ? String(Math.round(v)) : v.toFixed(1),
+  );
 
   useEffect(() => {
     const el = ref.current;
@@ -104,17 +107,17 @@ function CountUp({ to }: { to: number }) {
   }, [motionValue, to]);
 
   useEffect(() => {
-    return rounded.on("change", (latest) => {
-      if (ref.current) ref.current.textContent = String(latest);
+    return display.on("change", (latest) => {
+      if (ref.current) ref.current.textContent = latest;
     });
-  }, [rounded]);
+  }, [display]);
 
   return (
     <span
       ref={ref}
       className="text-[28px] font-extrabold leading-none tracking-tight text-foreground sm:text-[36px]"
     >
-      0
+      {isInteger ? "0" : "0.0"}
     </span>
   );
 }

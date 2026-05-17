@@ -10,9 +10,9 @@ export const projectCategories: ("All" | ProjectCategory)[] = [
 export const projects: Project[] = [
   {
     slug: "payease",
-    title: "PayEase — Palm Vein Payments",
+    title: "PayEase, Palm Vein Payments",
     description:
-      "My final-year project: a full mobile banking app paired with custom-built palm-vein scanning hardware. Users authenticate and pay simply by scanning the unique vein pattern in their palm — no card, no PIN, no phone unlock required.",
+      "My final-year project: a full mobile banking app paired with custom-built palm-vein scanning hardware. Users sign in and pay by simply scanning the vein pattern in their palm, no card, no PIN, no phone unlock needed.",
     category: "Mobile Apps",
     tech: ["React Native", "Expo", "IoT Hardware"],
     image: "/paypalm.svg",
@@ -27,7 +27,7 @@ export const projects: Project[] = [
     slug: "blood-pulse-connect",
     title: "Blood Pulse Connect",
     description:
-      "A high-fidelity Figma design with full prototyping for a blood-donation platform that connects donors and recipients in minutes — built around urgency, trust, and minimal friction at the moment it matters most.",
+      "A full Figma design with prototypes for a blood-donation app that helps donors and recipients connect in minutes. Built around urgency, trust, and removing friction when it matters most.",
     category: "UI/UX Design",
     tech: ["Figma", "Prototyping", "UX Research"],
     image: "/BPC.png",
@@ -40,9 +40,9 @@ export const projects: Project[] = [
   },
   {
     slug: "ielts-counsel",
-    title: "IELTS Counsel — Full Mock Test Suite",
+    title: "IELTS Counsel, Full Mock Test Suite",
     description:
-      "A complete IELTS preparation platform covering Listening, Reading, Writing, and an AI-powered Speaking module. The speaking AI conducts the full 3-part interview — Part 1 personal questions, Part 2 cue-card monologue with 1-minute prep, and Part 3 abstract discussion — then scores the response on fluency, lexical resource, grammatical range, and pronunciation, with band-aligned feedback.",
+      "A complete IELTS prep platform with Listening, Reading, Writing, and an AI-powered Speaking module. The Speaking AI runs the full 3-part interview, Part 1 personal questions, Part 2 cue-card with 1 minute prep, and Part 3 deeper discussion, then scores you on fluency, vocabulary, grammar, and pronunciation with proper band-level feedback.",
     category: "Web Development",
     tech: ["Next.js", "React", "Node.js", "AI Speaking"],
     image: "/ielts.png",
@@ -57,7 +57,7 @@ export const projects: Project[] = [
     slug: "fb-marketplace-scraper",
     title: "FB Marketplace Scraper",
     description:
-      "A Python + HTML web scraper that pulls live product listings from Facebook Marketplace. Just type a product name and the tool returns structured results — title, price, location, image, and listing URL — ready to export or analyse.",
+      "A Python and HTML web scraper that pulls live product listings from Facebook Marketplace. Just type a product name and the tool gives back clean results, title, price, location, image, and listing URL, ready to export or analyse.",
     category: "Web Development",
     tech: ["Python", "HTML", "Web Scraping"],
     illustration: "scrape",

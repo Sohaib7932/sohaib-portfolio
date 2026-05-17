@@ -36,7 +36,7 @@ export function AboutHeader() {
         variants={fadeUp}
         className="text-[32px] font-extrabold leading-[1.05] tracking-tight sm:text-[46px] md:text-[52px] lg:text-[58px]"
       >
-        More than code —{" "}
+        More than code,{" "}
         <span className="bg-gradient-to-r from-fuchsia-300 via-fuchsia-400 to-pink-500 bg-clip-text text-transparent">
           a craft.
         </span>
@@ -46,9 +46,9 @@ export function AboutHeader() {
         variants={fadeUp}
         className="mx-auto mt-5 max-w-xl text-[14.5px] leading-[1.7] text-foreground/65 sm:mt-6 sm:text-[15.5px]"
       >
-        I treat every product as a system of decisions — visual, technical, and
-        human. Below is how I think, the principles I work by, and the tools I
-        rely on to ship.
+        I think of every product as a set of choices, visual, technical, and
+        human. Below is how I think, the rules I work by, and the tools I use
+        every day.
       </motion.p>
     </motion.div>
   );

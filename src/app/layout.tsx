@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Muhammad Sohaib — The Architect of Digital Experiences",
+  title: "Muhammad Sohaib, Front-End Developer & UI/UX Designer",
   description:
-    "Portfolio of Muhammad Sohaib — full-stack engineer crafting precise, human-centric digital products.",
+    "Portfolio of Muhammad Sohaib, a front-end developer and UI/UX designer building clean, modern web apps with React and Next.js.",
 };
 
 export const viewport: Viewport = {

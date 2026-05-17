@@ -14,21 +14,21 @@ const fadeUp: Variants = {
 
 const categories: Omit<SkillCategoryProps, "index">[] = [
   {
-    title: "Frontend",
+    title: "Front-End",
     tone: "violet",
     icon: <FrontendIcon />,
     skills: [
-      { name: "React / Next.js", percent: 90 },
+      { name: "React / Next.js", percent: 92 },
       { name: "Tailwind CSS", percent: 95 },
     ],
   },
   {
-    title: "Backend",
+    title: "Languages",
     tone: "violet",
     icon: <BackendIcon />,
     skills: [
-      { name: "Node.js", percent: 80 },
-      { name: "PostgreSQL", percent: 75 },
+      { name: "HTML / CSS", percent: 95 },
+      { name: "JavaScript / TS", percent: 90 },
     ],
   },
   {
@@ -37,7 +37,7 @@ const categories: Omit<SkillCategoryProps, "index">[] = [
     icon: <DesignIcon />,
     skills: [
       { name: "Figma", percent: 95 },
-      { name: "UI/UX Layout", percent: 90 },
+      { name: "UI/UX Layout", percent: 92 },
     ],
   },
   {
@@ -46,7 +46,7 @@ const categories: Omit<SkillCategoryProps, "index">[] = [
     icon: <ToolsIcon />,
     skills: [
       { name: "Git / GitHub", percent: 95 },
-      { name: "Docker", percent: 75 },
+      { name: "WordPress", percent: 80 },
     ],
   },
 ];
@@ -68,8 +68,7 @@ export function TechnicalArsenal() {
           </span>
         </h3>
         <p className="mt-3 text-[15px] leading-7 text-foreground/60">
-          Categorized expertise built through relentless iteration and a
-          passion for modern tooling.
+          The tools I use most, grouped by where they fit in my workflow.
         </p>
       </motion.div>
 

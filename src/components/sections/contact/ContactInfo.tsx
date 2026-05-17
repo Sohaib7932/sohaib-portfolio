@@ -31,8 +31,8 @@ export function ContactInfo() {
           Reach me directly.
         </h3>
         <p className="mt-3 text-[14.5px] leading-[1.7] text-foreground/65">
-          Prefer email or socials? Pick whatever works. For project inquiries, a
-          short brief — what, why, and when — gets the fastest reply.
+          Prefer email or socials? Pick whatever works for you. For a project,
+          a short note about what, why, and when gets the fastest reply.
         </p>
       </motion.div>
 

@@ -46,8 +46,8 @@ export function WorkHeader() {
         variants={fadeUp}
         className="mx-auto mt-5 max-w-xl text-[14.5px] leading-[1.7] text-foreground/65 sm:mt-6 sm:text-[15.5px]"
       >
-        A curated collection of digital experiences, where engineering meets
-        aesthetic precision. Explore the nexus of code and creativity.
+        A small collection of things I&apos;ve built, where clean design and
+        good code meet. Take a look around.
       </motion.p>
     </motion.div>
   );

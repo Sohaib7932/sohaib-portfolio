@@ -1,9 +1,9 @@
 import { WorkPage } from "@/components/sections/work";
 
 export const metadata = {
-  title: "Work — Muhammad Sohaib",
+  title: "Work, Muhammad Sohaib",
   description:
-    "A curated collection of digital experiences — engineering meets aesthetic precision.",
+    "A small collection of things I've built, where clean design and good code meet.",
 };
 
 export default function Work() {

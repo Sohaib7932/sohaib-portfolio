@@ -35,54 +35,54 @@ const chipVariants: Variants = {
 
 const groups = [
   {
-    title: "Languages",
-    items: [
-      "TypeScript",
-      "JavaScript",
-      "Python",
-      "SQL",
-      "HTML",
-      "CSS",
-      "Java",
-    ],
-  },
-  {
-    title: "Frontend",
+    title: "Front-End (Main)",
     items: [
       "React",
       "Next.js",
+      "TypeScript",
       "Tailwind CSS",
       "Framer Motion",
       "Redux",
-      "React Query",
+    ],
+  },
+  {
+    title: "Languages",
+    items: ["HTML", "CSS", "JavaScript", "TypeScript", "Python", "SQL"],
+  },
+  {
+    title: "Web (Past)",
+    items: ["WordPress", "Elementor", "PHP basics"],
+  },
+  {
+    title: "Design",
+    items: [
+      "Figma",
+      "Prototyping",
+      "Design systems",
+      "User research",
+      "Wireframing",
     ],
   },
   {
     title: "Mobile",
-    items: ["React Native", "Expo", "Native modules", "App Store / Play Store"],
+    items: ["React Native", "Expo", "App Store / Play Store"],
   },
   {
-    title: "Backend",
-    items: ["Node.js", "Express", "PostgreSQL", "MongoDB", "REST", "WebSocket"],
+    title: "Backend (Light)",
+    items: ["Node.js", "Express", "REST APIs", "MongoDB"],
   },
   {
-    title: "AI & ML",
+    title: "AI tools",
     items: [
       "OpenAI API",
       "Anthropic API",
-      "Vector search",
-      "RAG",
       "Streaming chat",
-      "Tool use",
+      "Tool-using agents",
     ],
   },
   {
-    title: "Design",
-    items: ["Figma", "Prototyping", "Design systems", "User research"],
-  },
-  {
     title: "Tooling",
-    items: ["Git", "Docker", "Vercel", "GitHub Actions", "Linear"],
+    items: ["Git", "GitHub", "Vercel", "VS Code"],
   },
 ];
 
@@ -100,14 +100,14 @@ export function ToolsStack() {
           The full stack
         </p>
         <h2 className="text-[28px] font-extrabold leading-[1.05] tracking-tight sm:text-[40px] md:text-[46px]">
-          Every tool I&apos;ve{" "}
+          The tools I{" "}
           <span className="bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent">
-            actually shipped with.
+            actually use.
           </span>
         </h2>
         <p className="mt-4 text-[14.5px] leading-7 text-foreground/60 sm:text-[15px]">
-          Not a list of buzzwords — only the things I&apos;ve used in
-          production or on real projects.
+          Not a buzzword list. Just the things I&apos;ve really used on real
+          projects, with front-end as my main focus.
         </p>
       </motion.div>
 

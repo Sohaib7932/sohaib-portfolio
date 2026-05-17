@@ -30,28 +30,28 @@ const lineVariants: Variants = {
 
 const chapters = [
   {
-    year: "2020",
+    year: "2022",
     title: "Falling for design",
-    body: "Started in UI/UX before I'd written a real line of production code. Spent late nights in Figma chasing typography, spacing, and the quiet moments between clicks. That obsession set the bar for everything I've built since.",
+    body: "Started in UI/UX before writing any real code. Spent late nights in Figma working on typography, spacing, and the small moments between clicks. That love for detail still shapes everything I build today.",
     tag: "DESIGN",
   },
   {
-    year: "2021",
-    title: "Crossing into code",
-    body: "Got tired of watching clean designs ship as messy implementations. Picked up React, then Next.js, then started building the products I'd been mocking up. Frontend became home.",
-    tag: "FRONTEND",
+    year: "2023",
+    title: "HTML, CSS, and WordPress",
+    body: "Got into web development by learning HTML and CSS first, then moved to WordPress. Built a few client sites and quickly realised I wanted more control over how things actually work under the hood.",
+    tag: "WEB BASICS",
   },
   {
-    year: "2023",
-    title: "Going full-stack & mobile",
-    body: "Added Node.js, PostgreSQL, and React Native to the toolkit. Started shipping real apps with real users — banking flows, scrapers, marketplaces. Learned that the gap between demo and production is where most products quietly die.",
-    tag: "FULL-STACK",
+    year: "2024",
+    title: "Moved to React",
+    body: "Jumped from WordPress to React and never looked back. Picked up modern front-end habits, component thinking, state, animation, and started turning Figma files into smooth, real interfaces.",
+    tag: "REACT",
   },
   {
     year: "2025",
-    title: "AI as a building block",
-    body: "Now treating LLMs as first-class components — assistants, auto-graders, voice-driven interviews. Built an end-to-end AI speaking examiner for IELTS that scores like a human. This is where the next decade of product work happens.",
-    tag: "AI · NOW",
+    title: "Now: Next.js and beyond",
+    body: "Next.js is where I spend most of my time now. Building fast, SEO-friendly web apps with React, TypeScript, and Tailwind, plus exploring AI features that quietly make products feel smarter.",
+    tag: "NEXT.JS · NOW",
   },
 ];
 
@@ -79,8 +79,8 @@ export function JourneyTimeline() {
           </span>
         </h2>
         <p className="mt-4 text-[14.5px] leading-7 text-foreground/60 sm:text-[15px]">
-          Five years told in four chapters — each one teaching me something the
-          last one couldn&apos;t.
+          A few years told in four short chapters, each one teaching me
+          something the last one couldn&apos;t.
         </p>
       </motion.div>
 

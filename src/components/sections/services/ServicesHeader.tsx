@@ -46,9 +46,9 @@ export function ServicesHeader() {
         variants={fadeUp}
         className="mx-auto mt-5 max-w-xl text-[14.5px] leading-[1.7] text-foreground/65 sm:mt-6 sm:text-[15.5px]"
       >
-        From the first sketch to the production deploy — a focused set of
-        services for teams and founders who want craft, speed, and a real
-        creative partner on the other side of the table.
+        From the first sketch to the live site, a small set of services for
+        teams and founders who want clean work, quick delivery, and a real
+        creative partner on the other side.
       </motion.p>
     </motion.div>
   );

@@ -59,7 +59,7 @@ export function WorkCTA() {
         className="mx-auto mt-5 max-w-md text-[14.5px] leading-7 text-foreground/65 sm:text-[15px]"
       >
         I take on a small number of projects each season. If yours sounds like
-        a fit, send a brief — reply within a day.
+        a fit, send a short note and you&apos;ll get a reply within 1 day.
       </motion.p>
 
       <motion.div

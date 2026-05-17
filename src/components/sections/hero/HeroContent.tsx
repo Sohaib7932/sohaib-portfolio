@@ -47,17 +47,20 @@ export function HeroContent() {
         variants={item}
         className="mt-6 max-w-md text-[14.5px] leading-[1.7] text-foreground/70 sm:mt-7 sm:text-[15.5px]"
       >
-        I am a final-year Software Engineering student specializing in building
-        modern, scalable, and user-focused applications. From mobile apps using
-        React Native to full-stack web solutions, I turn ideas into real-world products.
+        I&apos;m a final-year Software Engineering student who loves building
+        modern web apps with React and Next.js. I focus mostly on front-end
+        work, turning clean designs into smooth, fast websites people actually
+        enjoy using.
       </motion.p>
 
       <motion.p
         variants={item}
         className="mt-4 max-w-md text-[14.5px] leading-[1.7] text-foreground/60 sm:text-[15.5px]"
       >
-        I bring 4+ years of experience in UI/UX design and 3+ years in web and mobile app development, building clean, user-focused, and high-performing digital experiences.
-        I focus on simplicity, usability, and delivering solutions that feel as good as they function.
+        I have 3+ years of experience in UI/UX design and 2.5+ years in
+        development. I started with HTML and CSS, moved to WordPress, then to
+        React, and now Next.js is where I spend most of my time. My goal is
+        simple: build things that look good and feel good to use.
       </motion.p>
 
       <motion.div variants={item} className="mt-8 sm:mt-10">

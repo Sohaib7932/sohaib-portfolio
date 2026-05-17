@@ -69,8 +69,8 @@ export function ProcessTimeline() {
           </span>
         </h3>
         <p className="mt-4 text-[15px] leading-7 text-foreground/60">
-          No surprises, no hand-waving — just four steps that turn an idea into
-          something real.
+          No surprises, no buzzwords. Just four simple steps that turn an idea
+          into something real.
         </p>
       </motion.div>
 

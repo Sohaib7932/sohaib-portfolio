@@ -114,7 +114,7 @@ export function ContactForm() {
             Send a message
           </h3>
           <p className="text-[12.5px] text-foreground/55">
-            A short brief is all I need — I&apos;ll reply with next steps.
+            A short note is all I need, and I&apos;ll reply with next steps.
           </p>
         </div>
       </motion.div>
@@ -215,7 +215,7 @@ function StatusLabel({
     return (
       <p className="flex items-center gap-2 text-[12.5px] font-medium text-emerald-300">
         <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-        Message sent — I&apos;ll be in touch shortly.
+        Message sent, I&apos;ll be in touch shortly.
       </p>
     );
   }
@@ -229,7 +229,7 @@ function StatusLabel({
   }
   return (
     <p className="text-[12px] text-foreground/50">
-      Sent securely — you&apos;ll get a reply within 1 day.
+      Sent securely, you&apos;ll get a reply within 1 day.
     </p>
   );
 }

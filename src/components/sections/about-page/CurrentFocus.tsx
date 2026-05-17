@@ -19,20 +19,20 @@ const stagger: Variants = {
 const focuses = [
   {
     label: "Now",
-    title: "Final-year project & graduate roles",
-    body: "Wrapping up PayEase — palm-vein biometric payments — and actively interviewing for software engineering roles where I can ship to real users.",
+    title: "Final-year project and front-end roles",
+    body: "Wrapping up PayEase, my palm-vein payment app, and looking for front-end roles where I can build clean, real-world products.",
     accent: "emerald",
   },
   {
     label: "Learning",
-    title: "Agentic AI workflows",
-    body: "Going deeper on tool-using agents, structured outputs, and evaluation. Building small things that pass my own taste test before bigger ones.",
+    title: "Deeper front-end and AI",
+    body: "Getting better at advanced React patterns, Next.js, and adding small AI features that actually help users, not just for show.",
     accent: "violet",
   },
   {
     label: "Open to",
-    title: "Freelance & full-time",
-    body: "Remote-first projects in web, mobile, and AI. Especially excited by zero-to-one products where design and engineering aren't separate teams.",
+    title: "Freelance and full-time",
+    body: "Remote-first front-end and design work. I love early products where design and code aren't split between two teams.",
     accent: "fuchsia",
   },
 ];
@@ -76,8 +76,8 @@ export function CurrentFocus() {
           </span>
         </h2>
         <p className="mt-4 text-[14.5px] leading-7 text-foreground/60 sm:text-[15px]">
-          A snapshot of this season — what I&apos;m shipping, what I&apos;m
-          learning, what I&apos;m looking for.
+          A quick snapshot of what I&apos;m building, what I&apos;m learning,
+          and what I&apos;m open to.
         </p>
       </motion.div>
 

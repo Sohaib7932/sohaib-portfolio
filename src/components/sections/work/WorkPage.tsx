@@ -114,10 +114,10 @@ export function WorkPage() {
               variants={fadeUp}
               className="mt-5 max-w-xl text-[15px] leading-[1.7] text-foreground/65 sm:text-[15.5px]"
             >
-              A curated collection of digital experiences — banking apps,
+              A small collection of things I&apos;ve built, banking apps,
               AI-powered platforms, design systems, and a palm-vein scanner
-              that thinks it&apos;s a credit card. Each one shipped solo from
-              Figma to production.
+              that thinks it&apos;s a credit card. Each one built solo from
+              Figma all the way to production.
             </motion.p>
           </motion.div>
 
@@ -218,7 +218,7 @@ export function WorkPage() {
                   className="rounded-2xl border border-border-subtle bg-white/[0.025] p-10 text-center"
                 >
                   <p className="text-[14px] text-foreground/60">
-                    Nothing in this category yet — more shipping soon.
+                    Nothing in this category yet, more coming soon.
                   </p>
                 </motion.div>
               )}

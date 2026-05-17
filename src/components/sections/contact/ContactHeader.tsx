@@ -47,8 +47,8 @@ export function ContactHeader() {
         className="mx-auto mt-5 max-w-xl text-[14.5px] leading-[1.7] text-foreground/65 sm:mt-6 sm:text-[15.5px]"
       >
         Whether it&apos;s a freelance project, a full-time role, or just a
-        question about how I work — drop a note. I read every message and
-        you&apos;ll get a reply within 1 day.
+        quick question, send me a note. I read every message, and you&apos;ll
+        get a reply within 1 day.
       </motion.p>
     </motion.div>
   );

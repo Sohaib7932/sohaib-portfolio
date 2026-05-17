@@ -24,33 +24,33 @@ const cardVariants: Variants = {
 const principles = [
   {
     icon: <UserIcon />,
-    title: "User-first thinking",
-    body: "Every pixel and interaction is judged by the person on the other side of the screen. If they don't feel it, it doesn't matter.",
+    title: "Users come first",
+    body: "Every pixel and click should make sense for the person actually using it. If it doesn't feel right to them, it doesn't matter how clever the code is.",
   },
   {
     icon: <BoltIcon />,
-    title: "Performance is design",
-    body: "Speed, smoothness, and accessibility aren't extras — they're how a product feels professional. A 60fps animation tells a different story than a 30fps one.",
+    title: "Speed is part of design",
+    body: "Fast, smooth, and accessible aren't extras. They're what makes a product feel polished. A 60fps animation tells a very different story than a janky one.",
   },
   {
     icon: <LoopIcon />,
-    title: "Always iterating",
-    body: "I treat code, design, and learning as a single loop — ship, observe, refine, repeat. Nothing is precious; everything is improvable.",
+    title: "Always improving",
+    body: "Code, design, and learning are one loop for me. Ship, watch how it goes, improve, repeat. Nothing is final, everything can be better.",
   },
   {
     icon: <CompassIcon />,
-    title: "Make complex feel obvious",
-    body: "If a user doesn't notice the engineering, that's the highest compliment the work can earn. Hide the gears, show the magic.",
+    title: "Make hard things feel easy",
+    body: "If a user never notices the work behind the screen, that's the best compliment. Hide the complexity, show only the simple part.",
   },
   {
     icon: <BalanceIcon />,
-    title: "Beauty + utility",
-    body: "Elegant code that ships nothing is just a hobby. A working product that's painful to use won't survive. Both, always.",
+    title: "Looks and feel, both matter",
+    body: "Pretty code that ships nothing is just a hobby. A working product that's painful to use won't last. I aim for both, every time.",
   },
   {
     icon: <BrainIcon />,
-    title: "AI as a teammate",
-    body: "I treat LLMs the way I treat libraries — pick the right one, understand its limits, and design around them. Never the headline; always the foundation.",
+    title: "AI as a helper",
+    body: "I treat AI tools like any other library. Pick the right one, know its limits, and build around them. Never the main feature, always a quiet helper.",
   },
 ];
 

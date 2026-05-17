@@ -20,18 +20,18 @@ const stagger: Variants = {
 const principles = [
   {
     icon: <UserIcon />,
-    title: "User-first thinking",
-    body: "Every pixel and interaction is judged by the person on the other side of the screen.",
+    title: "Users come first",
+    body: "Every pixel and click should make sense for the person actually using it.",
   },
   {
     icon: <BoltIcon />,
-    title: "Performance is design",
-    body: "Speed, smoothness, and accessibility aren't extras — they're how a product feels professional.",
+    title: "Speed is part of design",
+    body: "Fast, smooth, and accessible aren't extras. They're what makes a product feel polished.",
   },
   {
     icon: <LoopIcon />,
-    title: "Always iterating",
-    body: "I treat code, design, and learning as a single loop — ship, observe, refine, repeat.",
+    title: "Always learning",
+    body: "Code, design, and learning are one loop for me. Ship, watch, improve, repeat.",
   },
 ];
 
@@ -46,25 +46,24 @@ export function AboutNarrative() {
     >
       <motion.div variants={fadeUp} className="lg:col-span-7">
         <h3 className="text-[20px] font-bold tracking-tight text-foreground sm:text-[26px]">
-          My journey, in three honest sentences.
+          My journey, in three short steps.
         </h3>
         <div className="mt-5 flex flex-col gap-4 text-[14.5px] leading-[1.75] text-foreground/70 sm:mt-6 sm:gap-5 sm:text-[15.5px]">
           <p>
-            I started with design — obsessing over typography, spacing, and the
-            quiet moments between clicks. That obsession pulled me into code,
-            because nothing kills a great design faster than a slow, broken
-            implementation.
+            I started with design, spending hours on small details like
+            typography and spacing. That love for design pulled me into code,
+            because a great design loses its magic when the build is slow or
+            broken.
           </p>
           <p>
-            Today I build full-stack web and mobile apps with React, Next.js,
-            and React Native, with a growing focus on AI-powered experiences —
-            assistants, summaries, smart workflows. I&apos;m comfortable across
-            the stack from Figma file to production deploy.
+            I picked up HTML and CSS first, then WordPress, then React, and
+            now Next.js is where I spend most of my time. My focus is mostly
+            on the front-end, building clean and smooth user interfaces.
           </p>
           <p>
-            My north star is simple: make the complex feel obvious. If a user
-            doesn&apos;t notice the engineering, that&apos;s the highest
-            compliment the work can earn.
+            My goal is simple: make hard things feel easy. If a user never
+            thinks about how the site is built, that&apos;s the best
+            compliment my work can get.
           </p>
         </div>
       </motion.div>

@@ -24,17 +24,17 @@ const pillars = [
   {
     number: "01",
     title: "Design before code",
-    body: "Every project starts in Figma — even when I'm the only one who'll see it. Layout, type, color, micro-interactions. The fastest way to write less code is to know exactly what to build.",
+    body: "Every project starts in Figma, even when I'm the only one who'll see it. Layout, type, color, small interactions. The fastest way to write less code is to know exactly what to build.",
   },
   {
     number: "02",
     title: "Ship the smallest real thing",
-    body: "I'd rather ship one polished feature than five half-done ones. The first version goes live as soon as it's honest about what works — feedback then writes the roadmap.",
+    body: "I'd rather ship one polished feature than five half-done ones. The first version goes live as soon as it actually works, then real feedback decides what comes next.",
   },
   {
     number: "03",
     title: "Performance is a feature",
-    body: "Animations at 60fps. Pages under 1s. Bundles measured, not guessed. If it lags, it's not done — no matter how clever the architecture is underneath.",
+    body: "Animations at 60fps. Pages under 1 second. Bundles measured, not guessed. If it lags, it's not done, no matter how clever the code is underneath.",
   },
 ];
 
@@ -58,7 +58,7 @@ export function WorkApproach() {
           </span>
         </h2>
         <p className="mt-4 text-[14.5px] leading-7 text-foreground/60 sm:text-[15px]">
-          Three rules I keep coming back to — across web, mobile, and AI.
+          Three rules I always come back to, across web, mobile, and AI.
         </p>
       </motion.div>
 

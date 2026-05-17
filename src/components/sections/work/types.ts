@@ -15,9 +15,9 @@ export type Project = {
   tech: string[];
   /** Optional path to a real image (in /public). Wins over illustration / placeholderBg. */
   image?: string;
-  /** Custom SVG illustration key — used when image is not provided. */
+  /** Custom SVG illustration key, used when image is not provided. */
   illustration?: ProjectIllustrationKey;
-  /** Tailwind-friendly background gradient — used as the base for illustrations or as a fallback. */
+  /** Tailwind-friendly background gradient, used as the base for illustrations or as a fallback. */
   placeholderBg: string;
   primary: ProjectLink;
   secondary?: ProjectLink;

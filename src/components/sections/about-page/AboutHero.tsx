@@ -63,11 +63,11 @@ export function AboutHero() {
           variants={fadeUp}
           className="mt-6 max-w-lg text-[15px] leading-[1.75] text-foreground/70 sm:text-[15.5px]"
         >
-          I&apos;m Muhammad Sohaib — a final-year Software Engineering student,
-          part-time designer, full-time builder. I obsess over the small things
-          most people scroll past: a 100ms animation, a misaligned border, a
-          loading state that lies. I think that&apos;s where good products
-          quietly become great ones.
+          I&apos;m Muhammad Sohaib, a final-year Software Engineering student,
+          part-time designer, and front-end developer. I care about the small
+          stuff most people scroll past, a smooth animation, a border that
+          lines up, a loading state that feels right. That&apos;s usually
+          where good products quietly become great.
         </motion.p>
 
         <motion.div
@@ -131,11 +131,11 @@ export function AboutHero() {
           className="absolute -bottom-4 -left-3 z-20 flex items-center gap-3 rounded-2xl border border-border-strong bg-[#120a22]/90 px-4 py-3 backdrop-blur-md sm:-bottom-5 sm:-left-6 sm:px-5 sm:py-3.5"
         >
           <span className="text-[28px] font-extrabold leading-none tracking-tight text-foreground sm:text-[34px]">
-            4<span className="text-accent">+</span>
+            3<span className="text-accent">+</span>
           </span>
           <span className="text-[10px] font-semibold uppercase leading-tight tracking-[0.18em] text-foreground/65 sm:text-[10.5px]">
             Years in
-            <br /> design + dev
+            <br /> UI/UX design
           </span>
         </motion.div>
 
@@ -176,7 +176,7 @@ export function AboutHero() {
               Currently
             </p>
             <p className="text-[12px] font-semibold tracking-tight text-foreground">
-              Building with AI
+              Front-end with Next.js
             </p>
           </div>
         </motion.div>

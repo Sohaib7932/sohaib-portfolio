@@ -43,7 +43,7 @@ export function WorkStats({
     {
       value: "100%",
       label: "End-to-end",
-      sublabel: "Design, code, deploy — solo",
+      sublabel: "Design, code, deploy, solo",
       icon: <SparkIcon />,
     },
   ];

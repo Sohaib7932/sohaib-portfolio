@@ -19,14 +19,14 @@ export const services: Service[] = [
     id: "web",
     number: "01",
     title: "Web Development",
-    tagline: "Fast, accessible, production-ready.",
+    tagline: "Fast, clean, and ready to ship.",
     description:
-      "Modern web apps built with Next.js, React, and TypeScript — animated, responsive, SEO-aware, and tuned for performance from the first paint.",
+      "Modern websites and web apps built with Next.js, React, and TypeScript. Animated, fully responsive, SEO-friendly, and tuned for speed from the first load.",
     deliverables: [
-      "Next.js + React architecture",
-      "Server components & API layer",
+      "Next.js and React setup",
+      "Clean component structure",
       "Tailwind CSS design system",
-      "Lighthouse-optimized delivery",
+      "Smooth, fast page loads",
     ],
     iconKey: "web",
   },
@@ -34,14 +34,14 @@ export const services: Service[] = [
     id: "mobile",
     number: "02",
     title: "Mobile Apps",
-    tagline: "iOS & Android, one codebase.",
+    tagline: "iOS and Android from one codebase.",
     description:
-      "Cross-platform mobile experiences with React Native — smooth, native-feeling UI with offline support, push notifications, and store-ready builds.",
+      "Cross-platform mobile apps built with React Native. Smooth, native-feeling UI with offline support, push notifications, and store-ready builds.",
     deliverables: [
-      "React Native + Expo",
-      "Native modules where it matters",
-      "App Store & Play Store ready",
-      "Crash-free release pipelines",
+      "React Native with Expo",
+      "Native modules when needed",
+      "App Store and Play Store ready",
+      "Stable, crash-free builds",
     ],
     iconKey: "mobile",
   },
@@ -49,12 +49,12 @@ export const services: Service[] = [
     id: "design",
     number: "03",
     title: "UI / UX Design",
-    tagline: "Figma to flawless interfaces.",
+    tagline: "From Figma to a finished look.",
     description:
-      "End-to-end product design — research, wireframes, polished UI, and design systems that translate cleanly into code without losing the soul.",
+      "Full product design, from research and wireframes to polished UI and design systems that translate cleanly into code, without losing the feel.",
     deliverables: [
-      "Wireframes & user flows",
-      "Hi-fi UI in Figma",
+      "Wireframes and user flows",
+      "High-fidelity UI in Figma",
       "Reusable design system",
       "Developer-friendly handoff",
     ],
@@ -64,14 +64,14 @@ export const services: Service[] = [
     id: "ai",
     number: "04",
     title: "AI Integration",
-    tagline: "LLMs woven into real products.",
+    tagline: "AI built into real products.",
     description:
-      "Practical AI features — assistants, summaries, smart search, and autonomous workflows — plugged into your stack with cost, latency, and UX in mind.",
+      "Useful AI features like assistants, summaries, smart search, and small agents, added into your app with cost, speed, and user experience in mind.",
     deliverables: [
-      "OpenAI & Anthropic APIs",
+      "OpenAI and Anthropic APIs",
       "Streaming chat interfaces",
       "Tool-using agents",
-      "Vector search & RAG",
+      "Vector search and RAG",
     ],
     iconKey: "ai",
   },
@@ -88,7 +88,7 @@ export const processSteps: ProcessStep[] = [
     step: "01",
     title: "Discover",
     description:
-      "We start with the problem, not the solution. A short call to understand the user, the constraint, and what success actually looks like.",
+      "We start with the problem, not the solution. A short call to understand the user, the limits, and what success actually looks like.",
   },
   {
     step: "02",
@@ -100,12 +100,12 @@ export const processSteps: ProcessStep[] = [
     step: "03",
     title: "Build",
     description:
-      "Iterative builds in short cycles. You get clickable previews, not status updates — so feedback happens while it's still cheap.",
+      "I build in short, steady cycles. You get clickable previews instead of status updates, so feedback happens while it's still easy to change.",
   },
   {
     step: "04",
-    title: "Ship & support",
+    title: "Ship and support",
     description:
-      "Production deploy, monitoring, and a follow-up window for tweaks. Handoff includes docs and a path to extend on your own.",
+      "Live deploy, monitoring, and a follow-up window for small fixes. Handoff includes docs so you can grow it on your own.",
   },
 ];
