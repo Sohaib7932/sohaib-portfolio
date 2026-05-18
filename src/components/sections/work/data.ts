@@ -15,7 +15,7 @@ export const projects: Project[] = [
       "An enterprise client and company portal for Sweden Relocators, managing immigration, relocation, accounting, property, and business services end-to-end. Includes a 9-step case flow, document vault, appointment booking, invoicing, multi-language support (English, Svenska, Urdu), and live status tracking, all built with Next.js 15, React, and Material UI.",
     category: "Web Development",
     tech: ["Next.js", "React", "MUI", "Auth0", "Supabase", "i18n"],
-    illustration: "dashboard",
+    image: "/sweden-portal.png",
     placeholderBg:
       "bg-[radial-gradient(ellipse_at_55%_40%,#1939B7_0%,#0E1E5C_55%,#08060f_100%)]",
     primary: {
@@ -60,27 +60,12 @@ export const projects: Project[] = [
       "The public marketing website for Sweden Relocators. Built with Next.js and a clean component system to showcase services, country guides, pricing tiers, and lead-capture flows, fully responsive and SEO-friendly.",
     category: "Web Development",
     tech: ["Next.js", "React", "Tailwind CSS", "SEO"],
-    illustration: "webapp",
+    image: "/sweden-web.png",
     placeholderBg:
       "bg-[radial-gradient(ellipse_at_50%_40%,#1939B7_0%,#0a1740_55%,#04081a_100%)]",
     primary: {
       label: "Live Demo",
       href: "https://website.swedenrelocators.se/",
-    },
-  },
-  {
-    slug: "nordic-relocators",
-    title: "Nordic Relocators Website",
-    description:
-      "The sister site for the Danish and wider Nordic market. Same design system and content stack as the Sweden site, adapted for local language, services, and routes, with full English and Danish support.",
-    category: "Web Development",
-    tech: ["Next.js", "React", "Tailwind CSS", "i18n"],
-    illustration: "webapp",
-    placeholderBg:
-      "bg-[radial-gradient(ellipse_at_50%_40%,#0d6efd_0%,#0a3a8a_55%,#04081a_100%)]",
-    primary: {
-      label: "Live Demo",
-      href: "https://nordicrelocators.dk/en",
     },
   },
   {
@@ -90,7 +75,7 @@ export const projects: Project[] = [
       "Marketing site for Corefinity, a software studio that helps startups, businesses, and enterprises design, build, and launch web, mobile, and AI products. Clean hero, animated sections, and a service-led layout that converts visitors into real conversations.",
     category: "Web Development",
     tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
-    illustration: "webapp",
+    image: "/corefinity.png",
     placeholderBg:
       "bg-[radial-gradient(ellipse_at_50%_40%,#3b1f7a_0%,#1a0b3a_55%,#08060f_100%)]",
     primary: {
@@ -120,7 +105,7 @@ export const projects: Project[] = [
       "A web-based tool that scans uploaded source code and flags common design issues like Bloaters, Couplers, and other Object-Oriented smells. Helps developers spot quality and maintainability problems early, with clear, structured feedback for each finding.",
     category: "Web Development",
     tech: ["Next.js", "React", "Static Analysis"],
-    illustration: "analyzer",
+    image: "/CodeSmellDetection.png",
     placeholderBg:
       "bg-[radial-gradient(ellipse_at_45%_45%,#0e3a4a_0%,#0a1c2e_55%,#04080f_100%)]",
     primary: {
