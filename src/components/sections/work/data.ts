@@ -9,8 +9,23 @@ export const projectCategories: ("All" | ProjectCategory)[] = [
 
 export const projects: Project[] = [
   {
-    slug: "payease",
-    title: "PayEase, Palm Vein Payments",
+    slug: "sweden-relocators-portal",
+    title: "Sweden Relocators Client Portal",
+    description:
+      "An enterprise client and company portal for Sweden Relocators, managing immigration, relocation, accounting, property, and business services end-to-end. Includes a 9-step case flow, document vault, appointment booking, invoicing, multi-language support (English, Svenska, Urdu), and live status tracking, all built with Next.js 15, React, and Material UI.",
+    category: "Web Development",
+    tech: ["Next.js", "React", "MUI", "Auth0", "Supabase", "i18n"],
+    illustration: "dashboard",
+    placeholderBg:
+      "bg-[radial-gradient(ellipse_at_55%_40%,#1939B7_0%,#0E1E5C_55%,#08060f_100%)]",
+    primary: {
+      label: "Live Demo",
+      href: "https://portal.swedenrelocators.se/",
+    },
+  },
+  {
+    slug: "paypalm",
+    title: "PayPalm, Palm Vein Payments",
     description:
       "My final-year project: a full mobile banking app paired with custom-built palm-vein scanning hardware. Users sign in and pay by simply scanning the vein pattern in their palm, no card, no PIN, no phone unlock needed.",
     category: "Mobile Apps",
@@ -19,8 +34,68 @@ export const projects: Project[] = [
     placeholderBg:
       "bg-[radial-gradient(ellipse_at_60%_40%,#3b1f7a_0%,#1a0b3a_55%,#08060f_100%)]",
     primary: {
-      label: "GitHub",
-      href: "https://github.com/Muhammad-Abdullah30/PayEase",
+      label: "Download APK",
+      href: "https://expo.dev/accounts/sohaib7933/projects/PayPalm/builds/6b24fd37-d78a-4881-8982-f96146565019",
+    },
+  },
+  {
+    slug: "ielts-counsel",
+    title: "IELTS Counsel, Full Mock Test Suite",
+    description:
+      "A complete IELTS prep platform with Listening, Reading, Writing, and an AI-powered Speaking module. The Speaking AI runs the full 3-part interview, Part 1 personal questions, Part 2 cue-card with 1 minute prep, and Part 3 deeper discussion, then scores you on fluency, vocabulary, grammar, and pronunciation with proper band-level feedback.",
+    category: "Web Development",
+    tech: ["Next.js", "React", "Node.js", "AI Speaking"],
+    image: "/ielts.png",
+    placeholderBg:
+      "bg-[radial-gradient(ellipse_at_50%_40%,#1e3a8a_0%,#0a1e3f_55%,#04081a_100%)]",
+    primary: {
+      label: "Live Demo",
+      href: "https://www.ieltscounsel.com/",
+    },
+  },
+  {
+    slug: "sweden-relocators-website",
+    title: "Sweden Relocators Website",
+    description:
+      "The public marketing website for Sweden Relocators. Built with Next.js and a clean component system to showcase services, country guides, pricing tiers, and lead-capture flows, fully responsive and SEO-friendly.",
+    category: "Web Development",
+    tech: ["Next.js", "React", "Tailwind CSS", "SEO"],
+    illustration: "webapp",
+    placeholderBg:
+      "bg-[radial-gradient(ellipse_at_50%_40%,#1939B7_0%,#0a1740_55%,#04081a_100%)]",
+    primary: {
+      label: "Live Demo",
+      href: "https://website.swedenrelocators.se/",
+    },
+  },
+  {
+    slug: "nordic-relocators",
+    title: "Nordic Relocators Website",
+    description:
+      "The sister site for the Danish and wider Nordic market. Same design system and content stack as the Sweden site, adapted for local language, services, and routes, with full English and Danish support.",
+    category: "Web Development",
+    tech: ["Next.js", "React", "Tailwind CSS", "i18n"],
+    illustration: "webapp",
+    placeholderBg:
+      "bg-[radial-gradient(ellipse_at_50%_40%,#0d6efd_0%,#0a3a8a_55%,#04081a_100%)]",
+    primary: {
+      label: "Live Demo",
+      href: "https://nordicrelocators.dk/en",
+    },
+  },
+  {
+    slug: "corefinity",
+    title: "Corefinity, Studio Website",
+    description:
+      "Marketing site for Corefinity, a software studio that helps startups, businesses, and enterprises design, build, and launch web, mobile, and AI products. Clean hero, animated sections, and a service-led layout that converts visitors into real conversations.",
+    category: "Web Development",
+    tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
+    illustration: "webapp",
+    placeholderBg:
+      "bg-[radial-gradient(ellipse_at_50%_40%,#3b1f7a_0%,#1a0b3a_55%,#08060f_100%)]",
+    primary: {
+      label: "Live Demo",
+      href: "https://corefinity-website.vercel.app/",
     },
   },
   {
@@ -39,18 +114,18 @@ export const projects: Project[] = [
     },
   },
   {
-    slug: "ielts-counsel",
-    title: "IELTS Counsel, Full Mock Test Suite",
+    slug: "code-smell-detection",
+    title: "Code Smell Detection",
     description:
-      "A complete IELTS prep platform with Listening, Reading, Writing, and an AI-powered Speaking module. The Speaking AI runs the full 3-part interview, Part 1 personal questions, Part 2 cue-card with 1 minute prep, and Part 3 deeper discussion, then scores you on fluency, vocabulary, grammar, and pronunciation with proper band-level feedback.",
+      "A web-based tool that scans uploaded source code and flags common design issues like Bloaters, Couplers, and other Object-Oriented smells. Helps developers spot quality and maintainability problems early, with clear, structured feedback for each finding.",
     category: "Web Development",
-    tech: ["Next.js", "React", "Node.js", "AI Speaking"],
-    image: "/ielts.png",
+    tech: ["Next.js", "React", "Static Analysis"],
+    illustration: "analyzer",
     placeholderBg:
-      "bg-[radial-gradient(ellipse_at_50%_40%,#1e3a8a_0%,#0a1e3f_55%,#04081a_100%)]",
+      "bg-[radial-gradient(ellipse_at_45%_45%,#0e3a4a_0%,#0a1c2e_55%,#04080f_100%)]",
     primary: {
       label: "Live Demo",
-      href: "https://www.ieltscounsel.com/",
+      href: "https://code-smell-detection.vercel.app/",
     },
   },
   {

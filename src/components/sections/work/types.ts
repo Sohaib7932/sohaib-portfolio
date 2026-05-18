@@ -5,7 +5,12 @@ export type ProjectCategory =
 
 export type ProjectLink = { label: string; href: string };
 
-export type ProjectIllustrationKey = "palm" | "scrape";
+export type ProjectIllustrationKey =
+  | "palm"
+  | "scrape"
+  | "dashboard"
+  | "webapp"
+  | "analyzer";
 
 export type Project = {
   slug: string;

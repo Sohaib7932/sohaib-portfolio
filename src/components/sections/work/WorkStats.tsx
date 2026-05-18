@@ -1,7 +1,13 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
-import type { ReactNode } from "react";
+import {
+  motion,
+  useMotionValue,
+  useTransform,
+  animate,
+  type Variants,
+} from "motion/react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 const cardVariants: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -23,25 +29,29 @@ export function WorkStats({
 }) {
   const stats = [
     {
-      value: String(totalProjects),
+      value: totalProjects,
+      suffix: "",
       label: "Shipped projects",
       sublabel: "Live, used, in production",
       icon: <RocketIcon />,
     },
     {
-      value: String(totalCategories),
+      value: totalCategories,
+      suffix: "",
       label: "Categories",
       sublabel: "Web · Mobile · Design",
       icon: <LayersIcon />,
     },
     {
-      value: String(totalTech),
+      value: totalTech,
+      suffix: "",
       label: "Technologies",
       sublabel: "React Native to Python",
       icon: <CubeIcon />,
     },
     {
-      value: "100%",
+      value: 100,
+      suffix: "%",
       label: "End-to-end",
       sublabel: "Design, code, deploy, solo",
       icon: <SparkIcon />,
@@ -71,9 +81,14 @@ export function WorkStats({
             {stat.icon}
           </div>
 
-          <p className="text-[34px] font-extrabold leading-none tracking-tight text-foreground sm:text-[40px]">
-            {stat.value}
-          </p>
+          <div className="flex items-baseline">
+            <CountUp to={stat.value} />
+            {stat.suffix && (
+              <span className="text-[28px] font-extrabold leading-none tracking-tight text-foreground sm:text-[36px]">
+                {stat.suffix}
+              </span>
+            )}
+          </div>
           <p className="mt-3 text-[13.5px] font-semibold tracking-tight text-foreground sm:text-[14px]">
             {stat.label}
           </p>
@@ -83,6 +98,52 @@ export function WorkStats({
         </motion.div>
       ))}
     </div>
+  );
+}
+
+function CountUp({ to }: { to: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const motionValue = useMotionValue(0);
+  const isInteger = Number.isInteger(to);
+  const display = useTransform(motionValue, (v) =>
+    isInteger ? String(Math.round(v)) : v.toFixed(1),
+  );
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            const controls = animate(motionValue, to, {
+              duration: 1.4,
+              ease: [0.22, 1, 0.36, 1],
+            });
+            observer.disconnect();
+            return () => controls.stop();
+          }
+        }
+      },
+      { threshold: 0.4 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [motionValue, to]);
+
+  useEffect(() => {
+    return display.on("change", (latest) => {
+      if (ref.current) ref.current.textContent = latest;
+    });
+  }, [display]);
+
+  return (
+    <span
+      ref={ref}
+      className="text-[28px] font-extrabold leading-none tracking-tight text-foreground sm:text-[36px]"
+    >
+      {isInteger ? "0" : "0.0"}
+    </span>
   );
 }
 

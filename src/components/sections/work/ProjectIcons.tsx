@@ -94,12 +94,34 @@ export function ArrowOutIcon({ className }: IconProps) {
   );
 }
 
+export function DownloadIcon({ className }: IconProps) {
+  return (
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className ?? ""}
+      aria-hidden
+    >
+      <path d="M12 3v12" />
+      <path d="m6 11 6 6 6-6" />
+      <path d="M5 21h14" />
+    </svg>
+  );
+}
+
 const iconMap = {
   "Live Demo": RocketIcon,
   GitHub: GithubIcon,
   Figma: FigmaIcon,
   Link: LinkIcon,
   Open: ArrowOutIcon,
+  "Download APK": DownloadIcon,
 } as const;
 
 export function IconForLabel({ label }: { label: string }) {

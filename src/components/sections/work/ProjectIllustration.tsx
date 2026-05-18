@@ -10,7 +10,253 @@ export function ProjectIllustration({
 }) {
   if (illustration === "palm") return <PalmIllustration />;
   if (illustration === "scrape") return <ScrapeIllustration />;
+  if (illustration === "dashboard") return <DashboardIllustration />;
+  if (illustration === "webapp") return <WebappIllustration />;
+  if (illustration === "analyzer") return <AnalyzerIllustration />;
   return null;
+}
+
+function DashboardIllustration() {
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(56,124,232,0.22),transparent_55%),radial-gradient(circle_at_75%_70%,rgba(167,139,250,0.18),transparent_55%)]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:28px_28px] opacity-70"
+      />
+
+      <div className="absolute inset-x-5 top-5 bottom-5 flex gap-3 rounded-xl border border-white/12 bg-black/30 p-3 backdrop-blur-md">
+        <div className="flex w-[28%] flex-col gap-1.5 rounded-lg border border-white/8 bg-white/[0.04] p-2">
+          <div className="mb-1 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
+            <div className="h-1.5 w-12 rounded-full bg-white/25" />
+          </div>
+          <div className="h-2 w-full rounded-md bg-sky-400/25" />
+          <div className="h-2 w-3/4 rounded-md bg-white/10" />
+          <div className="h-2 w-4/5 rounded-md bg-white/10" />
+          <div className="h-2 w-2/3 rounded-md bg-white/10" />
+          <div className="mt-auto h-2 w-1/2 rounded-md bg-white/8" />
+        </div>
+
+        <div className="flex flex-1 flex-col gap-2">
+          <div className="flex items-center gap-1.5">
+            <div className="h-2 w-20 rounded-full bg-white/25" />
+            <div className="ml-auto h-4 w-4 rounded-full border border-white/15 bg-white/10" />
+            <div className="h-4 w-4 rounded-full border border-white/15 bg-white/10" />
+          </div>
+          <div className="grid grid-cols-3 gap-1.5">
+            <StatBox accent="from-sky-400/30 to-sky-400/0" />
+            <StatBox accent="from-violet-400/30 to-violet-400/0" />
+            <StatBox accent="from-emerald-400/30 to-emerald-400/0" />
+          </div>
+          <div className="flex-1 rounded-md border border-white/8 bg-white/[0.03] p-2">
+            <div className="mb-1.5 h-1.5 w-16 rounded-full bg-white/20" />
+            <div className="flex flex-col gap-1">
+              <div className="h-1.5 w-full rounded-full bg-white/8" />
+              <div className="h-1.5 w-5/6 rounded-full bg-white/8" />
+              <div className="h-1.5 w-3/4 rounded-full bg-white/8" />
+              <div className="h-1.5 w-4/5 rounded-full bg-white/8" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-3 right-4 flex items-center gap-1.5 rounded-full border border-white/15 bg-black/40 px-2.5 py-1 backdrop-blur-md">
+        <svg
+          width="10"
+          height="10"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden
+          className="text-sky-300/90"
+        >
+          <rect x="3" y="4" width="18" height="14" rx="2" />
+          <path d="M3 9h18" />
+        </svg>
+        <span className="font-mono text-[9.5px] font-semibold tracking-[0.18em] text-white/85">
+          CLIENT PORTAL
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function WebappIllustration() {
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(167,139,250,0.24),transparent_55%),radial-gradient(circle_at_50%_90%,rgba(232,121,249,0.16),transparent_55%)]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 opacity-50 [background-image:radial-gradient(rgba(255,255,255,0.06)_1px,transparent_1px)] [background-size:18px_18px]"
+      />
+
+      <div className="absolute inset-x-6 top-5 overflow-hidden rounded-xl border border-white/12 bg-black/30 backdrop-blur-md">
+        <div className="flex items-center gap-1.5 border-b border-white/8 px-3 py-2">
+          <span className="h-1.5 w-1.5 rounded-full bg-rose-400/80" />
+          <span className="h-1.5 w-1.5 rounded-full bg-amber-400/80" />
+          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/80" />
+          <div className="ml-2 flex h-3 flex-1 items-center rounded-md border border-white/8 bg-white/[0.04] px-2">
+            <div className="h-1 w-16 rounded-full bg-white/15" />
+          </div>
+          <div className="ml-2 flex gap-1">
+            <div className="h-1.5 w-5 rounded-full bg-white/15" />
+            <div className="h-1.5 w-5 rounded-full bg-white/15" />
+            <div className="h-1.5 w-5 rounded-full bg-white/15" />
+          </div>
+        </div>
+        <div className="flex flex-col items-center px-4 py-4 text-center">
+          <div className="mb-1.5 h-1.5 w-12 rounded-full bg-accent/40" />
+          <div className="mb-1 h-2.5 w-3/5 rounded-md bg-white/25" />
+          <div className="mb-3 h-2.5 w-2/5 rounded-md bg-white/15" />
+          <div className="flex gap-1.5">
+            <div className="h-4 w-12 rounded-md bg-accent/70" />
+            <div className="h-4 w-10 rounded-md border border-white/15 bg-white/[0.05]" />
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute inset-x-6 bottom-4 grid grid-cols-3 gap-1.5">
+        <FeatureCard />
+        <FeatureCard />
+        <FeatureCard />
+      </div>
+    </div>
+  );
+}
+
+function AnalyzerIllustration() {
+  return (
+    <div className="absolute inset-0 overflow-hidden">
+      <div
+        aria-hidden
+        className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(34,211,238,0.2),transparent_55%),radial-gradient(circle_at_75%_70%,rgba(244,114,182,0.16),transparent_55%)]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 [background-image:linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:32px_32px] opacity-60"
+      />
+
+      <div className="absolute inset-x-5 top-5 bottom-5 flex gap-2">
+        <div className="flex w-[58%] flex-col gap-1.5 overflow-hidden rounded-xl border border-white/12 bg-black/35 p-3 backdrop-blur-md">
+          <div className="mb-1 flex items-center gap-1.5">
+            <span className="font-mono text-[8.5px] font-semibold tracking-wider text-white/40">
+              app.py
+            </span>
+          </div>
+          <CodeLine indent={0} segments={["def", " bloater_class", "():"]} colors={["text-fuchsia-300/80", "text-sky-300/80", "text-white/40"]} />
+          <CodeLine indent={1} segments={["self", ".x ", "= ", "42"]} colors={["text-rose-300/80", "text-white/30", "text-white/30", "text-amber-300/80"]} />
+          <CodeLine indent={1} segments={["if", " a ", "and ", "b:"]} colors={["text-fuchsia-300/80", "text-white/40", "text-fuchsia-300/80", "text-white/40"]} />
+          <CodeLine indent={2} segments={["return", " do_x", "(", "a", ")"]} colors={["text-fuchsia-300/80", "text-sky-300/80", "text-white/30", "text-white/40", "text-white/30"]} />
+          <CodeLine indent={1} segments={["for", " i ", "in ", "range", "(n):"]} colors={["text-fuchsia-300/80", "text-white/40", "text-fuchsia-300/80", "text-sky-300/80", "text-white/30"]} />
+          <CodeLine indent={2} segments={["pass"]} colors={["text-fuchsia-300/80"]} />
+        </div>
+
+        <div className="flex w-[42%] flex-col gap-1.5 rounded-xl border border-white/12 bg-black/35 p-3 backdrop-blur-md">
+          <div className="mb-1 flex items-center gap-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-rose-400" />
+            <span className="font-mono text-[8.5px] font-semibold uppercase tracking-wider text-white/55">
+              Smells
+            </span>
+          </div>
+          <SmellBadge tone="rose" label="Long method" />
+          <SmellBadge tone="amber" label="Large class" />
+          <SmellBadge tone="violet" label="Feature envy" />
+          <SmellBadge tone="cyan" label="Data clump" />
+        </div>
+      </div>
+
+      <div className="absolute bottom-3 right-4 flex items-center gap-1.5 rounded-full border border-white/15 bg-black/40 px-2.5 py-1 backdrop-blur-md">
+        <svg
+          width="10"
+          height="10"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          aria-hidden
+          className="text-cyan-300/90"
+        >
+          <path d="m8 5 12 7-12 7" />
+          <path d="M4 5v14" />
+        </svg>
+        <span className="font-mono text-[9.5px] font-semibold tracking-[0.18em] text-white/85">
+          ANALYZE
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function StatBox({ accent }: { accent: string }) {
+  return (
+    <div className="overflow-hidden rounded-md border border-white/8 bg-black/30 p-1.5">
+      <div className={`mb-1 h-3 rounded-sm bg-gradient-to-br ${accent}`} />
+      <div className="h-1 w-2/3 rounded-full bg-white/15" />
+    </div>
+  );
+}
+
+function FeatureCard() {
+  return (
+    <div className="overflow-hidden rounded-md border border-white/10 bg-black/30 p-1.5 backdrop-blur-md">
+      <div className="mb-1 h-4 rounded-sm bg-gradient-to-br from-white/10 to-white/0 border border-white/5" />
+      <div className="space-y-0.5">
+        <div className="h-1 w-4/5 rounded-full bg-white/18" />
+        <div className="h-1 w-3/5 rounded-full bg-white/10" />
+      </div>
+    </div>
+  );
+}
+
+function CodeLine({
+  indent,
+  segments,
+  colors,
+}: {
+  indent: number;
+  segments: string[];
+  colors: string[];
+}) {
+  return (
+    <div className="flex items-center font-mono text-[9px] leading-tight">
+      <span className="mr-2 w-3 text-right text-white/20">·</span>
+      <span style={{ width: `${indent * 8}px` }} />
+      {segments.map((seg, i) => (
+        <span key={i} className={colors[i]}>
+          {seg}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function SmellBadge({ tone, label }: { tone: "rose" | "amber" | "violet" | "cyan"; label: string }) {
+  const toneClasses = {
+    rose: "border-rose-400/35 bg-rose-400/10 text-rose-200/90",
+    amber: "border-amber-400/35 bg-amber-400/10 text-amber-200/90",
+    violet: "border-violet-400/35 bg-violet-400/10 text-violet-200/90",
+    cyan: "border-cyan-400/35 bg-cyan-400/10 text-cyan-200/90",
+  };
+  return (
+    <div
+      className={`flex items-center gap-1.5 rounded-md border px-1.5 py-0.5 ${toneClasses[tone]}`}
+    >
+      <span className="h-1 w-1 rounded-full bg-current" />
+      <span className="font-mono text-[8.5px] tracking-wide">{label}</span>
+    </div>
+  );
 }
 
 function PalmIllustration() {

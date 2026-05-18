@@ -25,7 +25,7 @@ export function Work() {
         <WorkHeader />
 
         <div className="mt-14">
-          <ProjectGrid items={projects} />
+          <ProjectGrid items={projects.slice(0, 4)} />
         </div>
 
         <motion.div
