@@ -1,5 +1,6 @@
 import { HeroContent } from "./HeroContent";
 import { HeroPortrait } from "./HeroPortrait";
+import { ScrollCue } from "./ScrollCue";
 
 export function Hero() {
   return (
@@ -11,6 +12,8 @@ export function Hero() {
         <HeroContent />
         <HeroPortrait />
       </div>
+
+      <ScrollCue />
 
       <div
         aria-hidden

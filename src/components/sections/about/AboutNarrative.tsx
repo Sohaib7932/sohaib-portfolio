@@ -1,21 +1,18 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
+import { motion } from "motion/react";
 import type { ReactNode } from "react";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const stagger: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
-};
+import {
+  SpotlightOverlay,
+  useSpotlight,
+} from "@/components/motion/useSpotlight";
+import {
+  fadeUp,
+  SPRING,
+  stagger,
+  staggerFast,
+  VIEWPORT,
+} from "@/components/motion/tokens";
 
 const principles = [
   {
@@ -41,35 +38,38 @@ export function AboutNarrative() {
       variants={stagger}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={VIEWPORT}
       className="mt-14 grid grid-cols-1 gap-10 sm:mt-20 sm:gap-12 lg:grid-cols-12 lg:gap-16"
     >
-      <motion.div variants={fadeUp} className="lg:col-span-7">
-        <h3 className="text-[20px] font-bold tracking-tight text-foreground sm:text-[26px]">
+      <motion.div variants={staggerFast} className="lg:col-span-7">
+        <motion.h3
+          variants={fadeUp}
+          className="text-[20px] font-bold tracking-tight text-foreground sm:text-[26px]"
+        >
           My journey, in three short steps.
-        </h3>
+        </motion.h3>
         <div className="mt-5 flex flex-col gap-4 text-[14.5px] leading-[1.75] text-foreground/70 sm:mt-6 sm:gap-5 sm:text-[15.5px]">
-          <p>
+          <motion.p variants={fadeUp}>
             I started with design, spending hours on small details like
             typography and spacing. That love for design pulled me into code,
             because a great design loses its magic when the build is slow or
             broken.
-          </p>
-          <p>
+          </motion.p>
+          <motion.p variants={fadeUp}>
             I picked up HTML and CSS first, then WordPress, then React, and
             now Next.js is where I spend most of my time. My focus is mostly
             on the front-end, building clean and smooth user interfaces.
-          </p>
-          <p>
+          </motion.p>
+          <motion.p variants={fadeUp}>
             My goal is simple: make hard things feel easy. If a user never
             thinks about how the site is built, that&apos;s the best
             compliment my work can get.
-          </p>
+          </motion.p>
         </div>
       </motion.div>
 
       <motion.div
-        variants={fadeUp}
+        variants={staggerFast}
         className="flex flex-col gap-4 lg:col-span-5"
       >
         {principles.map((p) => (
@@ -89,17 +89,20 @@ function PrincipleCard({
   title: string;
   body: string;
 }) {
+  const { handlers, glow, tiltStyle } = useSpotlight({ radius: 260, tilt: 4 });
+
   return (
     <motion.div
-      whileHover={{ y: -3 }}
-      transition={{ type: "spring", stiffness: 280, damping: 22 }}
-      className="group relative flex gap-4 overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-5 backdrop-blur-sm"
+      variants={fadeUp}
+      {...handlers}
+      style={tiltStyle}
+      whileHover={{ y: -4 }}
+      transition={SPRING}
+      className="group relative isolate flex gap-4 overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-5 backdrop-blur-sm transition-colors hover:border-border-strong"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(167,139,250,0.18),transparent_70%)] opacity-0 transition-opacity group-hover:opacity-100"
-      />
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border-subtle bg-[linear-gradient(135deg,rgba(167,139,250,0.22),rgba(139,92,246,0.04))] text-accent">
+      <SpotlightOverlay glow={glow} />
+
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border-subtle bg-[linear-gradient(135deg,rgba(167,139,250,0.22),rgba(139,92,246,0.04))] text-accent transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-6">
         {icon}
       </div>
       <div>

@@ -1,9 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { motion, type Variants } from "motion/react";
+import { motion } from "motion/react";
 import { SocialLink } from "./SocialLink";
 import { BackToTop } from "./BackToTop";
+import { Magnetic } from "@/components/motion/Magnetic";
+import { Parallax } from "@/components/motion/Parallax";
+import {
+  EASE,
+  fadeUp,
+  stagger,
+  staggerFast,
+  VIEWPORT,
+} from "@/components/motion/tokens";
+import { Words, wordsContainer, wordVariant } from "@/components/motion/Words";
 
 const sitemap = [
   { href: "/#about", label: "About" },
@@ -12,29 +22,21 @@ const sitemap = [
   { href: "/#contact", label: "Contact" },
 ];
 
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const stagger: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
-};
-
 export function Footer() {
   return (
     <footer className="relative isolate mt-32 overflow-hidden border-t border-border-subtle bg-background">
-      <div
+      <motion.div
         aria-hidden
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={VIEWPORT}
+        transition={{ duration: 1.2, ease: EASE }}
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"
       />
-      <div
+      <motion.div
         aria-hidden
+        animate={{ scale: [1, 1.12, 1], opacity: [0.7, 1, 0.7] }}
+        transition={{ duration: 16, ease: "easeInOut", repeat: Infinity }}
         className="pointer-events-none absolute -top-40 left-1/2 h-96 w-[60rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.18),transparent_60%)] blur-3xl"
       />
 
@@ -42,58 +44,81 @@ export function Footer() {
         variants={stagger}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: "-80px" }}
+        viewport={VIEWPORT}
         className="mx-auto w-full max-w-6xl px-5 sm:px-8 lg:px-16"
       >
         {/* CTA band */}
-        <motion.div
-          variants={fadeUp}
-          className="flex flex-col items-start gap-8 py-14 sm:py-20 lg:flex-row lg:items-end lg:justify-between"
-        >
-          <div className="max-w-2xl">
-            <p className="mb-4 text-[12px] font-medium uppercase tracking-[0.32em] text-accent/85">
-              Have an idea?
-            </p>
-            <h2 className="text-[32px] font-extrabold leading-[1.05] tracking-tight sm:text-[46px] md:text-[52px] lg:text-[60px]">
-              Let&apos;s turn it into{" "}
-              <span className="bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent">
-                a real product.
-              </span>
-            </h2>
-            <p className="mt-5 max-w-lg text-[15px] leading-[1.7] text-foreground/60">
-              Whether it&apos;s an AI-powered web app, a polished mobile
-              experience, or a full UI/UX rework, I&apos;m open to freelance
-              projects, internships, and collaborations.
-            </p>
-          </div>
-
-          <motion.a
-            href="mailto:muhammadsohaib7932@gmail.com"
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            className="group inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] sm:gap-3 sm:px-7 sm:py-4 sm:text-[12.5px] sm:tracking-[0.18em]"
+        <Parallax speed={0.06}>
+          <motion.div
+            variants={staggerFast}
+            className="flex flex-col items-start gap-8 py-14 sm:py-20 lg:flex-row lg:items-end lg:justify-between"
           >
-            Start a conversation
-            <ArrowIcon />
-          </motion.a>
-        </motion.div>
+            <div className="max-w-2xl">
+              <motion.p
+                variants={fadeUp}
+                className="mb-4 text-[12px] font-medium uppercase tracking-[0.32em] text-accent/85"
+              >
+                Have an idea?
+              </motion.p>
+              <motion.h2
+                variants={wordsContainer}
+                className="text-[32px] font-extrabold leading-[1.05] tracking-tight sm:text-[46px] md:text-[52px] lg:text-[60px]"
+              >
+                <Words text="Let's turn it into" />
+                <motion.span
+                  variants={wordVariant}
+                  className="inline-block bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent"
+                >
+                  a real product.
+                </motion.span>
+              </motion.h2>
+              <motion.p
+                variants={fadeUp}
+                className="mt-5 max-w-lg text-[15px] leading-[1.7] text-foreground/60"
+              >
+                Whether it&apos;s an AI-powered web app, a polished mobile
+                experience, or a full UI/UX rework, I&apos;m open to freelance
+                projects, internships, and collaborations.
+              </motion.p>
+            </div>
+
+            <motion.div variants={fadeUp}>
+              <Magnetic strength={0.28}>
+                <motion.a
+                  href="mailto:muhammadsohaib7932@gmail.com"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="btn-sheen group inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] sm:gap-3 sm:px-7 sm:py-4 sm:text-[12.5px] sm:tracking-[0.18em]"
+                >
+                  Start a conversation
+                  <ArrowIcon />
+                </motion.a>
+              </Magnetic>
+            </motion.div>
+          </motion.div>
+        </Parallax>
 
         {/* Columns */}
         <motion.div
-          variants={fadeUp}
+          variants={staggerFast}
           className="grid grid-cols-2 gap-8 border-t border-border-subtle py-12 sm:gap-10 sm:py-14 lg:grid-cols-4"
         >
-          <div className="col-span-2 max-w-xs lg:col-span-1">
+          <motion.div
+            variants={fadeUp}
+            className="col-span-2 max-w-xs lg:col-span-1"
+          >
             <Link
               href="/"
-              className="text-sm font-semibold tracking-[0.18em] text-foreground"
+              className="group text-sm font-semibold tracking-[0.18em] text-foreground"
             >
-              M. SOHAIB
+              <span className="inline-block transition-transform duration-300 ease-out group-hover:-translate-y-px">
+                M. SOHAIB
+              </span>
             </Link>
             <p className="mt-4 text-sm leading-7 text-foreground/60">
               Software Engineer building AI-powered web and mobile experiences.
             </p>
-          </div>
+          </motion.div>
 
           <FooterColumn title="Sitemap">
             {sitemap.map((item) => (
@@ -137,11 +162,12 @@ export function Footer() {
         {/* Bottom bar */}
         <motion.div
           variants={fadeUp}
-          className="flex items-center justify-center border-t border-border-subtle py-8"
+          className="flex flex-col items-center justify-between gap-4 border-t border-border-subtle py-8 sm:flex-row"
         >
           <p className="text-center text-xs tracking-wide text-foreground/45">
             © {new Date().getFullYear()} Muhammad Sohaib. All rights reserved.
           </p>
+          <BackToTop />
         </motion.div>
       </motion.div>
     </footer>
@@ -156,7 +182,7 @@ function FooterColumn({
   children: React.ReactNode;
 }) {
   return (
-    <div>
+    <motion.div variants={fadeUp}>
       <h3 className="mb-5 text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/55">
         {title}
       </h3>
@@ -165,7 +191,7 @@ function FooterColumn({
           ? children.map((child, i) => <li key={i}>{child}</li>)
           : <li>{children}</li>}
       </ul>
-    </div>
+    </motion.div>
   );
 }
 
@@ -188,10 +214,12 @@ function FooterLink({
         rel="noopener noreferrer"
         className={className}
       >
-        {children}
+        <span className="transition-transform duration-300 ease-out group-hover:translate-x-0.5">
+          {children}
+        </span>
         <span
           aria-hidden
-          className="opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"
+          className="opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
         >
           ↗
         </span>
@@ -200,10 +228,12 @@ function FooterLink({
   }
   return (
     <Link href={href} className={className}>
-      {children}
+      <span className="transition-transform duration-300 ease-out group-hover:translate-x-0.5">
+        {children}
+      </span>
       <span
         aria-hidden
-        className="opacity-0 transition-all group-hover:translate-x-0.5 group-hover:opacity-100"
+        className="opacity-0 transition-all duration-300 group-hover:translate-x-0.5 group-hover:opacity-100"
       >
         →
       </span>
@@ -223,7 +253,7 @@ function ArrowIcon() {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden
-      className="transition-transform group-hover:translate-x-0.5"
+      className="transition-transform duration-300 ease-out group-hover:translate-x-1"
     >
       <path d="M5 12h14" />
       <path d="m12 5 7 7-7 7" />

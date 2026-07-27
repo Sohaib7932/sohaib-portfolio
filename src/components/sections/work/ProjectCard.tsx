@@ -1,17 +1,35 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  type Variants,
+} from "motion/react";
+import { useReducedMotionSafe } from "@/components/motion/useReducedMotionSafe";
+import { useRef } from "react";
 import type { Project } from "./types";
 import { IconForLabel } from "./ProjectIcons";
 import { ProjectIllustration } from "./ProjectIllustration";
+import {
+  SpotlightOverlay,
+  useSpotlight,
+} from "@/components/motion/useSpotlight";
+import { cardRise, EASE, SPRING, VIEWPORT } from "@/components/motion/tokens";
 
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 26 },
-  show: (i: number) => ({
+const badges: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.05, delayChildren: 0.15 } },
+};
+
+const badge: Variants = {
+  hidden: { opacity: 0, y: 8, scale: 0.9 },
+  show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.65, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
-  }),
+    scale: 1,
+    transition: { duration: 0.4, ease: EASE },
+  },
 };
 
 export function ProjectCard({
@@ -23,25 +41,37 @@ export function ProjectCard({
   index: number;
   className?: string;
 }) {
+  const { handlers, glow, tiltStyle } = useSpotlight({ radius: 380, tilt: 4 });
+
   return (
     <motion.article
       custom={index}
-      variants={cardVariants}
+      variants={cardRise}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
-      whileHover={{ y: -5 }}
-      transition={{ type: "spring", stiffness: 280, damping: 24 }}
-      className={`group flex flex-col overflow-hidden rounded-3xl border border-border-subtle bg-white/[0.02] backdrop-blur-sm transition-colors hover:border-border-strong ${className}`}
+      viewport={VIEWPORT}
+      whileHover={{ y: -7 }}
+      transition={SPRING}
+      {...handlers}
+      style={tiltStyle}
+      className={`group relative isolate flex flex-col overflow-hidden rounded-3xl border border-border-subtle bg-white/[0.02] backdrop-blur-sm transition-colors hover:border-border-strong ${className}`}
     >
+      <SpotlightOverlay glow={glow} />
+
       <ImageArea project={project} />
 
       <div className="flex flex-1 flex-col p-5">
-        <div className="mb-4 flex flex-wrap gap-2">
+        <motion.div
+          variants={badges}
+          initial="hidden"
+          whileInView="show"
+          viewport={VIEWPORT}
+          className="mb-4 flex flex-wrap gap-2"
+        >
           {project.tech.map((t) => (
             <TechBadge key={t} label={t} />
           ))}
-        </div>
+        </motion.div>
 
         <h3 className="text-[20px] font-bold tracking-tight text-foreground">
           {project.title}
@@ -69,20 +99,37 @@ export function ProjectCard({
 
 function ImageArea({ project }: { project: Project }) {
   const { image, illustration, placeholderBg, title } = project;
+  const ref = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotionSafe();
+
+  // The artwork drifts inside its own frame as the card crosses the viewport,
+  // which reads as depth rather than as a moving image.
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  // Kept deliberately small: these are UI screenshots, so every extra percent
+  // of zoom needed to hide the parallax gap crops real content out of frame.
+  const y = useTransform(scrollYProgress, [0, 1], ["-4%", "4%"]);
 
   return (
     <div
+      ref={ref}
       className={`relative aspect-[16/10] w-full overflow-hidden ${
         image ? "" : placeholderBg
       }`}
     >
       {image ? (
         <>
-          <img
-            src={image}
-            alt={title}
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-          />
+          {/* Hover zoom lives on the wrapper so it never fights the parallax. */}
+          <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.05]">
+            <motion.img
+              src={image}
+              alt={title}
+              style={reduce ? undefined : { y, scale: 1.1 }}
+              className="h-full w-full object-cover"
+            />
+          </div>
           <div
             aria-hidden
             className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent"
@@ -110,38 +157,45 @@ function ImageArea({ project }: { project: Project }) {
 
 function TechBadge({ label }: { label: string }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-border-subtle bg-white/[0.03] px-2.5 py-0.5 text-[10.5px] font-medium tracking-wide text-foreground/75">
+    <motion.span
+      variants={badge}
+      className="inline-flex items-center rounded-full border border-border-subtle bg-white/[0.03] px-2.5 py-0.5 text-[10.5px] font-medium tracking-wide text-foreground/75 transition-colors group-hover:border-accent/30"
+    >
       {label}
-    </span>
+    </motion.span>
   );
 }
 
 function PrimaryAction({ label, href }: { label: string; href: string }) {
   const external = href.startsWith("http");
   return (
-    <a
+    <motion.a
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="group inline-flex items-center gap-1.5 rounded-lg bg-accent px-3.5 py-2 text-[12px] font-semibold tracking-wide text-[#1a0b2e] transition-shadow hover:shadow-[0_8px_24px_-10px_rgba(167,139,250,0.9)]"
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.96 }}
+      className="btn-sheen group inline-flex items-center gap-1.5 rounded-lg bg-accent px-3.5 py-2 text-[12px] font-semibold tracking-wide text-[#1a0b2e] transition-shadow hover:shadow-[0_8px_24px_-10px_rgba(167,139,250,0.9)]"
     >
       <IconForLabel label={label} />
       {label}
-    </a>
+    </motion.a>
   );
 }
 
 function SecondaryAction({ label, href }: { label: string; href: string }) {
   const external = href.startsWith("http");
   return (
-    <a
+    <motion.a
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="inline-flex items-center gap-1.5 rounded-lg border border-border-strong bg-white/[0.03] px-3.5 py-2 text-[12px] font-semibold tracking-wide text-foreground/85 transition-colors hover:bg-white/[0.06] hover:text-foreground"
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.96 }}
+      className="group inline-flex items-center gap-1.5 rounded-lg border border-border-strong bg-white/[0.03] px-3.5 py-2 text-[12px] font-semibold tracking-wide text-foreground/85 transition-colors hover:bg-white/[0.06] hover:text-foreground"
     >
       <IconForLabel label={label} />
       {label}
-    </a>
+    </motion.a>
   );
 }

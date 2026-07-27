@@ -1,25 +1,20 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
+import { motion } from "motion/react";
 import type { ReactNode } from "react";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] },
-  }),
-};
+import {
+  SpotlightOverlay,
+  useSpotlight,
+} from "@/components/motion/useSpotlight";
+import {
+  cardRise,
+  fadeUpBlur,
+  SPRING,
+  stagger,
+  VIEWPORT,
+  VIEWPORT_NEAR,
+} from "@/components/motion/tokens";
+import { Words, wordsContainer, wordVariant } from "@/components/motion/Words";
 
 const principles = [
   {
@@ -58,56 +53,83 @@ export function PrinciplesGrid() {
   return (
     <div>
       <motion.div
-        variants={fadeUp}
+        variants={stagger}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: "-80px" }}
+        viewport={VIEWPORT}
         className="mx-auto max-w-2xl text-center"
       >
-        <p className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-accent/85 sm:text-[12px] sm:tracking-[0.32em]">
+        <motion.p
+          variants={fadeUpBlur}
+          className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-accent/85 sm:text-[12px] sm:tracking-[0.32em]"
+        >
           What I believe
-        </p>
-        <h2 className="text-[28px] font-extrabold leading-[1.05] tracking-tight sm:text-[40px] md:text-[46px]">
-          Six principles I{" "}
-          <span className="bg-gradient-to-r from-fuchsia-300 via-fuchsia-400 to-pink-500 bg-clip-text text-transparent">
+        </motion.p>
+        <motion.h2
+          variants={wordsContainer}
+          className="text-[28px] font-extrabold leading-[1.05] tracking-tight sm:text-[40px] md:text-[46px]"
+        >
+          <Words text="Six principles I" />
+          <motion.span
+            variants={wordVariant}
+            className="inline-block bg-gradient-to-r from-fuchsia-300 via-fuchsia-400 to-pink-500 bg-clip-text text-transparent"
+          >
             won&apos;t bend.
-          </span>
-        </h2>
-        <p className="mt-4 text-[14.5px] leading-7 text-foreground/60 sm:text-[15px]">
+          </motion.span>
+        </motion.h2>
+        <motion.p
+          variants={fadeUpBlur}
+          className="mt-4 text-[14.5px] leading-7 text-foreground/60 sm:text-[15px]"
+        >
           The decisions I&apos;ve already made before any project starts.
-        </p>
+        </motion.p>
       </motion.div>
 
       <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
         {principles.map((p, i) => (
-          <motion.div
-            key={p.title}
-            custom={i}
-            variants={cardVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-60px" }}
-            whileHover={{ y: -5 }}
-            transition={{ type: "spring", stiffness: 280, damping: 22 }}
-            className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-6 backdrop-blur-sm transition-colors hover:border-accent/40"
-          >
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(167,139,250,0.2),transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-            />
-            <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-border-subtle bg-[linear-gradient(135deg,rgba(167,139,250,0.22),rgba(139,92,246,0.04))] text-accent">
-              {p.icon}
-            </div>
-            <h3 className="text-[16px] font-bold tracking-tight text-foreground sm:text-[17px]">
-              {p.title}
-            </h3>
-            <p className="mt-2 text-[13.5px] leading-6 text-foreground/60">
-              {p.body}
-            </p>
-          </motion.div>
+          <PrincipleCard key={p.title} index={i} {...p} />
         ))}
       </div>
     </div>
+  );
+}
+
+function PrincipleCard({
+  icon,
+  title,
+  body,
+  index,
+}: {
+  icon: ReactNode;
+  title: string;
+  body: string;
+  index: number;
+}) {
+  const { handlers, glow, tiltStyle } = useSpotlight({ radius: 320, tilt: 5 });
+
+  return (
+    <motion.div
+      custom={index}
+      variants={cardRise}
+      initial="hidden"
+      whileInView="show"
+      viewport={VIEWPORT_NEAR}
+      whileHover={{ y: -7 }}
+      transition={SPRING}
+      {...handlers}
+      style={tiltStyle}
+      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-6 backdrop-blur-sm transition-colors hover:border-accent/40"
+    >
+      <SpotlightOverlay glow={glow} />
+
+      <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-border-subtle bg-[linear-gradient(135deg,rgba(167,139,250,0.22),rgba(139,92,246,0.04))] text-accent transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-6">
+        {icon}
+      </div>
+      <h3 className="text-[16px] font-bold tracking-tight text-foreground sm:text-[17px]">
+        {title}
+      </h3>
+      <p className="mt-2 text-[13.5px] leading-6 text-foreground/60">{body}</p>
+    </motion.div>
   );
 }
 

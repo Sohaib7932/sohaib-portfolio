@@ -1,6 +1,15 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  type Variants,
+} from "motion/react";
+import { useReducedMotionSafe } from "@/components/motion/useReducedMotionSafe";
+import { useRef } from "react";
+import { Magnetic } from "@/components/motion/Magnetic";
+import { EASE } from "@/components/motion/tokens";
 
 const container: Variants = {
   hidden: {},
@@ -14,33 +23,79 @@ const item: Variants = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.7, ease: EASE },
+  },
+};
+
+/** The headline is its own stagger group, so it lands one phrase at a time. */
+const headline: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.09 } },
+};
+
+const word: Variants = {
+  hidden: { opacity: 0, y: 34, filter: "blur(12px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.85, ease: EASE },
   },
 };
 
 export function HeroContent() {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotionSafe();
+
+  // On the way out, the copy drifts up slightly faster than the page and
+  // dissolves, which hands the eye off to the next section.
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], [0, -70]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
     <motion.div
+      ref={ref}
       variants={container}
       initial="hidden"
       animate="show"
+      style={reduce ? undefined : { y, opacity }}
       className="relative z-10 max-w-xl"
     >
       <motion.p
         variants={item}
-        className="mb-5 text-[11px] font-medium uppercase tracking-[0.28em] text-accent/85 sm:mb-7 sm:text-[12px] sm:tracking-[0.32em]"
+        className="mb-5 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-accent/85 sm:mb-7 sm:text-[12px] sm:tracking-[0.32em]"
       >
+        <motion.span
+          aria-hidden
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 0.9, delay: 0.45, ease: EASE }}
+          className="h-px w-8 shrink-0 origin-left bg-accent/60"
+        />
         BUILDING AI-POWERED DIGITAL SOLUTIONS
       </motion.p>
 
       <motion.h1
-        variants={item}
+        variants={headline}
         className="text-[36px] font-extrabold leading-[1.05] tracking-tight sm:text-[52px] md:text-[58px] lg:text-[68px]"
       >
-        Hi, I&apos;m{" "}
-        <span className="block bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent">
+        <motion.span variants={word} className="inline-block">
+          Hi,
+        </motion.span>{" "}
+        <motion.span variants={word} className="inline-block">
+          I&apos;m
+        </motion.span>{" "}
+        {/* One node, so the gradient stays continuous across the whole name. */}
+        <motion.span
+          variants={word}
+          className="block bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent"
+        >
           Muhammad Sohaib
-        </span>
+        </motion.span>
       </motion.h1>
 
       <motion.p
@@ -72,17 +127,19 @@ export function HeroContent() {
 
 function DownloadCvButton() {
   return (
-    <motion.a
-      href="/cv.pdf"
-      download
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
-      className="group inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] sm:gap-3 sm:px-7 sm:py-4 sm:text-[12.5px] sm:tracking-[0.18em]"
-    >
-      <DownloadIcon />
-      Download CV
-      <span className="ml-1 h-1.5 w-1.5 rounded-full bg-[#1a0b2e]/70 transition-transform group-hover:translate-x-0.5" />
-    </motion.a>
+    <Magnetic strength={0.28}>
+      <motion.a
+        href="/cv.pdf"
+        download
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+        className="btn-sheen group inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] sm:gap-3 sm:px-7 sm:py-4 sm:text-[12.5px] sm:tracking-[0.18em]"
+      >
+        <DownloadIcon />
+        Download CV
+        <span className="ml-1 h-1.5 w-1.5 rounded-full bg-[#1a0b2e]/70 transition-transform group-hover:translate-x-0.5" />
+      </motion.a>
+    </Magnetic>
   );
 }
 
@@ -98,6 +155,7 @@ function DownloadIcon() {
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden
+      className="transition-transform duration-300 group-hover:translate-y-0.5"
     >
       <path d="M12 3v12" />
       <path d="m6 9 6 6 6-6" />

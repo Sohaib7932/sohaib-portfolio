@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "motion/react";
+import { CountUp } from "@/components/motion/CountUp";
+import { EASE, VIEWPORT_NEAR } from "@/components/motion/tokens";
 
 type Tone = "violet" | "amber";
 
@@ -22,11 +24,7 @@ export function SkillProgress({
 
   return (
     <div className="relative h-9 w-9 shrink-0">
-      <svg
-        viewBox="0 0 36 36"
-        className="h-full w-full -rotate-90"
-        aria-hidden
-      >
+      <svg viewBox="0 0 36 36" className="h-full w-full -rotate-90" aria-hidden>
         <circle
           cx="18"
           cy="18"
@@ -46,12 +44,13 @@ export function SkillProgress({
           strokeDasharray={circumference}
           initial={{ strokeDashoffset: circumference }}
           whileInView={{ strokeDashoffset: offset }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+          viewport={VIEWPORT_NEAR}
+          transition={{ duration: 1.3, ease: EASE }}
         />
       </svg>
+      {/* The number climbs alongside the ring rather than sitting at its total. */}
       <span className="absolute inset-0 flex items-center justify-center text-[8.5px] font-bold tracking-tight text-foreground/85">
-        {percent}%
+        <CountUp to={percent} duration={1.3} />%
       </span>
     </div>
   );

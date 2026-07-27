@@ -1,21 +1,12 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
+import { motion } from "motion/react";
 import type { ReactNode } from "react";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const stagger: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
-};
+import {
+  SpotlightOverlay,
+  useSpotlight,
+} from "@/components/motion/useSpotlight";
+import { fadeUp, SPRING, stagger, VIEWPORT } from "@/components/motion/tokens";
 
 export function ContactInfo() {
   return (
@@ -23,7 +14,7 @@ export function ContactInfo() {
       variants={stagger}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={VIEWPORT}
       className="flex flex-col gap-6"
     >
       <motion.div variants={fadeUp}>
@@ -36,37 +27,12 @@ export function ContactInfo() {
         </p>
       </motion.div>
 
-      <motion.a
-        variants={fadeUp}
-        href="mailto:muhammadsohaib7932@gmail.com"
-        whileHover={{ y: -3 }}
-        transition={{ type: "spring", stiffness: 280, damping: 22 }}
-        className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-5 backdrop-blur-sm transition-colors hover:border-accent"
-      >
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(167,139,250,0.2),transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        />
-        <div className="flex items-start gap-4">
-          <IconBadge>
-            <MailIcon />
-          </IconBadge>
-          <div className="min-w-0 flex-1">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/55">
-              Email
-            </p>
-            <p className="mt-1 truncate text-[15px] font-semibold tracking-tight text-foreground">
-              muhammadsohaib7932@gmail.com
-            </p>
-            <p className="mt-1 text-[13px] text-foreground/60">
-              Best for project briefs &amp; long-form questions.
-            </p>
-          </div>
-          <ArrowChip />
-        </div>
-      </motion.a>
+      <EmailCard />
 
-      <motion.div variants={fadeUp} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <motion.div
+        variants={fadeUp}
+        className="grid grid-cols-1 gap-4 sm:grid-cols-2"
+      >
         <SocialCard
           href="https://github.com/Sohaib7932"
           label="GitHub"
@@ -81,34 +47,90 @@ export function ContactInfo() {
         />
       </motion.div>
 
+      <AvailabilityCard />
+    </motion.div>
+  );
+}
+
+function EmailCard() {
+  const { handlers, glow, tiltStyle } = useSpotlight({ radius: 320, tilt: 3 });
+
+  return (
+    <motion.a
+      variants={fadeUp}
+      href="mailto:muhammadsohaib7932@gmail.com"
+      whileHover={{ y: -4 }}
+      transition={SPRING}
+      {...handlers}
+      style={tiltStyle}
+      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-5 backdrop-blur-sm transition-colors hover:border-accent"
+    >
+      <SpotlightOverlay glow={glow} />
+
+      <div className="flex items-start gap-4">
+        <IconBadge>
+          <MailIcon />
+        </IconBadge>
+        <div className="min-w-0 flex-1">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/55">
+            Email
+          </p>
+          <p className="mt-1 truncate text-[15px] font-semibold tracking-tight text-foreground">
+            muhammadsohaib7932@gmail.com
+          </p>
+          <p className="mt-1 text-[13px] text-foreground/60">
+            Best for project briefs &amp; long-form questions.
+          </p>
+        </div>
+        <ArrowChip />
+      </div>
+    </motion.a>
+  );
+}
+
+function AvailabilityCard() {
+  return (
+    <motion.div
+      variants={fadeUp}
+      className="relative overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-5 backdrop-blur-sm"
+    >
+      {/* A slow pass of light, so the card reads as "live". */}
       <motion.div
-        variants={fadeUp}
-        className="relative overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-5 backdrop-blur-sm"
-      >
-        <div className="flex items-start gap-4">
-          <IconBadge>
-            <ClockIcon />
-          </IconBadge>
-          <div className="flex-1">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/55">
-              Availability
-            </p>
-            <div className="mt-2 flex items-center gap-2">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-              </span>
-              <p className="text-[14.5px] font-semibold tracking-tight text-foreground">
-                Open for new projects
-              </p>
-            </div>
-            <p className="mt-2 text-[13px] leading-6 text-foreground/60">
-              Remote-first, working worldwide. You&apos;ll get a reply within
-              1 day.
+        aria-hidden
+        initial={{ x: "-120%" }}
+        animate={{ x: "160%" }}
+        transition={{
+          duration: 2.2,
+          ease: "easeInOut",
+          repeat: Infinity,
+          repeatDelay: 6,
+        }}
+        className="pointer-events-none absolute inset-y-0 left-0 w-1/3 skew-x-[-20deg] bg-gradient-to-r from-transparent via-emerald-300/[0.07] to-transparent"
+      />
+
+      <div className="flex items-start gap-4">
+        <IconBadge>
+          <ClockIcon />
+        </IconBadge>
+        <div className="flex-1">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/55">
+            Availability
+          </p>
+          <div className="mt-2 flex items-center gap-2">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+            </span>
+            <p className="text-[14.5px] font-semibold tracking-tight text-foreground">
+              Open for new projects
             </p>
           </div>
+          <p className="mt-2 text-[13px] leading-6 text-foreground/60">
+            Remote-first, working worldwide. You&apos;ll get a reply within
+            1 day.
+          </p>
         </div>
-      </motion.div>
+      </div>
     </motion.div>
   );
 }
@@ -124,19 +146,20 @@ function SocialCard({
   handle: string;
   icon: ReactNode;
 }) {
+  const { handlers, glow, tiltStyle } = useSpotlight({ radius: 240, tilt: 4 });
+
   return (
     <motion.a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      whileHover={{ y: -3 }}
-      transition={{ type: "spring", stiffness: 280, damping: 22 }}
+      whileHover={{ y: -4 }}
+      transition={SPRING}
+      {...handlers}
+      style={tiltStyle}
       className="group relative isolate flex items-center gap-3.5 overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-4 backdrop-blur-sm transition-colors hover:border-accent"
     >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(167,139,250,0.18),transparent_70%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-      />
+      <SpotlightOverlay glow={glow} />
       <IconBadge>{icon}</IconBadge>
       <div className="min-w-0 flex-1">
         <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/55">
@@ -153,7 +176,7 @@ function SocialCard({
 
 function IconBadge({ children }: { children: ReactNode }) {
   return (
-    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border-subtle bg-[linear-gradient(135deg,rgba(167,139,250,0.22),rgba(139,92,246,0.04))] text-accent">
+    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border-subtle bg-[linear-gradient(135deg,rgba(167,139,250,0.22),rgba(139,92,246,0.04))] text-accent transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-6">
       {children}
     </div>
   );
@@ -162,7 +185,7 @@ function IconBadge({ children }: { children: ReactNode }) {
 function ArrowChip({ small = false }: { small?: boolean }) {
   return (
     <span
-      className={`flex items-center justify-center rounded-full border border-border-subtle bg-white/[0.03] text-foreground/65 transition-all group-hover:border-accent group-hover:bg-accent group-hover:text-[#1a0b2e] ${
+      className={`flex shrink-0 items-center justify-center rounded-full border border-border-subtle bg-white/[0.03] text-foreground/65 transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-[#1a0b2e] ${
         small ? "h-7 w-7" : "h-8 w-8"
       }`}
     >
@@ -176,7 +199,7 @@ function ArrowChip({ small = false }: { small?: boolean }) {
         strokeLinecap="round"
         strokeLinejoin="round"
         aria-hidden
-        className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        className="transition-transform duration-300 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
       >
         <path d="M7 17 17 7" />
         <path d="M8 7h9v9" />

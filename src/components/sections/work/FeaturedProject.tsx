@@ -1,16 +1,28 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  type Variants,
+} from "motion/react";
+import { useReducedMotionSafe } from "@/components/motion/useReducedMotionSafe";
+import { useRef } from "react";
 import type { Project } from "./types";
 import { ProjectIllustration } from "./ProjectIllustration";
 import { IconForLabel } from "./ProjectIcons";
+import {
+  SpotlightOverlay,
+  useSpotlight,
+} from "@/components/motion/useSpotlight";
+import { EASE, VIEWPORT } from "@/components/motion/tokens";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 26 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.7, ease: EASE },
   },
 };
 
@@ -19,33 +31,69 @@ const stagger: Variants = {
   show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
 
+const chip: Variants = {
+  hidden: { opacity: 0, scale: 0.85 },
+  show: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: EASE } },
+};
+
 export function FeaturedProject({ project }: { project: Project }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotionSafe();
+  const { handlers, glow } = useSpotlight({
+    radius: 520,
+    tilt: 0,
+    color: "rgba(167,139,250,0.12)",
+  });
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-5%", "5%"]);
+
   return (
     <motion.article
       variants={stagger}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={VIEWPORT}
+      {...handlers}
       className="group relative isolate overflow-hidden rounded-3xl border border-border-strong bg-white/[0.025] backdrop-blur-md"
     >
-      <div
+      <SpotlightOverlay glow={glow} />
+
+      <motion.div
         aria-hidden
+        animate={
+          reduce ? undefined : { scale: [1, 1.15, 1], opacity: [0.7, 1, 0.7] }
+        }
+        transition={{ duration: 12, ease: "easeInOut", repeat: Infinity }}
         className="pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(167,139,250,0.18),transparent_60%)] blur-2xl"
       />
-      <div
+      <motion.div
         aria-hidden
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={VIEWPORT}
+        transition={{ duration: 1.2, ease: EASE }}
         className="pointer-events-none absolute inset-x-12 top-0 h-px bg-gradient-to-r from-transparent via-accent/60 to-transparent"
       />
 
       <div className="grid grid-cols-1 gap-0 lg:grid-cols-[1.05fr_1fr]">
-        <div className={`relative aspect-[16/10] w-full overflow-hidden ${project.image ? "" : project.placeholderBg} lg:aspect-auto lg:min-h-[460px]`}>
+        <div
+          ref={ref}
+          className={`relative aspect-[16/10] w-full overflow-hidden ${project.image ? "" : project.placeholderBg} lg:aspect-auto lg:min-h-[460px]`}
+        >
           {project.image ? (
             <>
-              <img
-                src={project.image}
-                alt={project.title}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
-              />
+              <div className="absolute inset-0 transition-transform duration-[900ms] ease-out group-hover:scale-[1.05]">
+                <motion.img
+                  src={project.image}
+                  alt={project.title}
+                  style={reduce ? undefined : { y: imageY, scale: 1.12 }}
+                  className="h-full w-full object-cover"
+                />
+              </div>
               <div
                 aria-hidden
                 className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent"
@@ -61,7 +109,10 @@ export function FeaturedProject({ project }: { project: Project }) {
         </div>
 
         <div className="relative flex flex-col justify-center p-7 sm:p-10 lg:p-12">
-          <motion.div variants={fadeUp} className="mb-4 inline-flex items-center gap-2">
+          <motion.div
+            variants={fadeUp}
+            className="mb-4 inline-flex items-center gap-2"
+          >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-fuchsia-400/70" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-fuchsia-400" />
@@ -85,18 +136,29 @@ export function FeaturedProject({ project }: { project: Project }) {
             {project.description}
           </motion.p>
 
-          <motion.div variants={fadeUp} className="mt-5 flex flex-wrap gap-2">
+          <motion.div
+            variants={{
+              hidden: {},
+              show: { transition: { staggerChildren: 0.05 } },
+            }}
+            className="mt-5 flex flex-wrap gap-2"
+          >
             {project.tech.map((t) => (
-              <span
+              <motion.span
                 key={t}
-                className="inline-flex items-center rounded-full border border-border-subtle bg-white/[0.035] px-3 py-1 text-[11px] font-medium tracking-wide text-foreground/80"
+                variants={chip}
+                whileHover={{ y: -2, scale: 1.05 }}
+                className="inline-flex cursor-default items-center rounded-full border border-border-subtle bg-white/[0.035] px-3 py-1 text-[11px] font-medium tracking-wide text-foreground/80 transition-colors hover:border-accent/50 hover:text-foreground"
               >
                 {t}
-              </span>
+              </motion.span>
             ))}
           </motion.div>
 
-          <motion.div variants={fadeUp} className="mt-7 flex flex-wrap items-center gap-2.5">
+          <motion.div
+            variants={fadeUp}
+            className="mt-7 flex flex-wrap items-center gap-2.5"
+          >
             <PrimaryAction
               label={project.primary.label}
               href={project.primary.href}
@@ -117,29 +179,33 @@ export function FeaturedProject({ project }: { project: Project }) {
 function PrimaryAction({ label, href }: { label: string; href: string }) {
   const external = href.startsWith("http");
   return (
-    <a
+    <motion.a
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="group inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.7)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] sm:text-[12.5px]"
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.97 }}
+      className="btn-sheen group inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.7)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] sm:text-[12.5px]"
     >
       <IconForLabel label={label} />
       {label}
-    </a>
+    </motion.a>
   );
 }
 
 function SecondaryAction({ label, href }: { label: string; href: string }) {
   const external = href.startsWith("http");
   return (
-    <a
+    <motion.a
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.97 }}
       className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-white/[0.025] px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-foreground transition-colors hover:bg-white/[0.05] sm:text-[12.5px]"
     >
       <IconForLabel label={label} />
       {label}
-    </a>
+    </motion.a>
   );
 }

@@ -42,6 +42,13 @@ body {
   max-width: 100%;
 }
 
+/* The scroll container for every scroll-linked animation on the page. Motion
+   measures element offsets against it, which needs a non-static position to be
+   exact. Fixed elements still anchor to the viewport, so nothing else moves. */
+html {
+  position: relative;
+}
+
 body {
   background-image:
     radial-gradient(
@@ -64,4 +71,56 @@ body {
 
 section[id] {
   scroll-margin-top: 96px;
+}
+
+/* A light streak that sweeps across a filled button on hover. Purely
+   decorative, so it's clipped to the button and never intercepts clicks. */
+.btn-sheen {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.btn-sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: translateX(-120%) skewX(-20deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.45),
+    transparent
+  );
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-sheen:hover::after,
+.btn-sheen:focus-visible::after {
+  transform: translateX(120%) skewX(-20deg);
+}
+
+/* Keyboard focus should be obvious even on the glassy surfaces. */
+:where(a, button, input, textarea):focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+/* Anyone who asks for less motion gets the calm version of the site: no
+   drifting backgrounds, no sheen, no smooth-scroll hijack. Motion's own
+   animations are handled by `reducedMotion="user"` in MotionProvider. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

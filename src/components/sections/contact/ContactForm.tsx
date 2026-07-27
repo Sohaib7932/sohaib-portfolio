@@ -1,21 +1,8 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { motion, type Variants } from "motion/react";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
-const stagger: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.05 } },
-};
+import { AnimatePresence, motion } from "motion/react";
+import { EASE, fadeUp, stagger, VIEWPORT } from "@/components/motion/tokens";
 
 const FORMSUBMIT_ENDPOINT =
   "https://formsubmit.co/ajax/muhammadsohaib7932@gmail.com";
@@ -73,27 +60,39 @@ export function ContactForm() {
   }
 
   const submitting = status === "submitting";
+  const fieldClass =
+    "w-full rounded-xl border border-border-subtle bg-white/[0.02] px-4 py-3 text-[14px] text-foreground placeholder:text-foreground/30 outline-none transition-[border-color,background-color,box-shadow] duration-300 focus:border-accent focus:bg-white/[0.04] focus:shadow-[0_0_0_4px_rgba(167,139,250,0.12)] disabled:opacity-60";
 
   return (
     <motion.form
       variants={stagger}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
+      viewport={VIEWPORT}
       onSubmit={handleSubmit}
       className="relative isolate overflow-hidden rounded-3xl border border-border-subtle bg-white/[0.025] p-5 backdrop-blur-sm sm:p-7 md:p-8"
     >
-      <div
+      <motion.div
         aria-hidden
+        animate={{ scale: [1, 1.15, 1], opacity: [0.7, 1, 0.7] }}
+        transition={{ duration: 14, ease: "easeInOut", repeat: Infinity }}
         className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(192,38,211,0.12),transparent_70%)] blur-2xl"
       />
-      <div
+      <motion.div
         aria-hidden
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={VIEWPORT}
+        transition={{ duration: 1.1, ease: EASE }}
         className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"
       />
 
       <motion.div variants={fadeUp} className="mb-6 flex items-center gap-3">
-        <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-border-subtle bg-[linear-gradient(135deg,rgba(167,139,250,0.22),rgba(139,92,246,0.04))] text-accent">
+        <motion.div
+          animate={{ y: [0, -3, 0] }}
+          transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
+          className="flex h-10 w-10 items-center justify-center rounded-xl border border-border-subtle bg-[linear-gradient(135deg,rgba(167,139,250,0.22),rgba(139,92,246,0.04))] text-accent"
+        >
           <svg
             width="18"
             height="18"
@@ -108,7 +107,7 @@ export function ContactForm() {
             <path d="M22 2 11 13" />
             <path d="m22 2-7 20-4-9-9-4Z" />
           </svg>
-        </div>
+        </motion.div>
         <div>
           <h3 className="text-[18px] font-bold tracking-tight text-foreground">
             Send a message
@@ -129,7 +128,7 @@ export function ContactForm() {
             onChange={(e) => setName(e.target.value)}
             placeholder="Jane Doe"
             disabled={submitting}
-            className="w-full rounded-xl border border-border-subtle bg-white/[0.02] px-4 py-3 text-[14px] text-foreground placeholder:text-foreground/30 outline-none transition-colors focus:border-accent focus:bg-white/[0.04] disabled:opacity-60"
+            className={fieldClass}
           />
         </Field>
         <Field label="Email" htmlFor="contact-email">
@@ -141,7 +140,7 @@ export function ContactForm() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="jane@company.com"
             disabled={submitting}
-            className="w-full rounded-xl border border-border-subtle bg-white/[0.02] px-4 py-3 text-[14px] text-foreground placeholder:text-foreground/30 outline-none transition-colors focus:border-accent focus:bg-white/[0.04] disabled:opacity-60"
+            className={fieldClass}
           />
         </Field>
       </motion.div>
@@ -156,7 +155,7 @@ export function ContactForm() {
             onChange={(e) => setMessage(e.target.value)}
             placeholder="What are you building, who is it for, and when does it need to ship?"
             disabled={submitting}
-            className="w-full resize-none rounded-xl border border-border-subtle bg-white/[0.02] px-4 py-3 text-[14px] leading-[1.6] text-foreground placeholder:text-foreground/30 outline-none transition-colors focus:border-accent focus:bg-white/[0.04] disabled:opacity-60"
+            className={`${fieldClass} resize-none leading-[1.6]`}
           />
         </Field>
       </motion.div>
@@ -166,38 +165,55 @@ export function ContactForm() {
         className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between"
       >
         <StatusLabel status={status} errorMessage={errorMessage} />
+
         <motion.button
           type="submit"
           disabled={submitting}
           whileHover={!submitting ? { scale: 1.03 } : undefined}
           whileTap={!submitting ? { scale: 0.97 } : undefined}
-          className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12.5px] font-semibold uppercase tracking-[0.18em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] disabled:cursor-not-allowed disabled:opacity-70"
+          className="btn-sheen group inline-flex items-center justify-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12.5px] font-semibold uppercase tracking-[0.18em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] disabled:cursor-not-allowed disabled:opacity-70"
         >
-          {submitting ? (
-            <>
-              <Spinner />
-              Sending…
-            </>
-          ) : (
-            <>
-              Send message
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.4"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden
-                className="transition-transform group-hover:translate-x-0.5"
+          <AnimatePresence mode="wait" initial={false}>
+            {submitting ? (
+              <motion.span
+                key="sending"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.2 }}
+                className="inline-flex items-center gap-2.5"
               >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </>
-          )}
+                <Spinner />
+                Sending…
+              </motion.span>
+            ) : (
+              <motion.span
+                key="send"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.2 }}
+                className="inline-flex items-center gap-2.5"
+              >
+                Send message
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden
+                  className="transition-transform duration-300 ease-out group-hover:translate-x-1"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m12 5 7 7-7 7" />
+                </svg>
+              </motion.span>
+            )}
+          </AnimatePresence>
         </motion.button>
       </motion.div>
     </motion.form>
@@ -211,26 +227,73 @@ function StatusLabel({
   status: Status;
   errorMessage: string;
 }) {
-  if (status === "success") {
-    return (
-      <p className="flex items-center gap-2 text-[12.5px] font-medium text-emerald-300">
-        <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
-        Message sent, I&apos;ll be in touch shortly.
-      </p>
-    );
-  }
-  if (status === "error") {
-    return (
-      <p className="flex items-center gap-2 text-[12.5px] font-medium text-rose-300">
-        <span className="h-1.5 w-1.5 rounded-full bg-rose-400" />
-        {errorMessage}
-      </p>
-    );
-  }
   return (
-    <p className="text-[12px] text-foreground/50">
-      Sent securely, you&apos;ll get a reply within 1 day.
-    </p>
+    <div className="min-h-[1.25rem]" aria-live="polite">
+      <AnimatePresence mode="wait" initial={false}>
+        {status === "success" ? (
+          <motion.p
+            key="success"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.3, ease: EASE }}
+            className="flex items-center gap-2 text-[12.5px] font-medium text-emerald-300"
+          >
+            <SuccessTick />
+            Message sent, I&apos;ll be in touch shortly.
+          </motion.p>
+        ) : status === "error" ? (
+          <motion.p
+            key="error"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0, x: [0, -5, 5, -3, 3, 0] }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.4, ease: EASE }}
+            className="flex items-center gap-2 text-[12.5px] font-medium text-rose-300"
+          >
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-rose-400" />
+            {errorMessage}
+          </motion.p>
+        ) : (
+          <motion.p
+            key="idle"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.3, ease: EASE }}
+            className="text-[12px] text-foreground/50"
+          >
+            Sent securely, you&apos;ll get a reply within 1 day.
+          </motion.p>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+/** Draws itself once, as confirmation the message actually went out. */
+function SuccessTick() {
+  return (
+    <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-400/15 text-emerald-300">
+      <svg
+        width="10"
+        height="10"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        aria-hidden
+      >
+        <motion.path
+          d="M5 12.5 10 17 19 7"
+          initial={{ pathLength: 0 }}
+          animate={{ pathLength: 1 }}
+          transition={{ duration: 0.45, ease: EASE, delay: 0.1 }}
+        />
+      </svg>
+    </span>
   );
 }
 
@@ -263,8 +326,8 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <label htmlFor={htmlFor} className="block">
-      <span className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/55">
+    <label htmlFor={htmlFor} className="group block">
+      <span className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/55 transition-colors duration-300 group-focus-within:text-accent">
         {label}
       </span>
       {children}

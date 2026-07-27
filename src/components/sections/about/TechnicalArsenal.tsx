@@ -1,16 +1,9 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
+import { motion } from "motion/react";
 import { SkillCategory, type SkillCategoryProps } from "./SkillCategory";
-
-const fadeUp: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
-  },
-};
+import { fadeUpBlur, stagger, VIEWPORT } from "@/components/motion/tokens";
+import { Words, wordsContainer, wordVariant } from "@/components/motion/Words";
 
 const categories: Omit<SkillCategoryProps, "index">[] = [
   {
@@ -55,21 +48,30 @@ export function TechnicalArsenal() {
   return (
     <div className="mt-20 sm:mt-28">
       <motion.div
-        variants={fadeUp}
+        variants={stagger}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, margin: "-80px" }}
+        viewport={VIEWPORT}
         className="mx-auto max-w-2xl text-center"
       >
-        <h3 className="text-[28px] font-extrabold tracking-tight sm:text-[40px]">
-          Technical{" "}
-          <span className="bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent">
+        <motion.h3
+          variants={wordsContainer}
+          className="text-[28px] font-extrabold tracking-tight sm:text-[40px]"
+        >
+          <Words text="Technical" />
+          <motion.span
+            variants={wordVariant}
+            className="inline-block bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent"
+          >
             Arsenal
-          </span>
-        </h3>
-        <p className="mt-3 text-[15px] leading-7 text-foreground/60">
+          </motion.span>
+        </motion.h3>
+        <motion.p
+          variants={fadeUpBlur}
+          className="mt-3 text-[15px] leading-7 text-foreground/60"
+        >
           The tools I use most, grouped by where they fit in my workflow.
-        </p>
+        </motion.p>
       </motion.div>
 
       <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">

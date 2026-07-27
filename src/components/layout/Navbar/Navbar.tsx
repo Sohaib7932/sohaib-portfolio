@@ -1,10 +1,14 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { NavLink } from "./NavLink";
 import { MobileMenu } from "./MobileMenu";
+import { useActiveSection } from "./useActiveSection";
+import { Magnetic } from "@/components/motion/Magnetic";
+import { EASE } from "@/components/motion/tokens";
 
 const links = [
   { href: "/#about", label: "About" },
@@ -13,9 +17,25 @@ const links = [
   { href: "/#contact", label: "Contact" },
 ];
 
+const sectionIds = ["about", "work", "services", "contact"] as const;
+
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+
+  const pathname = usePathname();
+  const activeSection = useActiveSection(sectionIds, pathname === "/");
+
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+    setScrolled(latest > 12);
+    // Give the page back to the reader on the way down, return it the moment
+    // they scroll back up. Never disappear while the mobile menu is open.
+    setHidden(!open && latest > previous && latest > 260);
+  });
 
   useEffect(() => {
     if (open) {
@@ -31,28 +51,27 @@ export function Navbar() {
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") setOpen(false);
     }
-    function onScroll() {
-      setScrolled(window.scrollY > 12);
-    }
-    onScroll();
     window.addEventListener("keydown", onKey);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => {
-      window.removeEventListener("keydown", onKey);
-      window.removeEventListener("scroll", onScroll);
-    };
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   return (
     <>
       <motion.header
-        initial={{ y: -24, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: hidden ? -130 : 0, opacity: 1 }}
+        transition={{ duration: 0.55, ease: EASE }}
         className="fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-3 sm:px-5 sm:pt-4 lg:pt-6"
       >
         <div className="w-full max-w-6xl">
-          <div
+          <motion.div
+            animate={{
+              scale: scrolled ? 0.985 : 1,
+              boxShadow: scrolled
+                ? "0 18px 50px -24px rgba(0,0,0,0.9)"
+                : "0 0px 0px 0px rgba(0,0,0,0)",
+            }}
+            transition={{ duration: 0.4, ease: EASE }}
             className={`flex items-center justify-between gap-3 rounded-full border px-3 py-2 transition-colors duration-300 sm:px-5 sm:py-3 lg:px-6 ${
               scrolled
                 ? "border-border-strong bg-[#100a1c]/85 backdrop-blur-xl"
@@ -61,26 +80,37 @@ export function Navbar() {
           >
             <Link
               href="/"
-              className="shrink-0 text-[12px] font-semibold tracking-[0.16em] text-foreground sm:text-[13px] sm:tracking-[0.18em] lg:text-sm"
+              className="group shrink-0 text-[12px] font-semibold tracking-[0.16em] text-foreground sm:text-[13px] sm:tracking-[0.18em] lg:text-sm"
             >
-              M. SOHAIB
+              <span className="inline-block transition-transform duration-300 ease-out group-hover:-translate-y-px">
+                M. SOHAIB
+              </span>
+              <span className="ml-0.5 inline-block text-accent transition-transform duration-300 ease-out group-hover:rotate-90">
+                .
+              </span>
             </Link>
 
             <nav className="hidden items-center gap-7 lg:flex">
               {links.map((link) => (
-                <NavLink key={link.href} {...link} />
+                <NavLink
+                  key={link.href}
+                  {...link}
+                  active={link.href === `/#${activeSection}`}
+                />
               ))}
             </nav>
 
-            <motion.a
-              href="/#contact"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.97 }}
-              className="group relative hidden items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-[13px] font-semibold tracking-wide text-[#1a0b2e] shadow-[0_8px_30px_-10px_rgba(167,139,250,0.7)] transition-shadow hover:shadow-[0_10px_40px_-8px_rgba(167,139,250,0.9)] lg:inline-flex"
-            >
-              Hire Me
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1a0b2e]/70 transition-transform group-hover:translate-x-0.5" />
-            </motion.a>
+            <Magnetic className="hidden lg:inline-block">
+              <motion.a
+                href="/#contact"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                className="btn-sheen group relative inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-[13px] font-semibold tracking-wide text-[#1a0b2e] shadow-[0_8px_30px_-10px_rgba(167,139,250,0.7)] transition-shadow hover:shadow-[0_10px_40px_-8px_rgba(167,139,250,0.9)]"
+              >
+                Hire Me
+                <span className="h-1.5 w-1.5 rounded-full bg-[#1a0b2e]/70 transition-transform group-hover:translate-x-0.5" />
+              </motion.a>
+            </Magnetic>
 
             <button
               type="button"
@@ -92,7 +122,7 @@ export function Navbar() {
             >
               <HamburgerIcon open={open} />
             </button>
-          </div>
+          </motion.div>
         </div>
       </motion.header>
 
@@ -101,7 +131,18 @@ export function Navbar() {
   );
 }
 
+/**
+ * Bars that fold into a cross.
+ *
+ * Driven by CSS transforms on static geometry rather than by animating the
+ * `x1`/`y1` attributes: the coordinates stay valid at every frame, and the
+ * reduced-motion rule in globals.css collapses the transition to an instant
+ * swap instead of leaving the icon stuck mid-shape.
+ */
 function HamburgerIcon({ open }: { open: boolean }) {
+  const barClass = "transition-transform duration-300 ease-out";
+  const origin = { transformOrigin: "12px 12px" } as const;
+
   return (
     <svg
       width="18"
@@ -115,39 +156,35 @@ function HamburgerIcon({ open }: { open: boolean }) {
       aria-hidden
       className="overflow-visible"
     >
-      <motion.line
+      <line
         x1="4"
         x2="20"
         y1="7"
         y2="7"
-        animate={
-          open
-            ? { rotate: 45, x1: 5, x2: 19, y1: 12, y2: 12 }
-            : { rotate: 0, x1: 4, x2: 20, y1: 7, y2: 7 }
-        }
-        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-        style={{ transformOrigin: "12px 12px" }}
+        className={barClass}
+        style={{
+          ...origin,
+          transform: open ? "translateY(5px) rotate(45deg)" : "none",
+        }}
       />
-      <motion.line
+      <line
         x1="4"
         x2="20"
         y1="12"
         y2="12"
-        animate={open ? { opacity: 0 } : { opacity: 1 }}
-        transition={{ duration: 0.15 }}
+        className="transition-opacity duration-200"
+        style={{ opacity: open ? 0 : 1 }}
       />
-      <motion.line
+      <line
         x1="4"
         x2="20"
         y1="17"
         y2="17"
-        animate={
-          open
-            ? { rotate: -45, x1: 5, x2: 19, y1: 12, y2: 12 }
-            : { rotate: 0, x1: 4, x2: 20, y1: 17, y2: 17 }
-        }
-        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-        style={{ transformOrigin: "12px 12px" }}
+        className={barClass}
+        style={{
+          ...origin,
+          transform: open ? "translateY(-5px) rotate(-45deg)" : "none",
+        }}
       />
     </svg>
   );

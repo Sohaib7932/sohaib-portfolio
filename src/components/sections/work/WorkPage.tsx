@@ -10,13 +10,16 @@ import { WorkStats } from "./WorkStats";
 import { WorkApproach } from "./WorkApproach";
 import { WorkCTA } from "./WorkCTA";
 import { projects, projectCategories } from "./data";
+import { SectionDivider } from "@/components/motion/SectionDivider";
+import { EASE, VIEWPORT, VIEWPORT_NEAR } from "@/components/motion/tokens";
+import { Words, wordsContainer, wordVariant } from "@/components/motion/Words";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.7, ease: EASE },
   },
 };
 
@@ -47,12 +50,21 @@ export function WorkPage() {
 
   return (
     <div className="relative isolate overflow-hidden">
-      <div
+      <motion.div
         aria-hidden
+        animate={{ scale: [1, 1.14, 1], opacity: [0.65, 1, 0.65] }}
+        transition={{ duration: 22, ease: "easeInOut", repeat: Infinity }}
         className="pointer-events-none absolute -top-40 right-0 h-[34rem] w-[44rem] rounded-full bg-[radial-gradient(circle_at_60%_40%,rgba(192,38,211,0.14),transparent_60%)] blur-3xl"
       />
-      <div
+      <motion.div
         aria-hidden
+        animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
+        transition={{
+          duration: 28,
+          ease: "easeInOut",
+          repeat: Infinity,
+          delay: 4,
+        }}
         className="pointer-events-none absolute top-[35%] -left-40 h-[28rem] w-[36rem] rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.12),transparent_60%)] blur-3xl"
       />
 
@@ -61,7 +73,7 @@ export function WorkPage() {
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.5, ease: EASE }}
             className="mb-10"
           >
             <Link
@@ -78,7 +90,7 @@ export function WorkPage() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 aria-hidden
-                className="transition-transform group-hover:-translate-x-0.5"
+                className="transition-transform duration-300 ease-out group-hover:-translate-x-1"
               >
                 <path d="m12 19-7-7 7-7" />
                 <path d="M19 12H5" />
@@ -102,13 +114,16 @@ export function WorkPage() {
               </span>
             </motion.div>
             <motion.h1
-              variants={fadeUp}
+              variants={wordsContainer}
               className="text-[36px] font-extrabold leading-[1.02] tracking-tight sm:text-[52px] md:text-[58px] lg:text-[72px]"
             >
-              Featured{" "}
-              <span className="bg-gradient-to-r from-fuchsia-300 via-fuchsia-400 to-pink-500 bg-clip-text text-transparent">
+              <Words text="Featured" />
+              <motion.span
+                variants={wordVariant}
+                className="inline-block bg-gradient-to-r from-fuchsia-300 via-fuchsia-400 to-pink-500 bg-clip-text text-transparent"
+              >
                 Projects.
-              </span>
+              </motion.span>
             </motion.h1>
             <motion.p
               variants={fadeUp}
@@ -124,11 +139,7 @@ export function WorkPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.7,
-              delay: 0.25,
-              ease: [0.22, 1, 0.36, 1],
-            }}
+            transition={{ duration: 0.7, delay: 0.25, ease: EASE }}
             className="mt-12 sm:mt-16"
           >
             <WorkStats
@@ -149,28 +160,31 @@ export function WorkPage() {
       )}
 
       <section className="relative px-5 py-16 sm:px-8 sm:py-20 lg:px-16">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-px max-w-3xl bg-gradient-to-r from-transparent via-accent/40 to-transparent"
-        />
+        <SectionDivider />
         <div className="mx-auto w-full max-w-6xl">
           <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={VIEWPORT}
             className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end"
           >
             <motion.div variants={fadeUp}>
               <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.28em] text-accent/85 sm:text-[12px] sm:tracking-[0.32em]">
                 The full catalogue
               </p>
-              <h2 className="text-[26px] font-extrabold leading-[1.1] tracking-tight sm:text-[36px] md:text-[42px]">
-                Browse by{" "}
-                <span className="bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent">
+              <motion.h2
+                variants={wordsContainer}
+                className="text-[26px] font-extrabold leading-[1.1] tracking-tight sm:text-[36px] md:text-[42px]"
+              >
+                <Words text="Browse by" />
+                <motion.span
+                  variants={wordVariant}
+                  className="inline-block bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent"
+                >
                   category.
-                </span>
-              </h2>
+                </motion.span>
+              </motion.h2>
             </motion.div>
             <motion.p
               variants={fadeUp}
@@ -187,7 +201,7 @@ export function WorkPage() {
             variants={fadeUp}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-60px" }}
+            viewport={VIEWPORT_NEAR}
             className="mt-8"
           >
             <CategoryFilter
@@ -205,7 +219,7 @@ export function WorkPage() {
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.35, ease: EASE }}
                 >
                   <ProjectGrid items={visible} />
                 </motion.div>
@@ -235,10 +249,7 @@ export function WorkPage() {
       </section>
 
       <section className="relative px-5 py-20 sm:px-8 sm:py-28 lg:px-16">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-px max-w-3xl bg-gradient-to-r from-transparent via-accent/40 to-transparent"
-        />
+        <SectionDivider />
         <div className="mx-auto w-full max-w-6xl">
           <WorkApproach />
         </div>

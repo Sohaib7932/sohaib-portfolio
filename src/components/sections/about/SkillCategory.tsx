@@ -1,8 +1,13 @@
 "use client";
 
-import { motion, type Variants } from "motion/react";
+import { motion } from "motion/react";
 import type { ReactNode } from "react";
 import { SkillProgress } from "./SkillProgress";
+import {
+  SpotlightOverlay,
+  useSpotlight,
+} from "@/components/motion/useSpotlight";
+import { cardRise, SPRING, VIEWPORT } from "@/components/motion/tokens";
 
 type Tone = "violet" | "amber";
 
@@ -14,15 +19,6 @@ export type SkillCategoryProps = {
   tone?: Tone;
   skills: Skill[];
   index: number;
-};
-
-const cardVariants: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.65, delay: i * 0.1, ease: [0.22, 1, 0.36, 1] },
-  }),
 };
 
 const toneIconBg: Record<Tone, string> = {
@@ -39,6 +35,11 @@ const toneGlow: Record<Tone, string> = {
     "before:bg-[radial-gradient(circle_at_20%_0%,rgba(251,191,36,0.16),transparent_55%)]",
 };
 
+const spotlightColor: Record<Tone, string> = {
+  violet: "rgba(167,139,250,0.18)",
+  amber: "rgba(251,191,36,0.16)",
+};
+
 export function SkillCategory({
   title,
   icon,
@@ -46,19 +47,29 @@ export function SkillCategory({
   skills,
   index,
 }: SkillCategoryProps) {
+  const { handlers, glow, tiltStyle } = useSpotlight({
+    radius: 280,
+    tilt: 6,
+    color: spotlightColor[tone],
+  });
+
   return (
     <motion.div
       custom={index}
-      variants={cardVariants}
+      variants={cardRise}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-80px" }}
-      whileHover={{ y: -4 }}
-      transition={{ type: "spring", stiffness: 280, damping: 22 }}
-      className={`group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-6 backdrop-blur-sm before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:opacity-70 ${toneGlow[tone]}`}
+      viewport={VIEWPORT}
+      whileHover={{ y: -6 }}
+      transition={SPRING}
+      {...handlers}
+      style={tiltStyle}
+      className={`group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-6 backdrop-blur-sm transition-colors hover:border-accent/40 before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:opacity-70 ${toneGlow[tone]}`}
     >
+      <SpotlightOverlay glow={glow} />
+
       <div
-        className={`mb-6 flex h-11 w-11 items-center justify-center rounded-xl border border-border-subtle ${toneIconBg[tone]}`}
+        className={`mb-6 flex h-11 w-11 items-center justify-center rounded-xl border border-border-subtle transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-6 ${toneIconBg[tone]}`}
       >
         {icon}
       </div>
@@ -71,7 +82,7 @@ export function SkillCategory({
         {skills.map((skill) => (
           <li
             key={skill.name}
-            className="flex items-center justify-between gap-3 rounded-xl border border-border-subtle/60 bg-white/[0.015] px-3.5 py-2.5"
+            className="flex items-center justify-between gap-3 rounded-xl border border-border-subtle/60 bg-white/[0.015] px-3.5 py-2.5 transition-colors group-hover:border-border-subtle"
           >
             <span className="text-[13.5px] font-medium text-foreground/85">
               {skill.name}
