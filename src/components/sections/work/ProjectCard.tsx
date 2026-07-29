@@ -80,7 +80,9 @@ export function ProjectCard({
           {project.description}
         </p>
 
-        <div className="mt-5 flex items-center gap-2.5">
+        {/* Wraps because two labelled buttons don't always fit a half-width
+            card at the narrowest breakpoints. */}
+        <div className="mt-5 flex flex-wrap items-center gap-2.5">
           <PrimaryAction
             label={project.primary.label}
             href={project.primary.href}
