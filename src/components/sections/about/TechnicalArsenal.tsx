@@ -61,7 +61,7 @@ export function TechnicalArsenal() {
           <Words text="Technical" />
           <motion.span
             variants={wordVariant}
-            className="inline-block bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent"
+            className="inline-block text-accent-ink"
           >
             Arsenal
           </motion.span>

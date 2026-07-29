@@ -42,7 +42,7 @@ export function FeaturedProject({ project }: { project: Project }) {
   const { handlers, glow } = useSpotlight({
     radius: 520,
     tilt: 0,
-    color: "rgba(167,139,250,0.12)",
+    color: "var(--accent)",
   });
 
   const { scrollYProgress } = useScroll({
@@ -58,18 +58,10 @@ export function FeaturedProject({ project }: { project: Project }) {
       whileInView="show"
       viewport={VIEWPORT}
       {...handlers}
-      className="group relative isolate overflow-hidden rounded-3xl border border-border-strong bg-white/[0.025] backdrop-blur-md"
+      className="group relative isolate overflow-hidden rounded-3xl border border-border-strong bg-surface backdrop-blur-md"
     >
       <SpotlightOverlay glow={glow} />
 
-      <motion.div
-        aria-hidden
-        animate={
-          reduce ? undefined : { scale: [1, 1.15, 1], opacity: [0.7, 1, 0.7] }
-        }
-        transition={{ duration: 12, ease: "easeInOut", repeat: Infinity }}
-        className="pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(167,139,250,0.18),transparent_60%)] blur-2xl"
-      />
       <motion.div
         aria-hidden
         initial={{ scaleX: 0 }}
@@ -114,10 +106,10 @@ export function FeaturedProject({ project }: { project: Project }) {
             className="mb-4 inline-flex items-center gap-2"
           >
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-fuchsia-400/70" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-fuchsia-400" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent/70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
             </span>
-            <span className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-fuchsia-300/90">
+            <span className="text-[10.5px] font-semibold uppercase tracking-[0.22em] text-accent-ink">
               Featured · Latest
             </span>
           </motion.div>
@@ -148,7 +140,7 @@ export function FeaturedProject({ project }: { project: Project }) {
                 key={t}
                 variants={chip}
                 whileHover={{ y: -2, scale: 1.05 }}
-                className="inline-flex cursor-default items-center rounded-full border border-border-subtle bg-white/[0.035] px-3 py-1 text-[11px] font-medium tracking-wide text-foreground/80 transition-colors hover:border-accent/50 hover:text-foreground"
+                className="inline-flex cursor-default items-center rounded-full border border-border-subtle bg-surface px-3 py-1 text-[11px] font-medium tracking-wide text-foreground/80 transition-colors hover:border-accent/50 hover:text-foreground"
               >
                 {t}
               </motion.span>
@@ -185,7 +177,7 @@ function PrimaryAction({ label, href }: { label: string; href: string }) {
       rel={external ? "noopener noreferrer" : undefined}
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.97 }}
-      className="btn-sheen group inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.7)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] sm:text-[12.5px]"
+      className="btn-sheen group inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-on-accent shadow-[0_10px_30px_-12px_var(--shadow)] transition-shadow hover:shadow-[0_14px_36px_-10px_var(--shadow)] sm:text-[12.5px]"
     >
       <IconForLabel label={label} />
       {label}
@@ -202,7 +194,7 @@ function SecondaryAction({ label, href }: { label: string; href: string }) {
       rel={external ? "noopener noreferrer" : undefined}
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.97 }}
-      className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-white/[0.025] px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-foreground transition-colors hover:bg-white/[0.05] sm:text-[12.5px]"
+      className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-foreground transition-colors hover:bg-surface-strong sm:text-[12.5px]"
     >
       <IconForLabel label={label} />
       {label}

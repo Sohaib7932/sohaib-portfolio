@@ -33,12 +33,6 @@ export function Footer() {
         transition={{ duration: 1.2, ease: EASE }}
         className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent"
       />
-      <motion.div
-        aria-hidden
-        animate={{ scale: [1, 1.12, 1], opacity: [0.7, 1, 0.7] }}
-        transition={{ duration: 16, ease: "easeInOut", repeat: Infinity }}
-        className="pointer-events-none absolute -top-40 left-1/2 h-96 w-[60rem] -translate-x-1/2 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.18),transparent_60%)] blur-3xl"
-      />
 
       <motion.div
         variants={stagger}
@@ -56,7 +50,7 @@ export function Footer() {
             <div className="max-w-2xl">
               <motion.p
                 variants={fadeUp}
-                className="mb-4 text-[12px] font-medium uppercase tracking-[0.32em] text-accent/85"
+                className="mb-4 text-[12px] font-medium uppercase tracking-[0.32em] text-accent-ink/85"
               >
                 Have an idea?
               </motion.p>
@@ -67,7 +61,7 @@ export function Footer() {
                 <Words text="Let's turn it into" />
                 <motion.span
                   variants={wordVariant}
-                  className="inline-block bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent"
+                  className="inline-block text-accent-ink"
                 >
                   a real product.
                 </motion.span>
@@ -88,7 +82,7 @@ export function Footer() {
                   href="mailto:muhammadsohaib7932@gmail.com"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  className="btn-sheen group inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] sm:gap-3 sm:px-7 sm:py-4 sm:text-[12.5px] sm:tracking-[0.18em]"
+                  className="btn-sheen group inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-on-accent shadow-[0_10px_30px_-12px_var(--shadow)] transition-shadow hover:shadow-[0_14px_36px_-10px_var(--shadow)] sm:gap-3 sm:px-7 sm:py-4 sm:text-[12.5px] sm:tracking-[0.18em]"
                 >
                   Start a conversation
                   <ArrowIcon />

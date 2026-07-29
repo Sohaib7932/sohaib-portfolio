@@ -67,15 +67,8 @@ export function HeroContent() {
     >
       <motion.p
         variants={item}
-        className="mb-5 flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-accent/85 sm:mb-7 sm:text-[12px] sm:tracking-[0.32em]"
+        className="mb-5 text-[11px] font-medium uppercase tracking-[0.28em] text-accent-ink/85 sm:mb-7 sm:text-[12px] sm:tracking-[0.32em]"
       >
-        <motion.span
-          aria-hidden
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.9, delay: 0.45, ease: EASE }}
-          className="h-px w-8 shrink-0 origin-left bg-accent/60"
-        />
         BUILDING AI-POWERED DIGITAL SOLUTIONS
       </motion.p>
 
@@ -92,7 +85,7 @@ export function HeroContent() {
         {/* One node, so the gradient stays continuous across the whole name. */}
         <motion.span
           variants={word}
-          className="block bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent"
+          className="block text-accent-ink"
         >
           Muhammad Sohaib
         </motion.span>
@@ -112,8 +105,8 @@ export function HeroContent() {
         variants={item}
         className="mt-4 max-w-md text-[14.5px] leading-[1.7] text-foreground/60 sm:text-[15.5px]"
       >
-        I have 3+ years of experience in UI/UX design and 2.5+ years in
-        development. I started with HTML and CSS, moved to WordPress, then to
+        I have 2+ years of experience in UI/UX designing and development. 
+        I started with HTML and CSS, moved to WordPress, then to
         React, and now Next.js is where I spend most of my time. My goal is
         simple: build things that look good and feel good to use.
       </motion.p>
@@ -133,11 +126,11 @@ function DownloadCvButton() {
         download
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
-        className="btn-sheen group inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] sm:gap-3 sm:px-7 sm:py-4 sm:text-[12.5px] sm:tracking-[0.18em]"
+        className="btn-sheen group inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-on-accent shadow-[0_10px_30px_-12px_var(--shadow)] transition-shadow hover:shadow-[0_14px_36px_-10px_var(--shadow)] sm:gap-3 sm:px-7 sm:py-4 sm:text-[12.5px] sm:tracking-[0.18em]"
       >
         <DownloadIcon />
         Download CV
-        <span className="ml-1 h-1.5 w-1.5 rounded-full bg-[#1a0b2e]/70 transition-transform group-hover:translate-x-0.5" />
+        <span className="ml-1 h-1.5 w-1.5 rounded-full bg-on-accent/70 transition-transform group-hover:translate-x-0.5" />
       </motion.a>
     </Magnetic>
   );

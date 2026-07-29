@@ -1,16 +1,89 @@
 @import "tailwindcss";
 
-:root {
-  --background: #08060f;
-  --foreground: #f5f3ff;
-  --muted: #a8a3b8;
-  --surface: rgba(255, 255, 255, 0.035);
-  --surface-strong: rgba(255, 255, 255, 0.06);
-  --border: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.14);
-  --accent: #c4b5fd;
-  --accent-strong: #a78bfa;
-  --accent-glow: #8b5cf6;
+/*
+  Two themes, one set of names.
+
+  Every component styles itself with semantic tokens (surface, line, accent,
+  on-accent) and never with a literal colour, so switching `data-theme` on
+  <html> re-skins the whole site without touching a single component.
+*/
+
+/*
+  Warm grey and cream, the way the reference does it.
+
+  There is deliberately no loud accent. The page gets its structure from
+  contrast and spacing instead of from hue, which is what stops it reading as a
+  template. The one hue present is a desaturated petrol, used only for small
+  marks: eyebrows, rules, the active nav underline, hover states.
+*/
+
+:root,
+[data-theme="light"] {
+  --background: #e6e5e0;
+  --foreground: #1b1b18;
+  --muted: #5c5b54;
+
+  /* Raised panels are an ink tint on paper, never a white film. */
+  --surface: rgba(27, 27, 24, 0.04);
+  --surface-strong: rgba(27, 27, 24, 0.075);
+  --elevated: #dcdbd5;
+
+  --border: rgba(27, 27, 24, 0.14);
+  --border-strong: rgba(27, 27, 24, 0.26);
+
+  /*
+    `--accent` is the fill, `--accent-ink` the darker sibling for accent
+    coloured *text*, which needs 4.5:1 against paper to stay legible at eyebrow
+    sizes. On the dark theme both collapse to one value, since contrast is no
+    longer the binding constraint there.
+  */
+  --accent: #2f5d5a;
+  --accent-ink: #274e4b;
+  --accent-strong: #23433f;
+  --on-accent: #f2f1ec;
+
+  /* Status colours are the one place hue still carries meaning. */
+  --ok: #14724f;
+  --danger: #a92318;
+
+  /* Translucent backdrop for the floating navbar. */
+  --chrome: rgba(230, 229, 224, 0.78);
+  --shadow: rgba(27, 27, 24, 0.18);
+  --shadow-lift: rgba(27, 27, 24, 0.1);
+}
+
+[data-theme="dark"] {
+  --background: #191917;
+  --foreground: #efeee9;
+  --muted: #9b9a92;
+
+  --surface: rgba(239, 238, 233, 0.045);
+  --surface-strong: rgba(239, 238, 233, 0.085);
+  --elevated: #232320;
+
+  --border: rgba(239, 238, 233, 0.11);
+  --border-strong: rgba(239, 238, 233, 0.22);
+
+  --accent: #8fbdb6;
+  --accent-ink: #8fbdb6;
+  --accent-strong: #a8ccc6;
+  --on-accent: #14201f;
+
+  --ok: #56d39a;
+  --danger: #f4796b;
+
+  --chrome: rgba(25, 25, 23, 0.72);
+  --shadow: rgba(0, 0, 0, 0.55);
+  --shadow-lift: rgba(0, 0, 0, 0.4);
+}
+
+/* Derived tints. Both themes get these for free from their own --accent, so a
+   hover wash is never a hardcoded rgba() that only works on one background. */
+:root,
+[data-theme="light"],
+[data-theme="dark"] {
+  --accent-wash: color-mix(in srgb, var(--accent) 16%, transparent);
+  --accent-veil: color-mix(in srgb, var(--accent) 34%, transparent);
 }
 
 @theme inline {
@@ -19,11 +92,19 @@
   --color-muted: var(--muted);
   --color-surface: var(--surface);
   --color-surface-strong: var(--surface-strong);
+  --color-elevated: var(--elevated);
+  --color-chrome: var(--chrome);
   --color-border-subtle: var(--border);
   --color-border-strong: var(--border-strong);
   --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-wash: var(--accent-wash);
+  --color-accent-veil: var(--accent-veil);
   --color-accent-strong: var(--accent-strong);
-  --color-accent-glow: var(--accent-glow);
+  --color-on-accent: var(--on-accent);
+  --color-ok: var(--ok);
+  --color-danger: var(--danger);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -49,24 +130,106 @@ html {
   position: relative;
 }
 
+/* Repainting every surface at once would strobe. Easing the two root colours
+   lets the whole page cross-fade between themes instead. */
+html,
 body {
-  background-image:
-    radial-gradient(
-      900px 600px at 85% -10%,
-      rgba(139, 92, 246, 0.18),
-      transparent 60%
-    ),
-    radial-gradient(
-      700px 500px at -10% 20%,
-      rgba(139, 92, 246, 0.08),
-      transparent 60%
-    );
-  background-attachment: fixed;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+h1,
+h2 {
+  text-wrap: balance;
+}
+
+/*
+  The oversized name that scrolls behind the hero.
+
+  The track holds two identical halves, so translating it by exactly -50% lands
+  on a seam-free loop. Animating `transform` keeps the whole thing on the
+  compositor: no layout, no paint, no main-thread work per frame.
+*/
+@keyframes marquee-slide {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track {
+  animation: marquee-slide 34s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The blanket rule below would snap the track to its end frame. Parking it
+     at the start is the honest version of "no motion". */
+  .marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/*
+  Paper grain.
+
+  Replaces the blurred colour blobs that used to sit behind the page. A single
+  tiling noise texture gives the flat surfaces something to catch the light on,
+  costs no JavaScript, and reads as print stock rather than as a gradient mesh.
+  It blends darker on cream and lighter on ink so the effect is symmetrical.
+*/
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: var(--grain-blend);
+}
+
+:root,
+[data-theme="light"] {
+  --grain-opacity: 0.4;
+  --grain-blend: multiply;
+}
+
+[data-theme="dark"] {
+  --grain-opacity: 0.22;
+  --grain-blend: screen;
 }
 
 ::selection {
-  background: rgba(167, 139, 250, 0.35);
-  color: #fff;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+/* The theme switch crossfades from the `data-theme` attribute rather than from
+   React state, so the correct icon is already painted on first frame. */
+.theme-icon {
+  position: absolute;
+  display: flex;
+  transition:
+    opacity 0.35s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-theme="dark"] .theme-icon-sun,
+[data-theme="light"] .theme-icon-moon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.4);
+}
+
+[data-theme="dark"] .theme-icon-moon,
+[data-theme="light"] .theme-icon-sun {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
 }
 
 section[id] {
@@ -90,7 +253,7 @@ section[id] {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.45),
+    rgba(255, 255, 255, 0.28),
     transparent
   );
   transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
@@ -101,15 +264,15 @@ section[id] {
   transform: translateX(120%) skewX(-20deg);
 }
 
-/* Keyboard focus should be obvious even on the glassy surfaces. */
+/* Keyboard focus has to clear both the paper and the ink background. */
 :where(a, button, input, textarea):focus-visible {
-  outline: 2px solid var(--accent-strong);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
 /* Anyone who asks for less motion gets the calm version of the site: no
-   drifting backgrounds, no sheen, no smooth-scroll hijack. Motion's own
-   animations are handled by `reducedMotion="user"` in MotionProvider. */
+   drifting grain, no sheen, no smooth-scroll hijack. Motion's own animations
+   are handled by `reducedMotion="user"` in MotionProvider. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

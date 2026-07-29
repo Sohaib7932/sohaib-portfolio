@@ -5,21 +5,13 @@ import { Parallax } from "@/components/motion/Parallax";
 import { fadeUpBlur, stagger, VIEWPORT } from "@/components/motion/tokens";
 import { Words, wordsContainer, wordVariant } from "@/components/motion/Words";
 
-const tones = {
-  fuchsia:
-    "bg-gradient-to-r from-fuchsia-300 via-fuchsia-400 to-pink-500 bg-clip-text text-transparent",
-  accent:
-    "bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent",
-} as const;
-
 type SectionHeaderProps = {
   eyebrow: string;
   /** The plain part of the heading. Reveals one word at a time. */
   title: string;
-  /** The highlighted phrase. Stays one node so its gradient runs unbroken. */
+  /** The highlighted phrase. Set in the accent, kept as a single node. */
   highlight: string;
   body: string;
-  tone?: keyof typeof tones;
   /** Heading size, for the smaller sub-section headers. */
   size?: "lg" | "md";
 };
@@ -41,7 +33,6 @@ export function SectionHeader({
   title,
   highlight,
   body,
-  tone = "fuchsia",
   size = "lg",
 }: SectionHeaderProps) {
   return (
@@ -54,7 +45,7 @@ export function SectionHeader({
       >
         <motion.p
           variants={fadeUpBlur}
-          className="mb-4 flex items-center justify-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-accent/85 sm:mb-5 sm:text-[12px] sm:tracking-[0.32em]"
+          className="mb-4 flex items-center justify-center gap-3 text-[11px] font-medium uppercase tracking-[0.28em] text-accent-ink/85 sm:mb-5 sm:text-[12px] sm:tracking-[0.32em]"
         >
           <motion.span
             aria-hidden
@@ -80,10 +71,7 @@ export function SectionHeader({
           className={`font-extrabold leading-[1.05] tracking-tight ${sizes[size]}`}
         >
           <Words text={title} />
-          <motion.span
-            variants={wordVariant}
-            className={`inline-block ${tones[tone]}`}
-          >
+          <motion.span variants={wordVariant} className="inline-block text-accent-ink">
             {highlight}
           </motion.span>
         </motion.h2>

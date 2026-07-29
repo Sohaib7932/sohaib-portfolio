@@ -7,6 +7,7 @@ import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import { NavLink } from "./NavLink";
 import { MobileMenu } from "./MobileMenu";
 import { useActiveSection } from "./useActiveSection";
+import { ThemeToggle } from "./ThemeToggle";
 import { Magnetic } from "@/components/motion/Magnetic";
 import { EASE } from "@/components/motion/tokens";
 
@@ -74,8 +75,8 @@ export function Navbar() {
             transition={{ duration: 0.4, ease: EASE }}
             className={`flex items-center justify-between gap-3 rounded-full border px-3 py-2 transition-colors duration-300 sm:px-5 sm:py-3 lg:px-6 ${
               scrolled
-                ? "border-border-strong bg-[#100a1c]/85 backdrop-blur-xl"
-                : "border-border-subtle bg-[#100a1c]/55 backdrop-blur-md"
+                ? "border-border-strong bg-chrome backdrop-blur-xl"
+                : "border-border-subtle bg-chrome backdrop-blur-md"
             }`}
           >
             <Link
@@ -85,7 +86,7 @@ export function Navbar() {
               <span className="inline-block transition-transform duration-300 ease-out group-hover:-translate-y-px">
                 M. SOHAIB
               </span>
-              <span className="ml-0.5 inline-block text-accent transition-transform duration-300 ease-out group-hover:rotate-90">
+              <span className="ml-0.5 inline-block text-accent-ink transition-transform duration-300 ease-out group-hover:rotate-90">
                 .
               </span>
             </Link>
@@ -100,28 +101,32 @@ export function Navbar() {
               ))}
             </nav>
 
-            <Magnetic className="hidden lg:inline-block">
-              <motion.a
-                href="/#contact"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-                className="btn-sheen group relative inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-[13px] font-semibold tracking-wide text-[#1a0b2e] shadow-[0_8px_30px_-10px_rgba(167,139,250,0.7)] transition-shadow hover:shadow-[0_10px_40px_-8px_rgba(167,139,250,0.9)]"
-              >
-                Hire Me
-                <span className="h-1.5 w-1.5 rounded-full bg-[#1a0b2e]/70 transition-transform group-hover:translate-x-0.5" />
-              </motion.a>
-            </Magnetic>
+            <div className="flex shrink-0 items-center gap-2 sm:gap-2.5">
+              <ThemeToggle />
 
-            <button
-              type="button"
-              onClick={() => setOpen((v) => !v)}
-              aria-expanded={open}
-              aria-controls="mobile-menu"
-              aria-label={open ? "Close menu" : "Open menu"}
-              className="relative z-50 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border-subtle bg-white/[0.04] text-foreground transition-colors hover:border-border-strong active:scale-95 sm:h-10 sm:w-10 lg:hidden"
-            >
-              <HamburgerIcon open={open} />
-            </button>
+              <Magnetic className="hidden lg:inline-block">
+                <motion.a
+                  href="/#contact"
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.96 }}
+                  className="btn-sheen group relative inline-flex items-center gap-2 rounded-full bg-accent px-5 py-2.5 text-[13px] font-semibold tracking-wide text-on-accent shadow-[0_10px_30px_-12px_var(--shadow)] transition-shadow hover:shadow-[0_14px_36px_-10px_var(--shadow)]"
+                >
+                  Hire Me
+                  <span className="h-1.5 w-1.5 rounded-full bg-on-accent/70 transition-transform group-hover:translate-x-0.5" />
+                </motion.a>
+              </Magnetic>
+
+              <button
+                type="button"
+                onClick={() => setOpen((v) => !v)}
+                aria-expanded={open}
+                aria-controls="mobile-menu"
+                aria-label={open ? "Close menu" : "Open menu"}
+                className="relative z-50 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-border-subtle bg-surface-strong text-foreground transition-colors hover:border-border-strong active:scale-95 sm:h-10 sm:w-10 lg:hidden"
+              >
+                <HamburgerIcon open={open} />
+              </button>
+            </div>
           </motion.div>
         </div>
       </motion.header>

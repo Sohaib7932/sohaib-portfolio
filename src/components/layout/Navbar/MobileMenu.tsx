@@ -66,7 +66,7 @@ export function MobileMenu({
           <motion.div
             variants={panelVariants}
             onClick={(e) => e.stopPropagation()}
-            className="absolute inset-x-3 top-[calc(env(safe-area-inset-top,0px)+4.5rem)] overflow-hidden rounded-3xl border border-border-subtle bg-[#100a1c]/95 p-5 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] backdrop-blur-xl sm:inset-x-5 sm:top-[calc(env(safe-area-inset-top,0px)+5rem)] sm:p-6"
+            className="absolute inset-x-3 top-[calc(env(safe-area-inset-top,0px)+4.5rem)] overflow-hidden rounded-3xl border border-border-subtle bg-chrome p-5 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] backdrop-blur-xl sm:inset-x-5 sm:top-[calc(env(safe-area-inset-top,0px)+5rem)] sm:p-6"
           >
             <div
               aria-hidden
@@ -74,7 +74,7 @@ export function MobileMenu({
             />
             <div
               aria-hidden
-              className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(167,139,250,0.18),transparent_70%)]"
+              className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-[radial-gradient(circle_at_50%_50%,var(--accent-wash),transparent_70%)]"
             />
 
             <nav className="flex flex-col">
@@ -88,7 +88,7 @@ export function MobileMenu({
                     <span>{link.label}</span>
                     <span
                       aria-hidden
-                      className="text-foreground/35 transition-all group-hover:translate-x-0.5 group-hover:text-accent"
+                      className="text-foreground/35 transition-all group-hover:translate-x-0.5 group-hover:text-accent-ink"
                     >
                       →
                     </span>
@@ -102,10 +102,10 @@ export function MobileMenu({
               href="/#contact"
               onClick={onClose}
               whileTap={{ scale: 0.97 }}
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-5 py-3.5 text-[12.5px] font-semibold uppercase tracking-[0.18em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)]"
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-accent px-5 py-3.5 text-[12.5px] font-semibold uppercase tracking-[0.18em] text-on-accent shadow-[0_10px_30px_-12px_var(--shadow)]"
             >
               Hire Me
-              <span className="h-1.5 w-1.5 rounded-full bg-[#1a0b2e]/70" />
+              <span className="h-1.5 w-1.5 rounded-full bg-on-accent/70" />
             </motion.a>
           </motion.div>
         </motion.div>

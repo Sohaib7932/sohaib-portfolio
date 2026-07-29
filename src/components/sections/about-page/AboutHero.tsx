@@ -91,11 +91,11 @@ export function AboutHero() {
       >
         <motion.div
           variants={item}
-          className="mb-5 inline-flex items-center gap-2 rounded-full border border-border-subtle bg-white/[0.04] px-3 py-1.5 backdrop-blur-md"
+          className="mb-5 inline-flex items-center gap-2 rounded-full border border-border-subtle bg-surface-strong px-3 py-1.5 backdrop-blur-md"
         >
           <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/70" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ok/70" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-ok" />
           </span>
           <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/75">
             About Me
@@ -117,7 +117,7 @@ export function AboutHero() {
           </motion.span>{" "}
           <motion.span
             variants={word}
-            className="block bg-gradient-to-r from-fuchsia-300 via-fuchsia-400 to-pink-500 bg-clip-text text-transparent"
+            className="block text-accent-ink"
           >
             the craft.
           </motion.span>
@@ -141,7 +141,7 @@ export function AboutHero() {
           <Magnetic strength={0.26}>
             <Link
               href="/#contact"
-              className="btn-sheen group inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] sm:px-7 sm:py-4 sm:text-[12.5px] sm:tracking-[0.18em]"
+              className="btn-sheen group inline-flex items-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-on-accent shadow-[0_10px_30px_-12px_var(--shadow)] transition-shadow hover:shadow-[0_14px_36px_-10px_var(--shadow)] sm:px-7 sm:py-4 sm:text-[12.5px] sm:tracking-[0.18em]"
             >
               Let&apos;s talk
               <ArrowIcon />
@@ -151,7 +151,7 @@ export function AboutHero() {
             <a
               href="/cv.pdf"
               download
-              className="group inline-flex items-center gap-2 rounded-full border border-border-strong bg-white/[0.025] px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-foreground transition-colors hover:border-accent hover:bg-white/[0.05] sm:px-6 sm:py-3.5 sm:text-[12.5px] sm:tracking-[0.18em]"
+              className="group inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface px-5 py-3 text-[12px] font-semibold uppercase tracking-[0.16em] text-foreground transition-colors hover:border-accent hover:bg-surface-strong sm:px-6 sm:py-3.5 sm:text-[12.5px] sm:tracking-[0.18em]"
             >
               <DownloadIcon />
               Download CV
@@ -170,17 +170,6 @@ export function AboutHero() {
           style={reduce ? undefined : { y: portraitY }}
           className="relative"
         >
-          <motion.div
-            aria-hidden
-            animate={
-              reduce
-                ? undefined
-                : { scale: [1, 1.08, 1], opacity: [0.75, 1, 0.75] }
-            }
-            transition={{ duration: 7, ease: "easeInOut", repeat: Infinity }}
-            className="absolute -inset-8 -z-10 rounded-[40px] bg-[radial-gradient(circle_at_50%_30%,rgba(167,139,250,0.32),transparent_60%)] blur-2xl"
-          />
-
           <motion.div
             onPointerMove={onPointerMove}
             onPointerLeave={onPointerLeave}
@@ -203,11 +192,11 @@ export function AboutHero() {
                 <motion.div
                   animate={reduce ? undefined : { rotate: 360 }}
                   transition={{ duration: 26, ease: "linear", repeat: Infinity }}
-                  className="absolute -inset-[50%] bg-[conic-gradient(from_0deg,transparent_0deg,rgba(232,121,249,0.7)_45deg,transparent_110deg,transparent_230deg,rgba(167,139,250,0.6)_280deg,transparent_340deg)]"
+                  className="absolute -inset-[50%] bg-[conic-gradient(from_0deg,transparent_0deg,var(--accent)_45deg,transparent_110deg,transparent_230deg,var(--accent)_280deg,transparent_340deg)]"
                 />
               </div>
 
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-border-strong bg-gradient-to-br from-white/[0.06] via-white/[0.025] to-transparent shadow-[0_30px_80px_-30px_rgba(139,92,246,0.45)]">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-border-strong bg-gradient-to-br from-surface-strong via-surface to-transparent shadow-[0_10px_30px_-12px_var(--shadow)]">
                 <motion.img
                   src="/sohaib.JPG"
                   alt="Muhammad Sohaib"
@@ -249,10 +238,10 @@ export function AboutHero() {
               stiffness: 220,
               damping: 22,
             }}
-            className="absolute -bottom-4 -left-3 z-20 flex items-center gap-3 rounded-2xl border border-border-strong bg-[#120a22]/90 px-4 py-3 backdrop-blur-md sm:-bottom-5 sm:-left-6 sm:px-5 sm:py-3.5"
+            className="absolute -bottom-4 -left-3 z-20 flex items-center gap-3 rounded-2xl border border-border-strong bg-elevated px-4 py-3 backdrop-blur-md sm:-bottom-5 sm:-left-6 sm:px-5 sm:py-3.5"
           >
             <span className="text-[28px] font-extrabold leading-none tracking-tight text-foreground sm:text-[34px]">
-              3<span className="text-accent">+</span>
+              2<span className="text-accent-ink">+</span>
             </span>
             <span className="text-[10px] font-semibold uppercase leading-tight tracking-[0.18em] text-foreground/65 sm:text-[10.5px]">
               Years in
@@ -271,12 +260,12 @@ export function AboutHero() {
               stiffness: 220,
               damping: 22,
             }}
-            className="absolute -right-3 top-8 z-20 hidden items-center gap-2 rounded-2xl border border-border-strong bg-[#120a22]/90 px-4 py-2.5 backdrop-blur-md sm:flex"
+            className="absolute -right-3 top-8 z-20 hidden items-center gap-2 rounded-2xl border border-border-strong bg-elevated px-4 py-2.5 backdrop-blur-md sm:flex"
           >
             <motion.div
               animate={reduce ? undefined : { rotate: [0, 8, -8, 0] }}
               transition={{ duration: 5, ease: "easeInOut", repeat: Infinity }}
-              className="flex h-8 w-8 items-center justify-center rounded-xl bg-accent/15 text-accent"
+              className="flex h-8 w-8 items-center justify-center rounded-xl bg-accent/15 text-accent-ink"
             >
               <svg
                 width="14"

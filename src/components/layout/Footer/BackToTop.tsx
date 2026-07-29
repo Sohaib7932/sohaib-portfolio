@@ -13,7 +13,7 @@ export function BackToTop() {
           window.scrollTo({ top: 0, behavior: "smooth" });
         }
       }}
-      className="group inline-flex items-center gap-2 rounded-full border border-border-subtle bg-white/[0.025] px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground/75 transition-colors hover:border-border-strong hover:text-foreground"
+      className="group inline-flex items-center gap-2 rounded-full border border-border-subtle bg-surface px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-foreground/75 transition-colors hover:border-border-strong hover:text-foreground"
     >
       <svg
         width="14"

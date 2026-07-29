@@ -86,11 +86,11 @@ function StatCard({
       transition={SPRING}
       {...handlers}
       style={tiltStyle}
-      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-5 backdrop-blur-sm transition-colors hover:border-accent/50 sm:p-6"
+      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-surface p-5 backdrop-blur-sm transition-colors hover:border-accent/50 sm:p-6"
     >
       <SpotlightOverlay glow={glow} />
 
-      <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-xl border border-border-subtle bg-[linear-gradient(135deg,rgba(167,139,250,0.22),rgba(139,92,246,0.04))] text-accent transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-6">
+      <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-xl border border-border-subtle bg-accent-wash text-accent-ink transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-6">
         {icon}
       </div>
 

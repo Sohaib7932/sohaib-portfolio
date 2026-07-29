@@ -30,15 +30,15 @@ export function CategoryFilter({
             transition={SPRING_SNAPPY}
             className={`relative rounded-full border px-4 py-2 text-[12px] font-semibold tracking-wide transition-colors ${
               isActive
-                ? "border-transparent text-[#1a0b2e]"
-                : "border-border-strong bg-white/[0.025] text-foreground/75 hover:border-accent/40 hover:bg-white/[0.05] hover:text-foreground"
+                ? "border-transparent text-on-accent"
+                : "border-border-strong bg-surface text-foreground/75 hover:border-accent/40 hover:bg-surface-strong hover:text-foreground"
             }`}
           >
             {/* One shared pill slides between filters instead of four fading. */}
             {isActive && (
               <motion.span
                 layoutId="filter-active"
-                className="absolute inset-0 -z-10 rounded-full bg-accent shadow-[0_8px_28px_-12px_rgba(167,139,250,0.9)]"
+                className="absolute inset-0 -z-10 rounded-full bg-accent shadow-[0_10px_30px_-12px_var(--shadow)]"
                 transition={SPRING_SNAPPY}
               />
             )}

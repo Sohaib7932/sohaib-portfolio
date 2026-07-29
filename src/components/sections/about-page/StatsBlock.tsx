@@ -10,7 +10,7 @@ import { cardRise, SPRING, VIEWPORT_NEAR } from "@/components/motion/tokens";
 
 const stats = [
   {
-    value: 3,
+    value: 2,
     suffix: "+",
     label: "Years in UI/UX",
     sublabel: "From sketch to ship",
@@ -71,7 +71,7 @@ function StatCard({
       transition={SPRING}
       {...handlers}
       style={tiltStyle}
-      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-5 backdrop-blur-sm transition-colors hover:border-accent/50 sm:p-6"
+      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-surface p-5 backdrop-blur-sm transition-colors hover:border-accent/50 sm:p-6"
     >
       <SpotlightOverlay glow={glow} />
 
@@ -80,7 +80,7 @@ function StatCard({
           to={value}
           className="text-[28px] font-extrabold leading-none tracking-tight text-foreground sm:text-[36px]"
         />
-        <span className="text-[28px] font-extrabold leading-none tracking-tight text-accent sm:text-[36px]">
+        <span className="text-[28px] font-extrabold leading-none tracking-tight text-accent-ink sm:text-[36px]">
           {suffix}
         </span>
       </div>

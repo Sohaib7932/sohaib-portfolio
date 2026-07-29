@@ -21,7 +21,7 @@ function DashboardIllustration() {
     <div className="absolute inset-0 overflow-hidden">
       <div
         aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(56,124,232,0.22),transparent_55%),radial-gradient(circle_at_75%_70%,rgba(167,139,250,0.18),transparent_55%)]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(56,124,232,0.22),transparent_55%),radial-gradient(circle_at_75%_70%,var(--accent-wash),transparent_55%)]"
       />
       <div
         aria-hidden
@@ -29,7 +29,7 @@ function DashboardIllustration() {
       />
 
       <div className="absolute inset-x-5 top-5 bottom-5 flex gap-3 rounded-xl border border-white/12 bg-black/30 p-3 backdrop-blur-md">
-        <div className="flex w-[28%] flex-col gap-1.5 rounded-lg border border-white/8 bg-white/[0.04] p-2">
+        <div className="flex w-[28%] flex-col gap-1.5 rounded-lg border border-white/8 bg-surface-strong p-2">
           <div className="mb-1 flex items-center gap-1.5">
             <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
             <div className="h-1.5 w-12 rounded-full bg-white/25" />
@@ -52,7 +52,7 @@ function DashboardIllustration() {
             <StatBox accent="from-violet-400/30 to-violet-400/0" />
             <StatBox accent="from-emerald-400/30 to-emerald-400/0" />
           </div>
-          <div className="flex-1 rounded-md border border-white/8 bg-white/[0.03] p-2">
+          <div className="flex-1 rounded-md border border-white/8 bg-surface p-2">
             <div className="mb-1.5 h-1.5 w-16 rounded-full bg-white/20" />
             <div className="flex flex-col gap-1">
               <div className="h-1.5 w-full rounded-full bg-white/8" />
@@ -93,7 +93,7 @@ function WebappIllustration() {
     <div className="absolute inset-0 overflow-hidden">
       <div
         aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(167,139,250,0.24),transparent_55%),radial-gradient(circle_at_50%_90%,rgba(232,121,249,0.16),transparent_55%)]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,var(--accent-wash),transparent_55%),radial-gradient(circle_at_50%_90%,var(--accent-wash),transparent_55%)]"
       />
       <div
         aria-hidden
@@ -105,7 +105,7 @@ function WebappIllustration() {
           <span className="h-1.5 w-1.5 rounded-full bg-rose-400/80" />
           <span className="h-1.5 w-1.5 rounded-full bg-amber-400/80" />
           <span className="h-1.5 w-1.5 rounded-full bg-emerald-400/80" />
-          <div className="ml-2 flex h-3 flex-1 items-center rounded-md border border-white/8 bg-white/[0.04] px-2">
+          <div className="ml-2 flex h-3 flex-1 items-center rounded-md border border-white/8 bg-surface-strong px-2">
             <div className="h-1 w-16 rounded-full bg-white/15" />
           </div>
           <div className="ml-2 flex gap-1">
@@ -120,7 +120,7 @@ function WebappIllustration() {
           <div className="mb-3 h-2.5 w-2/5 rounded-md bg-white/15" />
           <div className="flex gap-1.5">
             <div className="h-4 w-12 rounded-md bg-accent/70" />
-            <div className="h-4 w-10 rounded-md border border-white/15 bg-white/[0.05]" />
+            <div className="h-4 w-10 rounded-md border border-white/15 bg-surface-strong" />
           </div>
         </div>
       </div>
@@ -153,12 +153,12 @@ function AnalyzerIllustration() {
               app.py
             </span>
           </div>
-          <CodeLine indent={0} segments={["def", " bloater_class", "():"]} colors={["text-fuchsia-300/80", "text-sky-300/80", "text-white/40"]} />
+          <CodeLine indent={0} segments={["def", " bloater_class", "():"]} colors={["text-accent-ink/80", "text-sky-300/80", "text-white/40"]} />
           <CodeLine indent={1} segments={["self", ".x ", "= ", "42"]} colors={["text-rose-300/80", "text-white/30", "text-white/30", "text-amber-300/80"]} />
-          <CodeLine indent={1} segments={["if", " a ", "and ", "b:"]} colors={["text-fuchsia-300/80", "text-white/40", "text-fuchsia-300/80", "text-white/40"]} />
-          <CodeLine indent={2} segments={["return", " do_x", "(", "a", ")"]} colors={["text-fuchsia-300/80", "text-sky-300/80", "text-white/30", "text-white/40", "text-white/30"]} />
-          <CodeLine indent={1} segments={["for", " i ", "in ", "range", "(n):"]} colors={["text-fuchsia-300/80", "text-white/40", "text-fuchsia-300/80", "text-sky-300/80", "text-white/30"]} />
-          <CodeLine indent={2} segments={["pass"]} colors={["text-fuchsia-300/80"]} />
+          <CodeLine indent={1} segments={["if", " a ", "and ", "b:"]} colors={["text-accent-ink/80", "text-white/40", "text-accent-ink/80", "text-white/40"]} />
+          <CodeLine indent={2} segments={["return", " do_x", "(", "a", ")"]} colors={["text-accent-ink/80", "text-sky-300/80", "text-white/30", "text-white/40", "text-white/30"]} />
+          <CodeLine indent={1} segments={["for", " i ", "in ", "range", "(n):"]} colors={["text-accent-ink/80", "text-white/40", "text-accent-ink/80", "text-sky-300/80", "text-white/30"]} />
+          <CodeLine indent={2} segments={["pass"]} colors={["text-accent-ink/80"]} />
         </div>
 
         <div className="flex w-[42%] flex-col gap-1.5 rounded-xl border border-white/12 bg-black/35 p-3 backdrop-blur-md">
@@ -264,7 +264,7 @@ function PalmIllustration() {
     <div className="absolute inset-0 overflow-hidden">
       <div
         aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(167,139,250,0.34),transparent_60%)]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,var(--accent-wash),transparent_60%)]"
       />
       <div
         aria-hidden
@@ -286,7 +286,7 @@ function PalmIllustration() {
 
       <svg
         viewBox="0 0 200 240"
-        className="absolute left-1/2 top-1/2 h-[86%] w-auto -translate-x-1/2 -translate-y-1/2 text-accent drop-shadow-[0_8px_22px_rgba(167,139,250,0.45)]"
+        className="absolute left-1/2 top-1/2 h-[86%] w-auto -translate-x-1/2 -translate-y-1/2 text-accent-ink drop-shadow-[0_10px_30px_-12px_var(--shadow)]"
         fill="none"
         stroke="currentColor"
         strokeLinecap="round"
@@ -305,7 +305,7 @@ function PalmIllustration() {
         </g>
 
         <g
-          stroke="#c4b5fd"
+          stroke="var(--accent)"
           strokeWidth="1.5"
           strokeLinecap="round"
           fill="none"
@@ -321,7 +321,7 @@ function PalmIllustration() {
           <path d="M 98 130 C 92 128 86 126 82 122" />
         </g>
 
-        <g fill="#c4b5fd" className="opacity-90">
+        <g fill="var(--accent)" className="opacity-90">
           <motion.circle
             cx="96"
             cy="122"
@@ -385,7 +385,7 @@ function PalmIllustration() {
         initial={{ top: "22%", opacity: 0 }}
         animate={{ top: ["22%", "78%", "22%"], opacity: [0, 0.85, 0] }}
         transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none absolute inset-x-8 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent shadow-[0_0_22px_rgba(167,139,250,0.85)]"
+        className="pointer-events-none absolute inset-x-8 h-[2px] bg-gradient-to-r from-transparent via-accent to-transparent shadow-[0_10px_30px_-12px_var(--shadow)]"
       />
 
       <CornerBracket position="top-3 left-3" rotation={0} />
@@ -425,7 +425,7 @@ function PalmIllustration() {
       </div>
 
       <div className="absolute top-4 right-4 flex items-center gap-1.5 rounded-full border border-white/12 bg-black/40 px-2.5 py-1 backdrop-blur-md">
-        <span className="font-mono text-[9.5px] font-semibold tracking-[0.18em] text-accent/85">
+        <span className="font-mono text-[9.5px] font-semibold tracking-[0.18em] text-accent-ink/85">
           ID · 0x7B4F
         </span>
       </div>
@@ -445,7 +445,7 @@ function CornerBracket({
       width="14"
       height="14"
       viewBox="0 0 14 14"
-      className={`pointer-events-none absolute ${position} text-accent/60`}
+      className={`pointer-events-none absolute ${position} text-accent-ink/60`}
       style={{ transform: `rotate(${rotation}deg)` }}
       aria-hidden
     >
@@ -465,7 +465,7 @@ function ScrapeIllustration() {
     <div className="absolute inset-0">
       <div
         aria-hidden
-        className="absolute inset-0 bg-[radial-gradient(circle_at_30%_35%,rgba(56,189,248,0.22),transparent_55%),radial-gradient(circle_at_75%_65%,rgba(167,139,250,0.18),transparent_55%)]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_30%_35%,rgba(56,189,248,0.22),transparent_55%),radial-gradient(circle_at_75%_65%,var(--accent-wash),transparent_55%)]"
       />
       <div
         aria-hidden
@@ -478,7 +478,7 @@ function ScrapeIllustration() {
           <span className="h-2 w-2 rounded-full bg-amber-400/80" />
           <span className="h-2 w-2 rounded-full bg-emerald-400/80" />
         </div>
-        <div className="flex items-center gap-2 rounded-md border border-white/10 bg-white/[0.04] px-2.5 py-1.5">
+        <div className="flex items-center gap-2 rounded-md border border-white/10 bg-surface-strong px-2.5 py-1.5">
           <svg
             width="11"
             height="11"

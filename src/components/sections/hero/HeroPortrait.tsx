@@ -47,16 +47,12 @@ export function HeroPortrait() {
       initial={{ opacity: 0, scale: 0.94, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ duration: 0.9, ease: EASE, delay: 0.2 }}
-      className="relative mx-auto w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[440px]"
+      className="relative z-20 mx-auto w-full max-w-[320px] sm:max-w-[400px] lg:max-w-[440px]"
     >
-      <motion.div style={reduce ? undefined : { y, opacity }} className="relative">
-        <motion.div
-          aria-hidden
-          animate={{ scale: [1, 1.08, 1], opacity: [0.75, 1, 0.75] }}
-          transition={{ duration: 7, ease: "easeInOut", repeat: Infinity }}
-          className="absolute -inset-8 -z-10 rounded-[40px] bg-[radial-gradient(circle_at_50%_30%,rgba(167,139,250,0.35),transparent_60%)] blur-2xl"
-        />
-
+      <motion.div
+        style={reduce ? undefined : { y, opacity }}
+        className="relative"
+      >
         {/* Tilt lives on its own layer so it never fights the float loop. */}
         <motion.div
           onPointerMove={onPointerMove}
@@ -80,11 +76,11 @@ export function HeroPortrait() {
               <motion.div
                 animate={reduce ? undefined : { rotate: 360 }}
                 transition={{ duration: 26, ease: "linear", repeat: Infinity }}
-                className="absolute -inset-[50%] bg-[conic-gradient(from_0deg,transparent_0deg,rgba(167,139,250,0.75)_45deg,transparent_110deg,transparent_230deg,rgba(232,121,249,0.55)_280deg,transparent_340deg)]"
+                className="absolute -inset-[50%] bg-[conic-gradient(from_0deg,transparent_0deg,var(--accent)_45deg,transparent_110deg,transparent_230deg,var(--accent)_280deg,transparent_340deg)]"
               />
             </div>
 
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-border-strong bg-gradient-to-br from-white/[0.06] via-white/[0.025] to-transparent shadow-[0_30px_80px_-30px_rgba(139,92,246,0.45)]">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-border-strong bg-gradient-to-br from-surface-strong via-surface to-transparent shadow-[0_10px_30px_-12px_var(--shadow)]">
               <motion.img
                 src="/sohaib.JPG"
                 alt="Muhammad Sohaib"

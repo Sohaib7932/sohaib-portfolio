@@ -15,23 +15,6 @@ import { EASE } from "@/components/motion/tokens";
 export function AboutPage() {
   return (
     <div className="relative isolate overflow-hidden">
-      <motion.div
-        aria-hidden
-        animate={{ scale: [1, 1.14, 1], opacity: [0.65, 1, 0.65] }}
-        transition={{ duration: 22, ease: "easeInOut", repeat: Infinity }}
-        className="pointer-events-none absolute -top-40 right-0 h-[34rem] w-[44rem] rounded-full bg-[radial-gradient(circle_at_60%_40%,rgba(139,92,246,0.16),transparent_60%)] blur-3xl"
-      />
-      <motion.div
-        aria-hidden
-        animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
-        transition={{
-          duration: 28,
-          ease: "easeInOut",
-          repeat: Infinity,
-          delay: 4,
-        }}
-        className="pointer-events-none absolute top-[40%] -left-40 h-[28rem] w-[36rem] rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(192,38,211,0.1),transparent_60%)] blur-3xl"
-      />
 
       <section className="relative px-5 pt-32 pb-12 sm:px-8 sm:pt-40 sm:pb-20 lg:px-16">
         <div className="mx-auto w-full max-w-6xl">

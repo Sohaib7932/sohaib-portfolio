@@ -54,7 +54,7 @@ export function ProjectCard({
       transition={SPRING}
       {...handlers}
       style={tiltStyle}
-      className={`group relative isolate flex flex-col overflow-hidden rounded-3xl border border-border-subtle bg-white/[0.02] backdrop-blur-sm transition-colors hover:border-border-strong ${className}`}
+      className={`group relative isolate flex flex-col overflow-hidden rounded-3xl border border-border-subtle bg-surface backdrop-blur-sm transition-colors hover:border-border-strong ${className}`}
     >
       <SpotlightOverlay glow={glow} />
 
@@ -149,7 +149,7 @@ function ImageArea({ project }: { project: Project }) {
       />
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 [background:radial-gradient(circle_at_50%_50%,rgba(167,139,250,0.18),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 [background:radial-gradient(circle_at_50%_50%,var(--accent-wash),transparent_60%)]"
       />
     </div>
   );
@@ -159,7 +159,7 @@ function TechBadge({ label }: { label: string }) {
   return (
     <motion.span
       variants={badge}
-      className="inline-flex items-center rounded-full border border-border-subtle bg-white/[0.03] px-2.5 py-0.5 text-[10.5px] font-medium tracking-wide text-foreground/75 transition-colors group-hover:border-accent/30"
+      className="inline-flex items-center rounded-full border border-border-subtle bg-surface px-2.5 py-0.5 text-[10.5px] font-medium tracking-wide text-foreground/75 transition-colors group-hover:border-accent/30"
     >
       {label}
     </motion.span>
@@ -175,7 +175,7 @@ function PrimaryAction({ label, href }: { label: string; href: string }) {
       rel={external ? "noopener noreferrer" : undefined}
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.96 }}
-      className="btn-sheen group inline-flex items-center gap-1.5 rounded-lg bg-accent px-3.5 py-2 text-[12px] font-semibold tracking-wide text-[#1a0b2e] transition-shadow hover:shadow-[0_8px_24px_-10px_rgba(167,139,250,0.9)]"
+      className="btn-sheen group inline-flex items-center gap-1.5 rounded-lg bg-accent px-3.5 py-2 text-[12px] font-semibold tracking-wide text-on-accent transition-shadow hover:shadow-[0_14px_36px_-10px_var(--shadow)]"
     >
       <IconForLabel label={label} />
       {label}
@@ -192,7 +192,7 @@ function SecondaryAction({ label, href }: { label: string; href: string }) {
       rel={external ? "noopener noreferrer" : undefined}
       whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.96 }}
-      className="group inline-flex items-center gap-1.5 rounded-lg border border-border-strong bg-white/[0.03] px-3.5 py-2 text-[12px] font-semibold tracking-wide text-foreground/85 transition-colors hover:bg-white/[0.06] hover:text-foreground"
+      className="group inline-flex items-center gap-1.5 rounded-lg border border-border-strong bg-surface px-3.5 py-2 text-[12px] font-semibold tracking-wide text-foreground/85 transition-colors hover:bg-surface-strong hover:text-foreground"
     >
       <IconForLabel label={label} />
       {label}

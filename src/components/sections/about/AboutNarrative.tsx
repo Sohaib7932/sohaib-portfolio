@@ -98,11 +98,11 @@ function PrincipleCard({
       style={tiltStyle}
       whileHover={{ y: -4 }}
       transition={SPRING}
-      className="group relative isolate flex gap-4 overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-5 backdrop-blur-sm transition-colors hover:border-border-strong"
+      className="group relative isolate flex gap-4 overflow-hidden rounded-2xl border border-border-subtle bg-surface p-5 backdrop-blur-sm transition-colors hover:border-border-strong"
     >
       <SpotlightOverlay glow={glow} />
 
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border-subtle bg-[linear-gradient(135deg,rgba(167,139,250,0.22),rgba(139,92,246,0.04))] text-accent transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-6">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-border-subtle bg-accent-wash text-accent-ink transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-6">
         {icon}
       </div>
       <div>

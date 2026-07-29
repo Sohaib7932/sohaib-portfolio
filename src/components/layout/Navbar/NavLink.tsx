@@ -37,7 +37,7 @@ export function NavLink({ href, label, active = false }: NavLinkProps) {
       {active && (
         <motion.span
           layoutId="nav-active"
-          className="absolute left-1 right-1 -bottom-0.5 h-px bg-accent shadow-[0_0_10px_rgba(167,139,250,0.9)]"
+          className="absolute left-1 right-1 -bottom-0.5 h-px bg-accent shadow-[0_10px_30px_-12px_var(--shadow)]"
           transition={SPRING_SNAPPY}
         />
       )}

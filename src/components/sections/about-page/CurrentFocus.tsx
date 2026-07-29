@@ -35,24 +35,29 @@ const focuses = [
   },
 ];
 
+/*
+  Only the "Now" card keeps a distinct hue, because green there is carrying
+  real meaning: currently available. The other two use the site accent rather
+  than inventing a colour per card.
+*/
 const accentMap = {
   emerald: {
-    dot: "bg-emerald-400",
-    ping: "bg-emerald-400/70",
-    glow: "from-emerald-400/20 to-transparent",
-    spotlight: "rgba(52,211,153,0.14)",
+    dot: "bg-ok",
+    ping: "bg-ok/70",
+    glow: "from-ok/20 to-transparent",
+    spotlight: "color-mix(in srgb, var(--ok) 16%, transparent)",
   },
   violet: {
-    dot: "bg-violet-400",
-    ping: "bg-violet-400/70",
-    glow: "from-violet-400/20 to-transparent",
-    spotlight: "rgba(167,139,250,0.16)",
+    dot: "bg-accent",
+    ping: "bg-accent/70",
+    glow: "from-accent/20 to-transparent",
+    spotlight: "var(--accent-wash)",
   },
   fuchsia: {
-    dot: "bg-fuchsia-400",
-    ping: "bg-fuchsia-400/70",
-    glow: "from-fuchsia-400/20 to-transparent",
-    spotlight: "rgba(232,121,249,0.14)",
+    dot: "bg-accent",
+    ping: "bg-accent/70",
+    glow: "from-accent/20 to-transparent",
+    spotlight: "var(--accent-wash)",
   },
 } as const;
 
@@ -69,7 +74,7 @@ export function CurrentFocus() {
       <div className="mx-auto max-w-2xl text-center">
         <motion.p
           variants={fadeUpBlur}
-          className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-accent/85 sm:text-[12px] sm:tracking-[0.32em]"
+          className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-accent-ink/85 sm:text-[12px] sm:tracking-[0.32em]"
         >
           Right now
         </motion.p>
@@ -80,7 +85,7 @@ export function CurrentFocus() {
           <Words text="Where my" />
           <motion.span
             variants={wordVariant}
-            className="inline-block bg-gradient-to-r from-fuchsia-300 via-fuchsia-400 to-pink-500 bg-clip-text text-transparent"
+            className="inline-block text-accent-ink"
           >
             attention lives.
           </motion.span>
@@ -136,7 +141,7 @@ function FocusCard({
       transition={SPRING}
       {...handlers}
       style={tiltStyle}
-      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-6 backdrop-blur-sm transition-colors hover:border-border-strong"
+      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-surface p-6 backdrop-blur-sm transition-colors hover:border-border-strong"
     >
       <SpotlightOverlay glow={glow} />
 
@@ -144,7 +149,7 @@ function FocusCard({
         aria-hidden
         className={`pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-gradient-to-br ${a.glow} opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100`}
       />
-      <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border-subtle bg-white/[0.04] px-3 py-1">
+      <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border-subtle bg-surface-strong px-3 py-1">
         <span className="relative flex h-2 w-2">
           <span
             className={`absolute inline-flex h-full w-full animate-ping rounded-full ${a.ping}`}

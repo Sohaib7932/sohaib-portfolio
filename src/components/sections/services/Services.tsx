@@ -17,24 +17,6 @@ export function Services() {
     >
       <SectionDivider />
 
-      <motion.div
-        aria-hidden
-        animate={{ scale: [1, 1.15, 1], opacity: [0.6, 1, 0.6] }}
-        transition={{ duration: 20, ease: "easeInOut", repeat: Infinity }}
-        className="pointer-events-none absolute -top-24 left-0 h-96 w-[40rem] rounded-full bg-[radial-gradient(circle_at_40%_50%,rgba(139,92,246,0.1),transparent_60%)] blur-3xl"
-      />
-      <motion.div
-        aria-hidden
-        animate={{ scale: [1, 1.12, 1], opacity: [0.7, 1, 0.7] }}
-        transition={{
-          duration: 24,
-          ease: "easeInOut",
-          repeat: Infinity,
-          delay: 3,
-        }}
-        className="pointer-events-none absolute bottom-0 right-0 h-80 w-[36rem] rounded-full bg-[radial-gradient(circle_at_60%_50%,rgba(192,38,211,0.07),transparent_60%)] blur-3xl"
-      />
-
       <div className="mx-auto w-full max-w-6xl">
         <ServicesHeader />
 
@@ -61,7 +43,7 @@ export function Services() {
               href="#contact"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="btn-sheen group inline-flex items-center gap-3 rounded-full bg-accent px-7 py-4 text-[12.5px] font-semibold uppercase tracking-[0.18em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)]"
+              className="btn-sheen group inline-flex items-center gap-3 rounded-full bg-accent px-7 py-4 text-[12.5px] font-semibold uppercase tracking-[0.18em] text-on-accent shadow-[0_10px_30px_-12px_var(--shadow)] transition-shadow hover:shadow-[0_14px_36px_-10px_var(--shadow)]"
             >
               Start a project
               <svg

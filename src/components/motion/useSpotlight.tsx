@@ -46,7 +46,7 @@ const GLOW_SPRING = { stiffness: 160, damping: 26 } as const;
 export function useSpotlight({
   radius = 320,
   tilt = 5,
-  color = "rgba(167,139,250,0.16)",
+  color = "var(--accent)",
 }: SpotlightOptions = {}): Spotlight {
   const reduce = useReducedMotionSafe();
 

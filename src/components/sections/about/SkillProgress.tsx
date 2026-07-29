@@ -6,9 +6,10 @@ import { EASE, VIEWPORT_NEAR } from "@/components/motion/tokens";
 
 type Tone = "violet" | "amber";
 
+/* Both tones resolve to the site accent, which re-tints itself per theme. */
 const toneStroke: Record<Tone, string> = {
-  violet: "#a78bfa",
-  amber: "#fbbf24",
+  violet: "var(--accent)",
+  amber: "var(--accent)",
 };
 
 export function SkillProgress({

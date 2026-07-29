@@ -18,25 +18,8 @@ export function WorkCTA() {
       initial="hidden"
       whileInView="show"
       viewport={VIEWPORT}
-      className="relative isolate overflow-hidden rounded-3xl border border-border-strong bg-gradient-to-br from-white/[0.05] via-white/[0.025] to-transparent p-8 text-center backdrop-blur-md sm:p-12 lg:p-14"
+      className="relative isolate overflow-hidden rounded-3xl border border-border-strong bg-surface p-8 text-center sm:p-12 lg:p-14"
     >
-      <motion.div
-        aria-hidden
-        animate={{ scale: [1, 1.18, 1], opacity: [0.6, 1, 0.6] }}
-        transition={{ duration: 15, ease: "easeInOut", repeat: Infinity }}
-        className="pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(167,139,250,0.22),transparent_60%)] blur-2xl"
-      />
-      <motion.div
-        aria-hidden
-        animate={{ scale: [1, 1.14, 1], opacity: [0.7, 1, 0.7] }}
-        transition={{
-          duration: 19,
-          ease: "easeInOut",
-          repeat: Infinity,
-          delay: 3,
-        }}
-        className="pointer-events-none absolute -bottom-32 -left-32 h-[28rem] w-[28rem] rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(232,121,249,0.16),transparent_60%)] blur-2xl"
-      />
       <motion.div
         aria-hidden
         initial={{ scaleX: 0 }}
@@ -48,7 +31,7 @@ export function WorkCTA() {
 
       <motion.p
         variants={fadeUpBlur}
-        className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-accent/85 sm:text-[12px] sm:tracking-[0.32em]"
+        className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-accent-ink/85 sm:text-[12px] sm:tracking-[0.32em]"
       >
         That&apos;s the portfolio.
       </motion.p>
@@ -59,7 +42,7 @@ export function WorkCTA() {
         <Words text="Got a project that" />
         <motion.span
           variants={wordVariant}
-          className="inline-block bg-gradient-to-r from-fuchsia-300 via-fuchsia-400 to-pink-500 bg-clip-text text-transparent"
+          className="inline-block text-accent-ink"
         >
           deserves the same care?
         </motion.span>
@@ -79,7 +62,7 @@ export function WorkCTA() {
         <Magnetic strength={0.26}>
           <Link
             href="/#contact"
-            className="btn-sheen group inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] sm:text-[12.5px] sm:tracking-[0.18em]"
+            className="btn-sheen group inline-flex items-center gap-2.5 rounded-full bg-accent px-7 py-4 text-[12px] font-semibold uppercase tracking-[0.16em] text-on-accent shadow-[0_10px_30px_-12px_var(--shadow)] transition-shadow hover:shadow-[0_14px_36px_-10px_var(--shadow)] sm:text-[12.5px] sm:tracking-[0.18em]"
           >
             Start a project
             <ArrowIcon />
@@ -88,7 +71,7 @@ export function WorkCTA() {
         <Magnetic strength={0.18}>
           <Link
             href="/about"
-            className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-white/[0.025] px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-foreground transition-colors hover:border-accent hover:bg-white/[0.05] sm:text-[12.5px] sm:tracking-[0.18em]"
+            className="inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface px-6 py-3.5 text-[12px] font-semibold uppercase tracking-[0.16em] text-foreground transition-colors hover:border-accent hover:bg-surface-strong sm:text-[12.5px] sm:tracking-[0.18em]"
           >
             About me
           </Link>

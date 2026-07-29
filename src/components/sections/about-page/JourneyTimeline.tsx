@@ -80,7 +80,7 @@ export function JourneyTimeline() {
       >
         <motion.p
           variants={fadeUpBlur}
-          className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-accent/85 sm:text-[12px] sm:tracking-[0.32em]"
+          className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-accent-ink/85 sm:text-[12px] sm:tracking-[0.32em]"
         >
           The journey
         </motion.p>
@@ -91,14 +91,14 @@ export function JourneyTimeline() {
           <Words text="From" />
           <motion.span
             variants={wordVariant}
-            className="mr-[0.25em] inline-block bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent"
+            className="mr-[0.25em] inline-block text-accent-ink"
           >
             sketches
           </motion.span>
           <Words text="to" />
           <motion.span
             variants={wordVariant}
-            className="inline-block bg-gradient-to-r from-fuchsia-300 via-fuchsia-400 to-pink-500 bg-clip-text text-transparent"
+            className="inline-block text-accent-ink"
           >
             shipped systems.
           </motion.span>
@@ -115,7 +115,7 @@ export function JourneyTimeline() {
       <div ref={trackRef} className="relative mt-14">
         <div
           aria-hidden
-          className="absolute left-[19px] top-2 bottom-2 w-px bg-white/[0.06] sm:left-[23px]"
+          className="absolute left-[19px] top-2 bottom-2 w-px bg-surface-strong sm:left-[23px]"
         />
         <motion.div
           aria-hidden
@@ -165,7 +165,7 @@ function Chapter({
         >
           <span
             aria-hidden
-            className="absolute inset-1 rounded-full bg-[radial-gradient(circle_at_50%_30%,rgba(167,139,250,0.4),transparent_70%)]"
+            className="absolute inset-1 rounded-full bg-[radial-gradient(circle_at_50%_30%,var(--accent-wash),transparent_70%)]"
           />
           <motion.span
             aria-hidden
@@ -175,7 +175,7 @@ function Chapter({
             transition={{ duration: 1.1, ease: EASE, delay: index * 0.12 }}
             className="absolute inset-0 rounded-full border border-accent/60"
           />
-          <span className="relative font-mono text-[10px] font-bold tracking-[0.05em] text-accent sm:text-[11px]">
+          <span className="relative font-mono text-[10px] font-bold tracking-[0.05em] text-accent-ink sm:text-[11px]">
             {year}
           </span>
         </motion.div>
@@ -183,10 +183,10 @@ function Chapter({
 
       <div
         {...handlers}
-        className="group/card relative isolate flex-1 overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-5 backdrop-blur-sm transition-colors hover:border-accent/50 sm:p-6"
+        className="group/card relative isolate flex-1 overflow-hidden rounded-2xl border border-border-subtle bg-surface p-5 backdrop-blur-sm transition-colors hover:border-accent/50 sm:p-6"
       >
         <SpotlightOverlay glow={glow} />
-        <div className="mb-3 inline-flex items-center rounded-full border border-border-subtle bg-white/[0.04] px-2.5 py-0.5 font-mono text-[9.5px] font-semibold tracking-[0.18em] text-accent/85">
+        <div className="mb-3 inline-flex items-center rounded-full border border-border-subtle bg-surface-strong px-2.5 py-0.5 font-mono text-[9.5px] font-semibold tracking-[0.18em] text-accent-ink/85">
           {tag}
         </div>
         <h3 className="text-[18px] font-bold tracking-tight text-foreground sm:text-[20px]">

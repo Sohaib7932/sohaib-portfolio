@@ -74,7 +74,7 @@ export function ProcessTimeline() {
       >
         <motion.p
           variants={fadeUpBlur}
-          className="mb-4 text-[12px] font-medium uppercase tracking-[0.32em] text-accent/85"
+          className="mb-4 text-[12px] font-medium uppercase tracking-[0.32em] text-accent-ink/85"
         >
           How we work together
         </motion.p>
@@ -85,7 +85,7 @@ export function ProcessTimeline() {
           <Words text="A simple," />
           <motion.span
             variants={wordVariant}
-            className="inline-block bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent"
+            className="inline-block text-accent-ink"
           >
             honest process.
           </motion.span>
@@ -102,7 +102,7 @@ export function ProcessTimeline() {
       <div ref={gridRef} className="relative mt-16">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-x-12 top-1/2 hidden h-px -translate-y-1/2 bg-white/[0.06] lg:block"
+          className="pointer-events-none absolute inset-x-12 top-1/2 hidden h-px -translate-y-1/2 bg-surface-strong lg:block"
         />
         <motion.div
           aria-hidden
@@ -144,7 +144,7 @@ function ProcessStepCard({
       transition={SPRING}
       {...handlers}
       style={tiltStyle}
-      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-6 text-center backdrop-blur-sm transition-colors hover:border-accent/60"
+      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-surface p-6 text-center backdrop-blur-sm transition-colors hover:border-accent/60"
     >
       <SpotlightOverlay glow={glow} />
 
@@ -164,13 +164,13 @@ function ProcessStepCard({
         />
         <span
           aria-hidden
-          className="absolute inset-1.5 rounded-full border border-border-strong bg-[radial-gradient(circle_at_50%_30%,rgba(167,139,250,0.25),rgba(8,6,15,1)_70%)]"
+          className="absolute inset-1.5 rounded-full border border-border-strong bg-[radial-gradient(circle_at_50%_30%,var(--accent-wash),var(--background)_70%)]"
         />
         <span
           aria-hidden
-          className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(167,139,250,0.45),transparent_60%)] opacity-0 blur-md transition-opacity duration-500 group-hover:opacity-100"
+          className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_50%,var(--accent-wash),transparent_60%)] opacity-0 blur-md transition-opacity duration-500 group-hover:opacity-100"
         />
-        <span className="relative font-mono text-[14px] font-bold tracking-[0.12em] text-accent">
+        <span className="relative font-mono text-[14px] font-bold tracking-[0.12em] text-accent-ink">
           {step}
         </span>
       </motion.div>

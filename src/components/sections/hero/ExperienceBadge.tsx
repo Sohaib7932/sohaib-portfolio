@@ -16,11 +16,11 @@ export function ExperienceBadge() {
         stiffness: 220,
         damping: 22,
       }}
-      className="absolute -bottom-4 -left-3 z-20 flex items-center gap-2.5 rounded-2xl border border-border-strong bg-[#120a22]/85 px-4 py-3 backdrop-blur-md sm:-bottom-5 sm:-left-8 sm:gap-3 sm:px-5 sm:py-3.5"
+      className="absolute -bottom-4 -left-3 z-20 flex items-center gap-2.5 rounded-2xl border border-border-strong bg-elevated px-4 py-3 backdrop-blur-md sm:-bottom-5 sm:-left-8 sm:gap-3 sm:px-5 sm:py-3.5"
     >
       <span className="text-[28px] font-extrabold leading-none tracking-tight text-foreground sm:text-[34px]">
-        <CountUp to={3} duration={1.2} />
-        <span className="text-accent">+</span>
+        <CountUp to={2} duration={1.2} />
+        <span className="text-accent-ink">+</span>
       </span>
       <span className="text-[10.5px] font-semibold uppercase leading-tight tracking-[0.18em] text-foreground/65">
         Years of

@@ -1,4 +1,3 @@
-export { AmbientBackground } from "./AmbientBackground";
 export { CountUp } from "./CountUp";
 export { Magnetic } from "./Magnetic";
 export { MotionProvider } from "./MotionProvider";

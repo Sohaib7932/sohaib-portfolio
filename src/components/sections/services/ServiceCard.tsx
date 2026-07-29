@@ -39,7 +39,7 @@ export function ServiceCard({
       transition={SPRING}
       {...handlers}
       style={tiltStyle}
-      className="group relative isolate flex flex-col overflow-hidden rounded-3xl border border-border-subtle bg-white/[0.025] p-6 backdrop-blur-sm transition-colors hover:border-border-strong sm:p-7 md:p-8"
+      className="group relative isolate flex flex-col overflow-hidden rounded-3xl border border-border-subtle bg-surface p-6 backdrop-blur-sm transition-colors hover:border-border-strong sm:p-7 md:p-8"
     >
       <SpotlightOverlay glow={glow} />
 
@@ -49,10 +49,10 @@ export function ServiceCard({
       />
 
       <div className="flex items-start justify-between gap-4">
-        <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-border-subtle bg-[linear-gradient(135deg,rgba(167,139,250,0.22),rgba(139,92,246,0.04))] text-accent transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-6">
+        <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-border-subtle bg-accent-wash text-accent-ink transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-6">
           <ServiceIcon iconKey={service.iconKey} />
         </div>
-        <span className="font-mono text-[11px] font-semibold tracking-[0.18em] text-foreground/35 transition-colors duration-500 group-hover:text-accent/70">
+        <span className="font-mono text-[11px] font-semibold tracking-[0.18em] text-foreground/35 transition-colors duration-500 group-hover:text-accent-ink/70">
           {service.number}
         </span>
       </div>
@@ -60,7 +60,7 @@ export function ServiceCard({
       <h3 className="mt-6 text-[20px] font-bold tracking-tight text-foreground sm:mt-7 sm:text-[24px]">
         {service.title}
       </h3>
-      <p className="mt-1.5 text-[13px] font-medium tracking-wide text-accent/85">
+      <p className="mt-1.5 text-[13px] font-medium tracking-wide text-accent-ink/85">
         {service.tagline}
       </p>
 
@@ -92,7 +92,7 @@ export function ServiceCard({
 
 function CheckIcon() {
   return (
-    <span className="mt-[5px] flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full border border-accent/40 bg-accent/10 text-accent">
+    <span className="mt-[5px] flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full border border-accent/40 bg-accent/10 text-accent-ink">
       <motion.svg
         width="9"
         height="9"

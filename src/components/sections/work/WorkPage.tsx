@@ -50,23 +50,6 @@ export function WorkPage() {
 
   return (
     <div className="relative isolate overflow-hidden">
-      <motion.div
-        aria-hidden
-        animate={{ scale: [1, 1.14, 1], opacity: [0.65, 1, 0.65] }}
-        transition={{ duration: 22, ease: "easeInOut", repeat: Infinity }}
-        className="pointer-events-none absolute -top-40 right-0 h-[34rem] w-[44rem] rounded-full bg-[radial-gradient(circle_at_60%_40%,rgba(192,38,211,0.14),transparent_60%)] blur-3xl"
-      />
-      <motion.div
-        aria-hidden
-        animate={{ scale: [1, 1.1, 1], opacity: [0.7, 1, 0.7] }}
-        transition={{
-          duration: 28,
-          ease: "easeInOut",
-          repeat: Infinity,
-          delay: 4,
-        }}
-        className="pointer-events-none absolute top-[35%] -left-40 h-[28rem] w-[36rem] rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.12),transparent_60%)] blur-3xl"
-      />
 
       <section className="relative px-5 pt-32 pb-12 sm:px-8 sm:pt-40 sm:pb-16 lg:px-16">
         <div className="mx-auto w-full max-w-6xl">
@@ -107,9 +90,9 @@ export function WorkPage() {
           >
             <motion.div
               variants={fadeUp}
-              className="mb-5 inline-flex items-center gap-2 rounded-full border border-border-subtle bg-white/[0.04] px-3 py-1.5 backdrop-blur-md"
+              className="mb-5 inline-flex items-center gap-2 rounded-full border border-border-subtle bg-surface-strong px-3 py-1.5 backdrop-blur-md"
             >
-              <span className="font-mono text-[10px] font-semibold tracking-[0.18em] text-accent/85">
+              <span className="font-mono text-[10px] font-semibold tracking-[0.18em] text-accent-ink/85">
                 ✦ {projects.length} PROJECTS
               </span>
             </motion.div>
@@ -120,7 +103,7 @@ export function WorkPage() {
               <Words text="Featured" />
               <motion.span
                 variants={wordVariant}
-                className="inline-block bg-gradient-to-r from-fuchsia-300 via-fuchsia-400 to-pink-500 bg-clip-text text-transparent"
+                className="inline-block text-accent-ink"
               >
                 Projects.
               </motion.span>
@@ -170,7 +153,7 @@ export function WorkPage() {
             className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end"
           >
             <motion.div variants={fadeUp}>
-              <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.28em] text-accent/85 sm:text-[12px] sm:tracking-[0.32em]">
+              <p className="mb-3 text-[11px] font-medium uppercase tracking-[0.28em] text-accent-ink/85 sm:text-[12px] sm:tracking-[0.32em]">
                 The full catalogue
               </p>
               <motion.h2
@@ -180,7 +163,7 @@ export function WorkPage() {
                 <Words text="Browse by" />
                 <motion.span
                   variants={wordVariant}
-                  className="inline-block bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent"
+                  className="inline-block text-accent-ink"
                 >
                   category.
                 </motion.span>
@@ -229,7 +212,7 @@ export function WorkPage() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="rounded-2xl border border-border-subtle bg-white/[0.025] p-10 text-center"
+                  className="rounded-2xl border border-border-subtle bg-surface p-10 text-center"
                 >
                   <p className="text-[14px] text-foreground/60">
                     Nothing in this category yet, more coming soon.

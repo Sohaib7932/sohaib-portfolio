@@ -21,23 +21,29 @@ export type SkillCategoryProps = {
   index: number;
 };
 
+/*
+  Both tones now resolve to the single site accent.
+
+  The two-hue system was a holdover from the old palette; on an editorial page
+  one accent used consistently reads as a deliberate choice, where two reads as
+  decoration. The `tone` prop is kept so callers don't have to change, and so a
+  second tone can be reintroduced in one place if it's ever wanted.
+*/
 const toneIconBg: Record<Tone, string> = {
-  violet:
-    "bg-[linear-gradient(135deg,rgba(167,139,250,0.25),rgba(139,92,246,0.05))] text-accent",
-  amber:
-    "bg-[linear-gradient(135deg,rgba(251,191,36,0.25),rgba(217,119,6,0.05))] text-amber-300",
+  violet: "bg-accent-wash text-accent-ink",
+  amber: "bg-accent-wash text-accent-ink",
 };
 
 const toneGlow: Record<Tone, string> = {
   violet:
-    "before:bg-[radial-gradient(circle_at_20%_0%,rgba(167,139,250,0.18),transparent_55%)]",
+    "before:bg-[radial-gradient(circle_at_20%_0%,var(--accent-wash),transparent_55%)]",
   amber:
-    "before:bg-[radial-gradient(circle_at_20%_0%,rgba(251,191,36,0.16),transparent_55%)]",
+    "before:bg-[radial-gradient(circle_at_20%_0%,var(--accent-wash),transparent_55%)]",
 };
 
 const spotlightColor: Record<Tone, string> = {
-  violet: "rgba(167,139,250,0.18)",
-  amber: "rgba(251,191,36,0.16)",
+  violet: "var(--accent-wash)",
+  amber: "var(--accent-wash)",
 };
 
 export function SkillCategory({
@@ -64,7 +70,7 @@ export function SkillCategory({
       transition={SPRING}
       {...handlers}
       style={tiltStyle}
-      className={`group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-6 backdrop-blur-sm transition-colors hover:border-accent/40 before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:opacity-70 ${toneGlow[tone]}`}
+      className={`group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-surface p-6 backdrop-blur-sm transition-colors hover:border-accent/40 before:pointer-events-none before:absolute before:inset-0 before:-z-10 before:opacity-70 ${toneGlow[tone]}`}
     >
       <SpotlightOverlay glow={glow} />
 
@@ -82,7 +88,7 @@ export function SkillCategory({
         {skills.map((skill) => (
           <li
             key={skill.name}
-            className="flex items-center justify-between gap-3 rounded-xl border border-border-subtle/60 bg-white/[0.015] px-3.5 py-2.5 transition-colors group-hover:border-border-subtle"
+            className="flex items-center justify-between gap-3 rounded-xl border border-border-subtle/60 bg-surface px-3.5 py-2.5 transition-colors group-hover:border-border-subtle"
           >
             <span className="text-[13.5px] font-medium text-foreground/85">
               {skill.name}

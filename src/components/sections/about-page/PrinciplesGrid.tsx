@@ -61,7 +61,7 @@ export function PrinciplesGrid() {
       >
         <motion.p
           variants={fadeUpBlur}
-          className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-accent/85 sm:text-[12px] sm:tracking-[0.32em]"
+          className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-accent-ink/85 sm:text-[12px] sm:tracking-[0.32em]"
         >
           What I believe
         </motion.p>
@@ -72,7 +72,7 @@ export function PrinciplesGrid() {
           <Words text="Six principles I" />
           <motion.span
             variants={wordVariant}
-            className="inline-block bg-gradient-to-r from-fuchsia-300 via-fuchsia-400 to-pink-500 bg-clip-text text-transparent"
+            className="inline-block text-accent-ink"
           >
             won&apos;t bend.
           </motion.span>
@@ -118,11 +118,11 @@ function PrincipleCard({
       transition={SPRING}
       {...handlers}
       style={tiltStyle}
-      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-6 backdrop-blur-sm transition-colors hover:border-accent/40"
+      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-surface p-6 backdrop-blur-sm transition-colors hover:border-accent/40"
     >
       <SpotlightOverlay glow={glow} />
 
-      <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-border-subtle bg-[linear-gradient(135deg,rgba(167,139,250,0.22),rgba(139,92,246,0.04))] text-accent transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-6">
+      <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl border border-border-subtle bg-accent-wash text-accent-ink transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-6">
         {icon}
       </div>
       <h3 className="text-[16px] font-bold tracking-tight text-foreground sm:text-[17px]">

@@ -61,7 +61,7 @@ export function ContactForm() {
 
   const submitting = status === "submitting";
   const fieldClass =
-    "w-full rounded-xl border border-border-subtle bg-white/[0.02] px-4 py-3 text-[14px] text-foreground placeholder:text-foreground/30 outline-none transition-[border-color,background-color,box-shadow] duration-300 focus:border-accent focus:bg-white/[0.04] focus:shadow-[0_0_0_4px_rgba(167,139,250,0.12)] disabled:opacity-60";
+    "w-full rounded-xl border border-border-subtle bg-surface px-4 py-3 text-[14px] text-foreground placeholder:text-foreground/30 outline-none transition-[border-color,background-color,box-shadow] duration-300 focus:border-accent focus:bg-surface-strong focus:shadow-[0_10px_30px_-12px_var(--shadow)] disabled:opacity-60";
 
   return (
     <motion.form
@@ -70,14 +70,8 @@ export function ContactForm() {
       whileInView="show"
       viewport={VIEWPORT}
       onSubmit={handleSubmit}
-      className="relative isolate overflow-hidden rounded-3xl border border-border-subtle bg-white/[0.025] p-5 backdrop-blur-sm sm:p-7 md:p-8"
+      className="relative isolate overflow-hidden rounded-3xl border border-border-subtle bg-surface p-5 backdrop-blur-sm sm:p-7 md:p-8"
     >
-      <motion.div
-        aria-hidden
-        animate={{ scale: [1, 1.15, 1], opacity: [0.7, 1, 0.7] }}
-        transition={{ duration: 14, ease: "easeInOut", repeat: Infinity }}
-        className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(192,38,211,0.12),transparent_70%)] blur-2xl"
-      />
       <motion.div
         aria-hidden
         initial={{ scaleX: 0 }}
@@ -91,7 +85,7 @@ export function ContactForm() {
         <motion.div
           animate={{ y: [0, -3, 0] }}
           transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
-          className="flex h-10 w-10 items-center justify-center rounded-xl border border-border-subtle bg-[linear-gradient(135deg,rgba(167,139,250,0.22),rgba(139,92,246,0.04))] text-accent"
+          className="flex h-10 w-10 items-center justify-center rounded-xl border border-border-subtle bg-accent-wash text-accent-ink"
         >
           <svg
             width="18"
@@ -171,7 +165,7 @@ export function ContactForm() {
           disabled={submitting}
           whileHover={!submitting ? { scale: 1.03 } : undefined}
           whileTap={!submitting ? { scale: 0.97 } : undefined}
-          className="btn-sheen group inline-flex items-center justify-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12.5px] font-semibold uppercase tracking-[0.18em] text-[#1a0b2e] shadow-[0_15px_45px_-15px_rgba(167,139,250,0.8)] transition-shadow hover:shadow-[0_18px_55px_-12px_rgba(167,139,250,1)] disabled:cursor-not-allowed disabled:opacity-70"
+          className="btn-sheen group inline-flex items-center justify-center gap-2.5 rounded-full bg-accent px-6 py-3.5 text-[12.5px] font-semibold uppercase tracking-[0.18em] text-on-accent shadow-[0_10px_30px_-12px_var(--shadow)] transition-shadow hover:shadow-[0_14px_36px_-10px_var(--shadow)] disabled:cursor-not-allowed disabled:opacity-70"
         >
           <AnimatePresence mode="wait" initial={false}>
             {submitting ? (
@@ -237,7 +231,7 @@ function StatusLabel({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.3, ease: EASE }}
-            className="flex items-center gap-2 text-[12.5px] font-medium text-emerald-300"
+            className="flex items-center gap-2 text-[12.5px] font-medium text-ok"
           >
             <SuccessTick />
             Message sent, I&apos;ll be in touch shortly.
@@ -249,9 +243,9 @@ function StatusLabel({
             animate={{ opacity: 1, y: 0, x: [0, -5, 5, -3, 3, 0] }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.4, ease: EASE }}
-            className="flex items-center gap-2 text-[12.5px] font-medium text-rose-300"
+            className="flex items-center gap-2 text-[12.5px] font-medium text-danger"
           >
-            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-rose-400" />
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-danger" />
             {errorMessage}
           </motion.p>
         ) : (
@@ -274,7 +268,7 @@ function StatusLabel({
 /** Draws itself once, as confirmation the message actually went out. */
 function SuccessTick() {
   return (
-    <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-400/15 text-emerald-300">
+    <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-ok/15 text-ok">
       <svg
         width="10"
         height="10"
@@ -327,7 +321,7 @@ function Field({
 }) {
   return (
     <label htmlFor={htmlFor} className="group block">
-      <span className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/55 transition-colors duration-300 group-focus-within:text-accent">
+      <span className="mb-2 block text-[11px] font-semibold uppercase tracking-[0.22em] text-foreground/55 transition-colors duration-300 group-focus-within:text-accent-ink">
         {label}
       </span>
       {children}

@@ -63,7 +63,7 @@ function EmailCard() {
       transition={SPRING}
       {...handlers}
       style={tiltStyle}
-      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-5 backdrop-blur-sm transition-colors hover:border-accent"
+      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-surface p-5 backdrop-blur-sm transition-colors hover:border-accent"
     >
       <SpotlightOverlay glow={glow} />
 
@@ -92,7 +92,7 @@ function AvailabilityCard() {
   return (
     <motion.div
       variants={fadeUp}
-      className="relative overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-5 backdrop-blur-sm"
+      className="relative overflow-hidden rounded-2xl border border-border-subtle bg-surface p-5 backdrop-blur-sm"
     >
       {/* A slow pass of light, so the card reads as "live". */}
       <motion.div
@@ -105,7 +105,7 @@ function AvailabilityCard() {
           repeat: Infinity,
           repeatDelay: 6,
         }}
-        className="pointer-events-none absolute inset-y-0 left-0 w-1/3 skew-x-[-20deg] bg-gradient-to-r from-transparent via-emerald-300/[0.07] to-transparent"
+        className="pointer-events-none absolute inset-y-0 left-0 w-1/3 skew-x-[-20deg] bg-gradient-to-r from-transparent via-ok/[0.07] to-transparent"
       />
 
       <div className="flex items-start gap-4">
@@ -118,8 +118,8 @@ function AvailabilityCard() {
           </p>
           <div className="mt-2 flex items-center gap-2">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-70" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-ok opacity-70" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-ok" />
             </span>
             <p className="text-[14.5px] font-semibold tracking-tight text-foreground">
               Open for new projects
@@ -157,7 +157,7 @@ function SocialCard({
       transition={SPRING}
       {...handlers}
       style={tiltStyle}
-      className="group relative isolate flex items-center gap-3.5 overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-4 backdrop-blur-sm transition-colors hover:border-accent"
+      className="group relative isolate flex items-center gap-3.5 overflow-hidden rounded-2xl border border-border-subtle bg-surface p-4 backdrop-blur-sm transition-colors hover:border-accent"
     >
       <SpotlightOverlay glow={glow} />
       <IconBadge>{icon}</IconBadge>
@@ -176,7 +176,7 @@ function SocialCard({
 
 function IconBadge({ children }: { children: ReactNode }) {
   return (
-    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border-subtle bg-[linear-gradient(135deg,rgba(167,139,250,0.22),rgba(139,92,246,0.04))] text-accent transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-6">
+    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-border-subtle bg-accent-wash text-accent-ink transition-transform duration-500 ease-out group-hover:scale-110 group-hover:-rotate-6">
       {children}
     </div>
   );
@@ -185,7 +185,7 @@ function IconBadge({ children }: { children: ReactNode }) {
 function ArrowChip({ small = false }: { small?: boolean }) {
   return (
     <span
-      className={`flex shrink-0 items-center justify-center rounded-full border border-border-subtle bg-white/[0.03] text-foreground/65 transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-[#1a0b2e] ${
+      className={`flex shrink-0 items-center justify-center rounded-full border border-border-subtle bg-surface text-foreground/65 transition-all duration-300 group-hover:border-accent group-hover:bg-accent group-hover:text-on-accent ${
         small ? "h-7 w-7" : "h-8 w-8"
       }`}
     >

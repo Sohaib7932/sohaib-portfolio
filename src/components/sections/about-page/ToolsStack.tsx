@@ -102,7 +102,7 @@ export function ToolsStack() {
       >
         <motion.p
           variants={fadeUpBlur}
-          className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-accent/85 sm:text-[12px] sm:tracking-[0.32em]"
+          className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-accent-ink/85 sm:text-[12px] sm:tracking-[0.32em]"
         >
           The full stack
         </motion.p>
@@ -113,7 +113,7 @@ export function ToolsStack() {
           <Words text="The tools I" />
           <motion.span
             variants={wordVariant}
-            className="inline-block bg-gradient-to-r from-white via-white to-accent bg-clip-text text-transparent"
+            className="inline-block text-accent-ink"
           >
             actually use.
           </motion.span>
@@ -155,7 +155,7 @@ function ToolGroup({
       whileInView="show"
       viewport={VIEWPORT_NEAR}
       {...handlers}
-      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-6 backdrop-blur-sm transition-colors hover:border-border-strong"
+      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-surface p-6 backdrop-blur-sm transition-colors hover:border-border-strong"
     >
       <SpotlightOverlay glow={glow} />
 
@@ -174,7 +174,7 @@ function ToolGroup({
             variants={chipVariants}
             whileHover={{ y: -3, scale: 1.06 }}
             transition={{ type: "spring", stiffness: 320, damping: 20 }}
-            className="cursor-default rounded-full border border-border-subtle bg-white/[0.04] px-3 py-1.5 text-[12px] font-medium tracking-wide text-foreground/85 transition-colors hover:border-accent/50 hover:bg-accent/10 hover:text-foreground"
+            className="cursor-default rounded-full border border-border-subtle bg-surface-strong px-3 py-1.5 text-[12px] font-medium tracking-wide text-foreground/85 transition-colors hover:border-accent/50 hover:bg-accent/10 hover:text-foreground"
           >
             {item}
           </motion.span>

@@ -17,7 +17,7 @@ export const projects: Project[] = [
     tech: ["Next.js", "React", "MUI", "Auth0", "Supabase", "i18n"],
     image: "/sweden-portal.png",
     placeholderBg:
-      "bg-[radial-gradient(ellipse_at_55%_40%,#1939B7_0%,#0E1E5C_55%,#08060f_100%)]",
+      "bg-[radial-gradient(ellipse_at_55%_40%,#1939B7_0%,#0E1E5C_55%,var(--background)_100%)]",
     primary: {
       label: "Live Demo",
       href: "https://portal.swedenrelocators.se/",
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     tech: ["React Native", "Expo", "IoT Hardware"],
     image: "/paypalm.svg",
     placeholderBg:
-      "bg-[radial-gradient(ellipse_at_60%_40%,#3b1f7a_0%,#1a0b3a_55%,#08060f_100%)]",
+      "bg-[radial-gradient(ellipse_at_60%_40%,#3b1f7a_0%,#1a0b3a_55%,var(--background)_100%)]",
     primary: {
       label: "Download APK",
       href: "https://expo.dev/accounts/sohaib7933/projects/PayPalm/builds/6b24fd37-d78a-4881-8982-f96146565019",
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     tech: ["Next.js", "React", "Tailwind CSS", "Framer Motion"],
     image: "/corefinity.png",
     placeholderBg:
-      "bg-[radial-gradient(ellipse_at_50%_40%,#3b1f7a_0%,#1a0b3a_55%,#08060f_100%)]",
+      "bg-[radial-gradient(ellipse_at_50%_40%,#3b1f7a_0%,#1a0b3a_55%,var(--background)_100%)]",
     primary: {
       label: "Live Demo",
       href: "https://corefinity-website.vercel.app/",

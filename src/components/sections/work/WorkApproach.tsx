@@ -45,7 +45,7 @@ export function WorkApproach() {
       >
         <motion.p
           variants={fadeUpBlur}
-          className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-accent/85 sm:text-[12px] sm:tracking-[0.32em]"
+          className="mb-4 text-[11px] font-medium uppercase tracking-[0.28em] text-accent-ink/85 sm:text-[12px] sm:tracking-[0.32em]"
         >
           The approach
         </motion.p>
@@ -56,7 +56,7 @@ export function WorkApproach() {
           <Words text="How these" />
           <motion.span
             variants={wordVariant}
-            className="inline-block bg-gradient-to-r from-fuchsia-300 via-fuchsia-400 to-pink-500 bg-clip-text text-transparent"
+            className="inline-block text-accent-ink"
           >
             actually got built.
           </motion.span>
@@ -102,7 +102,7 @@ function PillarCard({
       transition={SPRING}
       {...handlers}
       style={tiltStyle}
-      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-white/[0.025] p-6 backdrop-blur-sm transition-colors hover:border-accent/40 sm:p-7"
+      className="group relative isolate overflow-hidden rounded-2xl border border-border-subtle bg-surface p-6 backdrop-blur-sm transition-colors hover:border-accent/40 sm:p-7"
     >
       <SpotlightOverlay glow={glow} />
 
@@ -111,7 +111,7 @@ function PillarCard({
         className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
       />
 
-      <span className="font-mono text-[11px] font-semibold tracking-[0.18em] text-foreground/35 transition-colors duration-500 group-hover:text-accent/70">
+      <span className="font-mono text-[11px] font-semibold tracking-[0.18em] text-foreground/35 transition-colors duration-500 group-hover:text-accent-ink/70">
         {number}
       </span>
       <h3 className="mt-4 text-[18px] font-bold tracking-tight text-foreground sm:text-[20px]">

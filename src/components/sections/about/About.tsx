@@ -32,7 +32,7 @@ export function About() {
           <Magnetic strength={0.2}>
             <Link
               href="/about"
-              className="group inline-flex items-center gap-3 rounded-full border border-border-strong bg-white/[0.025] px-7 py-4 text-[12.5px] font-semibold uppercase tracking-[0.18em] text-foreground transition-colors hover:border-accent hover:bg-white/[0.05]"
+              className="group inline-flex items-center gap-3 rounded-full border border-border-strong bg-surface px-7 py-4 text-[12.5px] font-semibold uppercase tracking-[0.18em] text-foreground transition-colors hover:border-accent hover:bg-surface-strong"
             >
               View Full About
               <svg
