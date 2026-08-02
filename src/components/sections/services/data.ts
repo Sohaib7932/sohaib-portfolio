@@ -36,9 +36,9 @@ export const services: Service[] = [
     title: "Mobile Apps",
     tagline: "iOS and Android from one codebase.",
     description:
-      "Cross-platform mobile apps built with React Native. Smooth, native-feeling UI with offline support, push notifications, and store-ready builds.",
+      "Cross-platform mobile apps built with Flutter or React Native. Smooth, native-feeling UI with offline support, push notifications, and store-ready builds.",
     deliverables: [
-      "React Native with Expo",
+      "Flutter and Dart, or React Native",
       "Native modules when needed",
       "App Store and Play Store ready",
       "Stable, crash-free builds",
@@ -63,14 +63,14 @@ export const services: Service[] = [
   {
     id: "ai",
     number: "04",
-    title: "AI Integration",
+    title: "AI & Automation",
     tagline: "AI built into real products.",
     description:
-      "Useful AI features like assistants, summaries, smart search, and small agents, added into your app with cost, speed, and user experience in mind.",
+      "Useful AI features like assistants, summaries, and smart search, plus n8n workflows that connect your tools and take the repetitive work off your plate.",
     deliverables: [
       "OpenAI and Anthropic APIs",
       "Streaming chat interfaces",
-      "Tool-using agents",
+      "n8n workflow automation",
       "Vector search and RAG",
     ],
     iconKey: "ai",

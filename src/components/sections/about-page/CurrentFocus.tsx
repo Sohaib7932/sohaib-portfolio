@@ -17,20 +17,20 @@ import { Words, wordsContainer, wordVariant } from "@/components/motion/Words";
 const focuses = [
   {
     label: "Now",
-    title: "Final-year project and front-end roles",
-    body: "Wrapping up PayEase, my palm-vein payment app, and looking for front-end roles where I can build clean, real-world products.",
+    title: "Graduated, building full-time",
+    body: "Degree finished and shipping every week. Most of my time goes into production React and Next.js front-ends, with Flutter for the mobile side.",
     accent: "emerald",
   },
   {
     label: "Learning",
-    title: "Deeper front-end and AI",
-    body: "Getting better at advanced React patterns, Next.js, and adding small AI features that actually help users, not just for show.",
+    title: "Advanced React, Flutter and automation",
+    body: "Going deeper on React Server Components, animation and performance budgets, plus n8n workflows that remove the repetitive work from a project.",
     accent: "violet",
   },
   {
     label: "Open to",
-    title: "Freelance and full-time",
-    body: "Remote-first front-end and design work. I love early products where design and code aren't split between two teams.",
+    title: "Front-end roles and freelance",
+    body: "Remote-first front-end and design work, worldwide. I'm at my best on early products where design and code aren't split across two teams.",
     accent: "fuchsia",
   },
 ];

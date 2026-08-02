@@ -127,11 +127,11 @@ export function AboutHero() {
           variants={item}
           className="mt-6 max-w-lg text-[15px] leading-[1.75] text-foreground/70 sm:text-[15.5px]"
         >
-          I&apos;m Muhammad Sohaib, a final-year Software Engineering student,
-          part-time designer, and front-end developer. I care about the small
-          stuff most people scroll past, a smooth animation, a border that
-          lines up, a loading state that feels right. That&apos;s usually
-          where good products quietly become great.
+          I&apos;m Muhammad Sohaib, a Software Engineering graduate and
+          front-end developer working in React, Next.js and Flutter. I care
+          about the small stuff most people scroll past, a smooth animation, a
+          border that lines up, a loading state that feels right. That&apos;s
+          usually where good products quietly become great.
         </motion.p>
 
         <motion.div

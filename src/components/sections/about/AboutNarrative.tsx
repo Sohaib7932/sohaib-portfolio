@@ -56,9 +56,10 @@ export function AboutNarrative() {
             broken.
           </motion.p>
           <motion.p variants={fadeUp}>
-            I picked up HTML and CSS first, then WordPress, then React, and
-            now Next.js is where I spend most of my time. My focus is mostly
-            on the front-end, building clean and smooth user interfaces.
+            I picked up HTML and CSS first, then WordPress, then React, and now
+            Next.js and TypeScript are where I spend most of my time. Flutter
+            covers the mobile side, and n8n handles the workflows nobody should
+            be doing by hand.
           </motion.p>
           <motion.p variants={fadeUp}>
             My goal is simple: make hard things feel easy. If a user never

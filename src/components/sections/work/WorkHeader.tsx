@@ -8,7 +8,7 @@ export function WorkHeader() {
       eyebrow="Selected Work"
       title="Featured"
       highlight="Projects."
-      body="A small collection of things I've built, where clean design and good code meet. Take a look around."
+      body="React and Next.js web apps, Flutter mobile apps, and AI-powered tools, each one built end to end from Figma to production. Take a look around."
     />
   );
 }

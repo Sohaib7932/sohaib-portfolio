@@ -4,6 +4,8 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { MotionProvider, ScrollProgress } from "@/components/motion";
+import { PersonSchema } from "@/components/seo/PersonSchema";
+import { siteConfig } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,9 +18,55 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Muhammad Sohaib, Front-End Developer & UI/UX Designer",
-  description:
-    "Portfolio of Muhammad Sohaib, a front-end developer and UI/UX designer building clean, modern web apps with React and Next.js.",
+  // Makes every relative URL below (canonicals, OG images) resolve absolutely,
+  // which crawlers and social scrapers both require.
+  metadataBase: new URL(siteConfig.url),
+
+  title: {
+    default: siteConfig.title,
+    // Child routes set only their own title; this appends the brand for them.
+    template: `%s — ${siteConfig.name}`,
+  },
+  description: siteConfig.description,
+  keywords: [...siteConfig.keywords],
+
+  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  creator: siteConfig.name,
+  publisher: siteConfig.name,
+
+  // Without this, the same page reachable at several URLs splits its ranking.
+  alternates: { canonical: "/" },
+
+  openGraph: {
+    type: "profile",
+    locale: siteConfig.locale,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      // Lets Google show full-length text snippets and large image previews
+      // instead of the conservative defaults.
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+
+  category: "technology",
 };
 
 export const viewport: Viewport = {
@@ -63,6 +111,7 @@ export default function RootLayout({
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <PersonSchema />
       </head>
       {/* Browser extensions commonly stamp attributes onto <body> before React
           hydrates; suppressing here keeps that noise out of the console without

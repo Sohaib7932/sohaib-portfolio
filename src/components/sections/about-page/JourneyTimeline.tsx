@@ -52,9 +52,15 @@ const chapters = [
   },
   {
     year: "2025",
-    title: "Now: Next.js and beyond",
-    body: "Next.js is where I spend most of my time now. Building fast, SEO-friendly web apps with React, TypeScript, and Tailwind, plus exploring AI features that quietly make products feel smarter.",
-    tag: "NEXT.JS · NOW",
+    title: "Next.js, Flutter, and AI",
+    body: "Next.js became home for the web work: fast, SEO-friendly apps in React, TypeScript, and Tailwind. Flutter covered the mobile side, and I started adding AI features that quietly make a product feel smarter.",
+    tag: "NEXT.JS · FLUTTER",
+  },
+  {
+    year: "2026",
+    title: "Now: graduated and building full-time",
+    body: "Software Engineering degree finished. All of that time now goes into production front-ends, plus n8n automations that take the repetitive work out of a project. Same obsession with detail, more hours in the day for it.",
+    tag: "GRADUATED · NOW",
   },
 ];
 

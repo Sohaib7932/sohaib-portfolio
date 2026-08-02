@@ -27,7 +27,7 @@ export const projects: Project[] = [
     slug: "paypalm",
     title: "PayPalm, Palm Vein Payments",
     description:
-      "My final-year project: a full mobile banking app paired with custom-built palm-vein scanning hardware. Users sign in and pay by simply scanning the vein pattern in their palm, no card, no PIN, no phone unlock needed.",
+      "My Software Engineering capstone project: a full mobile banking app paired with custom-built palm-vein scanning hardware. Users sign in and pay by simply scanning the vein pattern in their palm, no card, no PIN, no phone unlock needed.",
     category: "Mobile Apps",
     tech: ["React Native", "Expo", "IoT Hardware"],
     image: "/paypalm.svg",

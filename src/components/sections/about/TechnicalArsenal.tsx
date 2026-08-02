@@ -12,16 +12,18 @@ const categories: Omit<SkillCategoryProps, "index">[] = [
     icon: <FrontendIcon />,
     skills: [
       { name: "React / Next.js", percent: 92 },
+      { name: "TypeScript", percent: 88 },
       { name: "Tailwind CSS", percent: 95 },
     ],
   },
   {
-    title: "Languages",
+    title: "Mobile",
     tone: "violet",
-    icon: <BackendIcon />,
+    icon: <MobileIcon />,
     skills: [
-      { name: "HTML / CSS", percent: 95 },
-      { name: "JavaScript / TS", percent: 90 },
+      { name: "Flutter / Dart", percent: 78 },
+      { name: "React Native", percent: 75 },
+      { name: "HTML / CSS / JS", percent: 95 },
     ],
   },
   {
@@ -31,6 +33,7 @@ const categories: Omit<SkillCategoryProps, "index">[] = [
     skills: [
       { name: "Figma", percent: 95 },
       { name: "UI/UX Layout", percent: 92 },
+      { name: "Design systems", percent: 88 },
     ],
   },
   {
@@ -39,6 +42,7 @@ const categories: Omit<SkillCategoryProps, "index">[] = [
     icon: <ToolsIcon />,
     skills: [
       { name: "Git / GitHub", percent: 95 },
+      { name: "n8n automation", percent: 70 },
       { name: "WordPress", percent: 80 },
     ],
   },
@@ -104,7 +108,7 @@ function FrontendIcon() {
   );
 }
 
-function BackendIcon() {
+function MobileIcon() {
   return (
     <svg
       width="20"
@@ -117,9 +121,8 @@ function BackendIcon() {
       strokeLinejoin="round"
       aria-hidden
     >
-      <ellipse cx="12" cy="5" rx="8" ry="2.5" />
-      <path d="M4 5v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5V5" />
-      <path d="M4 11v6c0 1.4 3.6 2.5 8 2.5s8-1.1 8-2.5v-6" />
+      <rect x="6" y="2.5" width="12" height="19" rx="2.5" />
+      <path d="M10.5 18.5h3" />
     </svg>
   );
 }

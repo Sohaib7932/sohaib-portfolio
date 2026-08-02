@@ -51,7 +51,7 @@ const groups = [
   },
   {
     title: "Languages",
-    items: ["HTML", "CSS", "JavaScript", "TypeScript", "Python", "SQL"],
+    items: ["HTML", "CSS", "JavaScript", "TypeScript", "Dart", "Python", "SQL"],
   },
   {
     title: "Web (Past)",
@@ -69,17 +69,24 @@ const groups = [
   },
   {
     title: "Mobile",
-    items: ["React Native", "Expo", "App Store / Play Store"],
+    items: [
+      "Flutter",
+      "Dart",
+      "React Native",
+      "Expo",
+      "App Store / Play Store",
+    ],
   },
   {
     title: "Backend (Light)",
     items: ["Node.js", "Express", "REST APIs", "MongoDB"],
   },
   {
-    title: "AI tools",
+    title: "AI & Automation",
     items: [
       "OpenAI API",
       "Anthropic API",
+      "n8n workflows",
       "Streaming chat",
       "Tool-using agents",
     ],
